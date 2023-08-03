@@ -23,7 +23,7 @@
   }
   
   .image-container-login-front {
-    background-image: url(../assets/landing-page-back-photo.jpg);
+    background-image: url(../assets/landing-page-photo.png);
     background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,10 +35,11 @@
     position: absolute;
     left: 0;
     bottom: 0;
+    filter: blur(2px);
   }
   
   .image-container-login-back {
-    background-image: url(../assets/landing-page-photo.jpg);
+    background-image: url(../assets/landing-page-photo.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
