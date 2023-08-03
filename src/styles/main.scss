@@ -6,7 +6,7 @@
   
   /* Fonts */
   /* Import Google Fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Montserrat:wght@200;300;400;500;600;700&display=swap');
   
   /* Set the base font size */
   html {
@@ -16,28 +16,32 @@
   :root {
     /* Colors */
     /* Shades generator link: https://noeldelgado.github.io/shadowlord/#645cff */
-    --primary-100: #f2d1d3;
-    --primary-200: #e4a3a7;
-    --primary-300: #d7747b;
-    --primary-400: #c9464f;
-    --primary-500: #bc1823;
-    --primary-600: #96131c;
-    --primary-700: #710e15;
-    --primary-800: #4b0a0e;
-    --primary-900: #4b0a0e;
-    --accent: #fab919;
+    --primary-100: #ccecff;
+    --primary-200: #99d8ff;
+    --primary-300: #66c5ff;
+    --primary-400: #33b1ff;
+    --primary-500: #009eff;
+    --primary-600: #007ecc;
+    --primary-700: #005f99;
+    --primary-800: #003f66;
+    --primary-900: #002033;
+    --accent: #ff1f4a;
+
+// Background-color f2f2f2
+// Subtitle-color 606060
+// Searchbox-color dddddd
   
     /* Grey */
     --grey-50: #f8fafc;
-    --grey-100: #f1f5f9;
-    --grey-200: #e2e8f0;
-    --grey-300: #cbd5e1;
-    --grey-400: #94a3b8;
-    --grey-500: #64748b;
-    --grey-600: #475569;
-    --grey-700: #334155;
-    --grey-800: #1e293b;
-    --grey-900: #0f172a;
+    --grey-100: #f8f8f8;
+    --grey-200: #f2f2f2;
+    --grey-300: #ebebeb;
+    --grey-400: #e4e4e4;
+    --grey-500: #dddddd;
+    --grey-600: #b1b1b1;
+    --grey-700: #858585;
+    --grey-800: #585858;
+    --grey-900: #2c2c2c;
   
     /* Rest of the colors */
     --black: #222;
@@ -48,15 +52,15 @@
     --green-dark: #0f5132;
   
     /* Fonts */
-    --headingFont: 'Roboto', sans-serif;
-    --bodyFont: 'Nunito', sans-serif;
+    --headingFont: 'Fjalla', sans-serif;
+    --bodyFont: 'Montserrat', sans-serif;
     --smallText: 0.7em;
   
     /* Rest of the variables */
-    --backgroundColor: var(--grey-50);
+    --backgroundColor: var(--grey-200);
     --textColor: var(--grey-900);
-    --borderRadius: 0.25rem;
-    --letterSpacing: 1px;
+    --borderRadius: .75rem;
+    --letterSpacing: 0;
     --transition: 0.3s ease-in-out all;
     --max-width: 1120px;
     --fixed-width: 600px;
@@ -65,7 +69,7 @@
     --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-4: 4px 4px 8px rgba(0, 0, 0, 0.2);;
   }
   
   /* Body styles */
@@ -85,15 +89,15 @@
   h1, h2, h3, h4, h5 {
     margin: 0;
     font-family: var(--headingFont);
-    font-weight: 400;
-    line-height: 1;
-    text-transform: capitalize;
+    // font-weight: 400;
+    // line-height: 1;
+    // text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
   }
   
-  h1 {
-    font-size: 3.052rem;
-  }
+  // h1 {
+  //   font-size: 3.052rem;
+  // }
   
   h2 {
     font-size: 2.441rem;
@@ -267,3 +271,122 @@
     margin-top: 1rem;
   }
   
+
+  //LOGIN PAGE
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    padding: 35px;
+  }
+
+  .logo-container > img {
+      width: 5vw;
+  }
+
+  .card-container-login {
+      display: flex;
+      justify-content: center;
+  }
+
+  .image-main-container {
+    position: relative;
+    width: 30vw;
+    height: 55vh;
+    margin-right: 1rem;
+  }
+
+  .image-container-login-front {
+    background-image: url(../assets/landing-page-back-photo.jpg);
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 18vw;
+    height: 52vh;
+    border-radius: 20px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .image-container-login-back {
+    background-image: url(../assets/landing-page-photo.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 18vw;
+    height: 52vh;
+    border-radius: 20px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
+  }
+
+  .login-container {
+      background-color: var(--white);
+      width: 18vw;
+      height: 52vh;
+      border-radius: 20px;
+      margin-left: 4rem;
+      margin-right: 1rem;
+      box-shadow: var(--shadow-4);
+
+  }
+
+  .login-container > h1 {
+    font-family: var(--headingFont);
+    font-weight: 700;
+    color: var(--primary-500);
+    text-align: center;
+    letter-spacing: -2px;
+    font-stretch: ultra-condensed;
+  }
+
+  .form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-login input {
+    width: max-content;
+    margin-top: 1rem;
+    height: 2rem;
+    border: 1px solid var(--grey-700);
+    border-radius: var(--borderRadius);
+    
+  }
+
+  input::placeholder {
+    color: var(--black);
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .button-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-container > button {
+    margin-top: 1.8rem;
+    width: max-content;
+    border: none;
+    border-radius: 13px;
+    padding: .5rem 3rem;
+    color: var(--white);
+    background-color: var(--primary-500);
+  }
+
+  .create-new-account {
+    margin: .5rem;
+    color: var(--primary-500);
+    font-weight: 500;
+  }
