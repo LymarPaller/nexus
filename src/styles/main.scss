@@ -401,6 +401,53 @@ input::placeholder {
   font-weight: 500;
 }
 
+@media (max-width: 480px) {
+  
+  .image-container-login-back,
+  .image-container-login-front {
+    display: none;
+  }
+
+  .image-main-container {
+    
+    height: 0;
+    margin-right: 0;
+  }
+
+  .login-container {
+    width: 80%;
+    height: 45vh;
+    margin: 1rem auto; 
+  }
+
+  .create-new-account {
+    text-align: center; 
+  }
+
+  .button-container {
+    margin-top: 40px; 
+  }
+
+  .button-container>button {
+    width: 100%; 
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; 
+  }
+  
+  .card-container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+  }
+}
+
+
 // FOOTER
 
 
