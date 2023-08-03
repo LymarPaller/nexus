@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import '../styles/main.scss';
 import '../styles/normalize.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
-import '../styles/LoginPage.scss';
 
 function LoginPage () {
     return (
