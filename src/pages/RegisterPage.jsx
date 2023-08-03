@@ -1,5 +1,4 @@
-import '../styles/main.scss';
-import '../styles/normalize.scss';
+import '../styles/RegisterPage.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
 
 function RegisterPage () {

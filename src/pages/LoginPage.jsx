@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/main.scss';
-import '../styles/normalize.scss';
+import '../styles/LoginPage.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
 
 function LoginPage () {
