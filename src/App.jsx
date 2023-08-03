@@ -4,19 +4,34 @@ import RegisterPage from "./pages/RegisterPage"
 import HomePage from "./pages/HomePage"
 import Footer from "./components/Footer"
 
+import './styles/main.scss';
+import './styles/normalize.scss';
+
 function App() {
 
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/Home" element={<HomePage />} />
-        <Route path="/" element={<Footer />} />
-        
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+
+          <Route path="/" element={
+            <>
+            <LoginPage />
+            <Footer />
+            </>
+          } />
+
+          <Route path="/register" element={
+            <>
+            <RegisterPage />
+            <Footer />
+            </>
+        } />
+
+          <Route path="/Home" element={<HomePage />} />
+
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
