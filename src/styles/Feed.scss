@@ -1,6 +1,6 @@
 .feed-container {
     width: 40vw;
-    height: 50vh;
+    height: 70vh;
     margin-top: 1.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     background-color: var(--white);
@@ -59,8 +59,8 @@
     .post-image {
         img {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
+            height: 47vh;
+            object-fit: cover;
         }
     }
 

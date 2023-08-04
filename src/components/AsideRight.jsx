@@ -1,17 +1,58 @@
-
+import Profile from '../assets/wanda.jpg';
 import "../styles/AsideRight.scss";
 
-function AsideRight () {
+function AsideRight() {
     return (
         <>
-        <div className="aside-right-container">
-            <div className="suggestion-container">
-                <h5>friend suggestion</h5>
+            <div className="aside-right-container">
+                <div className="suggestion-container">
+                    <h5>Suggested Friends</h5>
+                    <div className="friend-suggestion">
+                        <div className="aside-right-image">
+                            <img src={Profile} alt="Profile" />
+                        </div>
+                        <span>Faith</span>
+                        <button className="add-btn">Add</button>
+                        <button className="remove-btn">Remove</button>
+                    </div>
+                    {/* add friend suggestions here sa freetime */}
+                </div>
+
+
+                <div className="online-container">
+                    <h5>Contact</h5>
+                    <div className="online-friends">
+                        <div className="aside-right-image">
+                            <img src={Profile} alt="Profile" />
+                        </div>
+                        <span>Klane Zurbano</span>
+                    </div>
+                    <div className="online-friends">
+                        <div className="aside-right-image">
+                            <img src={Profile} alt="Profile" />
+                        </div>
+                        <span>Ryan Azur</span>
+                    </div>
+                    <div className="online-friends">
+                        <div className="aside-right-image">
+                            <img src={Profile} alt="Profile" />
+                        </div>
+                        <span>Kodego PH</span>
+                    </div>
+                    <div className="online-friends">
+                        <div className="aside-right-image">
+                            <img src={Profile} alt="Profile" />
+                        </div>
+                        <span>Lymar Paller</span>
+                    </div>
+                    <div className="online-friends">
+                        <div className="aside-right-image">
+                            <img src={Profile} alt="Profile" />
+                        </div>
+                        <span>Riya Villamor</span>
+                    </div>
+                </div>
             </div>
-            <div className="online-container">
-                <h5>online friends</h5>
-            </div>
-        </div>
         </>
     )
 }
