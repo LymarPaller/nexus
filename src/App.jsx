@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage"
 import Footer from "./components/Footer"
 import './styles/main.scss';
 import './styles/normalize.scss';
+import Navbar from "./components/Navbar"
 
 function App() {
 
@@ -27,7 +28,12 @@ function App() {
             </>
         } />
 
-          <Route path="/Home" element={<HomePage />} />
+          <Route path="/Home" element={
+            <>
+            <Navbar />
+            <HomePage />
+            </>
+          } />
 
         </Routes>
       </BrowserRouter>
