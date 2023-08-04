@@ -7,36 +7,28 @@ import Profile from '../assets/icons/profile.svg';
 import Search from '../assets/icons/search.svg';
 import '../styles/Navbar.scss';
 
-function Navbar () {
+function Navbar() {
     return (
         <>
-        <div>
-            <nav className='nav-bar-container'>
-                <div className='nav-brand'>
-                    <img src={Logo} alt="" />
-                </div>
-                <ul className='nav-bar-left'>
-                    <li>
-                        <img src={Home} alt="" />
-                    </li>
-                    <li>
-                        <img src={Profile} alt="" />
-                    </li>
-                    <li>
-                        <img src={Notification} alt="" />
-                    </li>
-                </ul>
-                <div className='search-container'>
-                    <input type="text" name="search-box" id="search-box" />
-                    <span><img src={Search} alt="" /></span>
-                </div>
-                <div className='nav-bar-right'>
-                    <img src={Moon} alt="" />
-                    <img src={Logout} alt="" />
-                </div>
-            </nav>
+            <div>
+                <nav className="navbar">
+                    <div className="navbar-left">
+                        <img src={Logo} alt="Logo" className="navbar-logo" />
+                        <img src={Home} alt="Home" className="navbar-icon" />
+                        <img src={Profile} alt="Profile" className="navbar-icon" />
+                        <img src={Notification} alt="Notification" className="navbar-icon" />
+                    </div>
+                    <div className="navbar-center">
+                        <input type="text" className="navbar-search-bar" />
+                        <img src={Search} alt="Search" className="navbar-icon" />
+                    </div>
+                    <div className="navbar-right">
+                        <img src={Moon} alt="Dark Mode" className="navbar-icon" />
+                        <img src={Logout} alt="Logout" className="navbar-icon" />
+                    </div>
+                </nav>
 
-        </div>
+            </div>
         </>
     );
 };
