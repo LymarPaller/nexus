@@ -12,10 +12,10 @@ function Footer() {
                     <div className="footer-column">
                         <div className="footer-subrow">
                             <div className="footer-title">Capstone Project by:</div>
-                            <div>Maria Villamor</div>
-                            <div>riyasample@gmail.com</div>
-                            <div>Lymar Paul Paller</div>
-                            <div>riyasample@gmail.com</div>
+                            <div>Mariya Villamor</div>
+                            <div >mariyavillamor@gmail.com</div>
+                            <div className='name-spacing'>Lymar Paul Paller</div>
+                            <div>lymar.paller101@gmail.com</div>
                         </div>
                     </div>
                     <div className="footer-column">
