@@ -1,0 +1,35 @@
+.news-feed-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+}
+
+.create-post {
+    width: 40vw;
+    height: 15vh;
+    margin-top: 2rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-color: blue;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.input-feed{
+    border-radius: 25px;
+    width: 20vw;
+    height: 2rem;
+}

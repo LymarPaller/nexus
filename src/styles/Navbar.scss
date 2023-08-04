@@ -11,20 +11,30 @@
     &-right {
       display: flex;
       align-items: center;
+    } 
+
+    &-center {
+        position: relative;
     }
-  
+
+    &-search-icon {
+        position: absolute;
+        right: 3px;
+        
+    }
+    
     &-logo {
       width: 70px;
       height: 70px;
-      margin-right: 16px;
+      margin-right: 50px;
     }
   
   
     &-search-bar {
-      width: 300px;
+      width: 380px;
       height: 30px;
       border-radius: 20px;
-      border: .3px solid #000000;
+      border: .3px solid var(--black);
       padding: 6px 12px;
       margin-right: 16px;
     }
@@ -33,6 +43,7 @@
       width: 24px;
       height: 24px;
       margin-right: 16px;
+      margin-left: 16px;
     }
   
     &-right {

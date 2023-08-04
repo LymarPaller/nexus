@@ -20,7 +20,7 @@ function Navbar() {
                     </div>
                     <div className="navbar-center">
                         <input type="text" className="navbar-search-bar" />
-                        <img src={Search} alt="Search" className="navbar-icon" />
+                        <img src={Search} alt="Search" className="navbar-icon navbar-search-icon" />
                     </div>
                     <div className="navbar-right">
                         <img src={Moon} alt="Dark Mode" className="navbar-icon" />

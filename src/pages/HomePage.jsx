@@ -1,7 +1,16 @@
+import AsideLeft from "../components/AsideLeft";
+import NewsFeed from "../components/NewsFeed";
+import AsideRight from "../components/AsideRight";
+import "../styles/HomePage.scss";
+
 function HomePage () {
     return (
         <>
-        <h1>Home Page</h1>
+        <div className="home-page-main-container">
+            <AsideLeft/>
+            <NewsFeed />
+            <AsideRight />
+        </div>
         </>
     );
 };
