@@ -19,17 +19,25 @@
     align-items: center;
 }
 
-.profile-pic {
-    height: 2rem;
-    width: 2rem;
+.profile-pic > img {
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
-    background-color: blue;
-    margin-left: 1rem;
     margin-right: 1rem;
 }
 
 .input-feed{
-    border-radius: 25px;
-    width: 20vw;
-    height: 2rem;
-}
+    border-radius: 10px;
+    width: 30vw;
+    height: 3rem;
+    border: .3px solid var(--black);
+    // background-color: var(--grey-300);
+
+    &::placeholder {
+        font-weight: 400;
+      }
+    }
+
+
+
+      
