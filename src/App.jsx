@@ -3,7 +3,6 @@ import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import HomePage from "./pages/HomePage"
 import Footer from "./components/Footer"
-
 import './styles/main.scss';
 import './styles/normalize.scss';
 
