@@ -1,4 +1,5 @@
 import '../styles/Footer.scss';
+import EmailLink from '../app/linkEmail';
 
 
 function Footer() {
@@ -13,9 +14,9 @@ function Footer() {
                         <div className="footer-subrow">
                             <div className="footer-title">Capstone Project by:</div>
                             <div>Mariya Villamor</div>
-                            <div >mariyavillamor@gmail.com</div>
+                            <EmailLink recipient="mariyavillamor@gmail.com"/>
                             <div className='name-spacing'>Lymar Paul Paller</div>
-                            <div>lymar.paller101@gmail.com</div>
+                            <EmailLink recipient="lymarpaller@gmail.com"/>
                         </div>
                     </div>
                     <div className="footer-column">
