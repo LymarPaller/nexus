@@ -6,6 +6,79 @@
     background-color: var(--white);
 }
 
-.profile-feed-details{
-    background-color: red;
+.profile-feed-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    .profile-info {
+        display: flex;
+        align-items: center;
+
+        .profile-image {
+            img {
+                width: 43px;
+                height: 43px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        }
+
+        .name-time {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            h3 {
+                margin: 0;
+                font-size: 1rem;
+            }
+
+            p {
+                margin: 0;
+                color: var(--grey-800);
+                font-size: .8rem;
+                margin-top: .1rem;
+            }
+        }
+    }
+
+    .delete-icon {
+        /* create pop up sa free time */
+        
+    }
+
+    .captions {
+        margin-top: 0.5rem;
+
+        p {
+            margin-bottom: 9px;
+        }
+    }
+
+    .post-image {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .likes-comments {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+
+        .likes,
+        .comments {
+            p {
+                margin: 0;
+                background-color: #000000;
+                color: var(--white);
+                padding: 0.4rem 1rem;
+                border-radius: 20px;
+                font-size: .9rem;
+            }
+        }
+    }
 }
