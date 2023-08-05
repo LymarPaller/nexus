@@ -1,51 +1,40 @@
 .footer {
-    margin-top: 10rem;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white);
-    color: var(--grey-800);
-    padding: 25px;
-  
-    
-    .footer-row-1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 16px;
-      font-weight: bold;
-      padding-bottom: 10px;
-    }
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  color: var(--grey-800);
+  padding: 25px;
 
-    .email-link {
-      text-decoration: none;
-      color: var(--grey-800);
-    }
-  
-   
-    .footer-row-2 {
-      display: flex;
-      justify-content: center;
-      margin-top: 2rem;
-  
-     
-      .footer-column {
-        // flex: 1;
-        padding: 10px;
-        margin-left: 4rem;
-        margin-right: 4rem;
-  
-        
-        .footer-subrow {
-          display: flex;
-          flex-direction: column;
-  
-          div {
-            margin-bottom: 5px;
-         
-            &.footer-title {
-              font-weight: bold;
-              padding-bottom: 5px;
-            }
+  .footer-row-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+
+  .footer-row-2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    .footer-column {
+      padding: 10px;
+      margin-left: 4rem;
+      margin-right: 4rem;
+
+      .footer-subrow {
+        display: flex;
+        flex-direction: column;
+
+        div {
+          margin-bottom: 5px;
+
+          &.footer-title {
+            font-weight: bold;
+            padding-bottom: 5px;
           }
         }
       }
@@ -55,3 +44,39 @@
   .footer-subrow .name-spacing {
     margin-top: 8px;
   }
+
+  a,
+  .klane,
+  .email-link,
+  .footer-column > div:not(.footer-subrow) {
+    color: var(--grey-800);
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--primary-600);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-600);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  .footer-column > div:not(.footer-subrow) > a {
+    color: var(--primary-600);
+  }
+}
