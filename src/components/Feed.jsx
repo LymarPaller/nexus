@@ -20,7 +20,7 @@ function Feed () {
             {/* Add delete icon modal upper right side */}
           </div>
           <div className="captions">
-            <p>Sample captions here</p>
+            <p>Pupparazzi caught me posing 📸</p>
           </div>
           <div className="post-image">
           <img src={Profile} alt="Profile" />

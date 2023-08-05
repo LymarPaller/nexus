@@ -19,10 +19,9 @@
     }
 }
 
-.profile-photo {
-    width: 10rem;
-    height: 10rem;
-    background-color: rgb(62, 91, 255);
+.profile-photo > img {
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
     margin-top: 1rem;
     position: absolute;
