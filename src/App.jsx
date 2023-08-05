@@ -6,9 +6,7 @@ import Footer from "./components/Footer"
 import './styles/main.scss';
 import './styles/normalize.scss';
 import Navbar from "./components/Navbar"
-import AsideRight from "./components/AsideRight"
-import AsideLeft from "./components/AsideLeft"
-import NewsFeed from "./components/NewsFeed"
+import ProfilePage from "./pages/ProfilePage"
 
 function App() {
 
@@ -35,6 +33,13 @@ function App() {
             <>
             <Navbar />
             <HomePage />
+            </>
+          } />
+
+          <Route path="/profile" element={
+            <>
+            <Navbar />
+            <ProfilePage />
             </>
           } />
 

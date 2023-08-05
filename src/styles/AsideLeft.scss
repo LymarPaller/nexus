@@ -3,6 +3,9 @@
     height: 100vh;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     background-color: var(--white);
+    position: fixed;
+    left: 0;
+    padding-top: 6rem;
   
     .profile-info {
       display: flex;

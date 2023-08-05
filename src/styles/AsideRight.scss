@@ -5,6 +5,9 @@
     justify-content: start;
     align-items: center;
     background-color: var(--grey-200);
+    position: fixed;
+    right: 0;
+    padding-top: 6rem;
 }
 
 .suggestion-container,
