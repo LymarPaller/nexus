@@ -1,5 +1,8 @@
 import "../styles/AsideLeft.scss"
 import Profile from '../assets/wanda.jpg'
+import Friends from '../assets/icons/friends.png';
+import Groups from '../assets/icons/groups.png';
+import Memories from '../assets/icons/memories.png';
 
 function AsideLeft() {
     return (
@@ -14,21 +17,21 @@ function AsideLeft() {
                     </div>
                     <div className="friends-section">
                         <div className="profile-image">
-                            <img src={Profile} alt="Friend Profile" />
+                            <img src={Friends} alt="Friend Profile" />
                         </div>
                         <h3>Friends</h3>
                         {/* Render list of friends */}
                     </div>
                     <div className="groups-section">
                         <div className="profile-image">
-                            <img src={Profile} alt="Group Profile" />
+                            <img src={Groups} alt="Group Profile" />
                         </div>
                         <h3>Groups</h3>
                         {/* Render list of groups */}
                     </div>
                     <div className="memories-section">
                         <div className="profile-image">
-                            <img src={Profile} alt="Memory Profile" />
+                            <img src={Memories} alt="Memory Profile" />
                         </div>
                         <h3>Memories</h3>
                         {/* Render list of memories */}
