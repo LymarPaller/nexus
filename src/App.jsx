@@ -1,33 +1,43 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import HomePage from "./pages/HomePage"
 import Footer from "./components/Footer"
 import './styles/main.scss';
 import './styles/normalize.scss';
-import Navbar from "./components/Navbar"
-import ProfilePage from "./pages/ProfilePage"
+import Navbar from "./components/Navbar";
+import ProfilePage from "./pages/ProfilePage";
+import Test from "./pages/Test"
+import { Provider } from "react-redux"
 
 function App() {
 
+  const currentUser = false;
+
+  const router = createBrowserRouter([
+    { path:"/login", element: <LoginPage /> },
+    { path:"/register", element: <RegisterPage /> }
+  ])
+
   return (
     <>
+    <RouterProvider router={router}>
       <BrowserRouter>
         <Routes>
 
-          <Route path="/" element={
+          {/* <Route path="/" element={
             <>
             <LoginPage />
             <Footer />
             </>
-          } />
+          } /> */}
 
-          <Route path="/register" element={
+          {/* <Route path="/register" element={
             <>
             <RegisterPage />
             <Footer />
             </>
-          } />
+          } /> */}
 
           <Route path="/Home" element={
             <>
@@ -43,8 +53,17 @@ function App() {
             </>
           } />
 
+          <Route path="/test" element={
+            <>
+            <Navbar />
+            <Test />
+            </>
+          } />
+
         </Routes>
       </BrowserRouter>
+    </RouterProvider>
+      
     </>
   )
 }

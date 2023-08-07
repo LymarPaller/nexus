@@ -1,5 +1,6 @@
 import '../styles/RegisterPage.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
+import { Link } from 'react-router-dom';
 
 function RegisterPage () {
     return (
@@ -20,7 +21,12 @@ function RegisterPage () {
                     <input type="email" placeholder='Email' required/>
                     <input type="password"  placeholder='Password' required/>
                     <div className='button-container button-register'>
-                        <button type='submit'>Register</button>
+                        <Link to="/register" className='link-button'>
+                            <button type='submit'>Register</button>
+                        </Link>
+                        <Link to="/login" className='link-button '>
+                            <button type='submit' className=' register-back-button'>Back to Login</button>
+                        </Link>
                     </div>
                 </form>
             </div>
