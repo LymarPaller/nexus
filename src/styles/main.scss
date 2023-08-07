@@ -288,7 +288,7 @@ ul {
 }
 
 @mixin tablet {
-  @media (max-width: 720px) {
+  @media (max-width: 800px) {
     @content;
   }
 }

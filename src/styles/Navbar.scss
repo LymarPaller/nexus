@@ -1,3 +1,5 @@
+@import "main";
+
 .navbar {
     display: flex;
     width: 100%;
@@ -9,12 +11,26 @@
     position: fixed;
     top: 0;
     z-index: 1;
+
+    
+    @include tablet {
+      justify-content: center;
+      height: 15vh;
+      padding: 5px 60px;
+      align-items: center;
+
+    }
   
     &-left,
     &-center,
     &-right {
       display: flex;
-      align-items: center;
+      align-items: center;  
+      
+      @include tablet {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }  
     } 
 
     &-center {
@@ -23,7 +39,11 @@
 
     &-search-icon {
         position: absolute;
-        right: 3px;
+
+        @include tablet {
+          position: relative;
+
+        }
         
     }
     
@@ -31,9 +51,47 @@
       width: 70px;
       height: 70px;
       margin-right: 50px;
+      
+      @include tablet {
+        margin-right: 1rem;
+  
+      }
     }
   
-  
+    .main-navbar-mobile {
+      display: flex;
+      flex-direction: row;
+
+      @include tablet {
+        position: absolute;
+        top: 50;
+        left: 50%;
+        margin-top: 12rem;
+        transform: translate(-50%, -50%);
+        background-color: var(--white);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 4rem;
+        z-index: -1;
+      }
+
+      .navbar-icon {
+        
+        @include tablet {
+          margin-left: 5rem;
+          margin-right: 5rem;
+          padding-bottom: .5rem;
+      }
+
+        @include mobile {
+          margin-left: 2rem;
+          margin-right: 2rem;
+          padding-bottom: .5rem;
+      }
+      }
+    }
+
     &-search-bar {
       width: 380px;
       height: 30px;
@@ -41,13 +99,24 @@
       border: .3px solid var(--black);
       padding: 6px 12px;
       margin-right: 16px;
+
+      
+      @include tablet {
+        display: none;
+        width: 0;
+      }
     }
 
     &-icon {
       width: 24px;
-      height: 24px;
       margin-right: 16px;
       margin-left: 16px;
+
+      @include tablet {
+      width: 1.8rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      }  
     }
   
     &-right {

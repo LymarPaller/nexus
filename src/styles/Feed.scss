@@ -1,16 +1,23 @@
+@import "main";
+
 .feed-container {
     width: 40vw;
     height: 70vh;
     margin-top: 1.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     background-color: var(--white);
+
+    @include tablet {
+        width: 100%;
+        height: auto;
+    }
+
 }
 
 .profile-feed-details {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-
     .profile-info {
         display: flex;
         align-items: center;
@@ -21,6 +28,10 @@
                 height: 43px;
                 border-radius: 50%;
                 margin-right: 10px;
+
+                @include tablet {
+                    margin-left: 1rem;
+                }
             }
         }
 
@@ -51,16 +62,27 @@
     .captions {
         margin-top: 0.5rem;
 
+        @include tablet {
+            margin-top: 1rem;
+            margin-left: 1rem;
+        }
+
         p {
             margin-bottom: 9px;
         }
     }
 
     .post-image {
+
         img {
             width: 100%;
             height: 47vh;
             object-fit: cover;
+
+            @include tablet {
+                margin-top: 1rem;
+                height: 80vh;
+            }
         }
     }
 

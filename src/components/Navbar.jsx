@@ -14,9 +14,11 @@ function Navbar() {
                 <nav className="navbar">
                     <div className="navbar-left">
                         <img src={Logo} alt="Logo" className="navbar-logo" />
-                        <img src={Home} alt="Home" className="navbar-icon" />
-                        <img src={Profile} alt="Profile" className="navbar-icon" />
-                        <img src={Notification} alt="Notification" className="navbar-icon" />
+                        <div className='main-navbar-mobile'>
+                            <img src={Home} alt="Home" className="navbar-icon" />
+                            <img src={Profile} alt="Profile" className="navbar-icon" />
+                            <img src={Notification} alt="Notification" className="navbar-icon" />
+                        </div>
                     </div>
                     <div className="navbar-center">
                         <input type="text" className="navbar-search-bar" />

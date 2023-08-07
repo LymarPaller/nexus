@@ -11,9 +11,13 @@ function AsideRight() {
                         <div className="aside-right-image">
                             <img src={Profile} alt="Profile" />
                         </div>
-                        <span>Faith</span>
-                        <button className="add-btn">Add</button>
-                        <button className="remove-btn">Remove</button>
+                        <div className='suggest-name-container'>
+                            <span>Faith</span>
+                            <div className='button-add-remove'>
+                                <button className="add-btn">Add</button>
+                                <button className="remove-btn">Remove</button>
+                            </div>
+                        </div>
                     </div>
                     {/* add friend suggestions here sa freetime */}
                 </div>

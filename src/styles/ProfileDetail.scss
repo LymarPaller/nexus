@@ -1,6 +1,18 @@
+@import "main";
+
 .profile-main-container{
     position: relative;
     margin-top: 6rem;
+
+    @include tablet {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8rem;
+    }
+    
 }
 
 .cover-photo {
@@ -10,9 +22,16 @@
     overflow: hidden;
     position: relative;
 
+    @include tablet {
+        width: 100%;
+        height: 50vh;
+    }
+
+
     img{
-        width: 50vw;
+        width: 100%;
         position: absolute;
+        background-size: contain;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -28,6 +47,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @include tablet {
+        width: 10rem;
+        height: 10rem;
+    }
 }
 
 .detail-container {
@@ -39,6 +63,11 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--shadow-4);
+
+    @include tablet {
+        width: 100%;
+        height: 50vh;
+    }
 }
 
 .user-profile-name {
