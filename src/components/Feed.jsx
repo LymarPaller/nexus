@@ -9,9 +9,21 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 function Feed() {
   const [showModal, setShowModal] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false);
+  const [comment, setComment] = useState('');
+  const [feedItems, setFeedItems] = useState([]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const toggleCommentModal = () => {
+    setShowCommentModal(!showCommentModal);
+  };
+
+  const handleCommentSubmit = (event) => {
+    event.preventDefault();
+    setComment('');
   };
 
   return (
@@ -35,19 +47,19 @@ function Feed() {
         <div className="post-image">
           <img src={Profile} alt="Profile" />
         </div>
-
         <div className="likes-comments">
           <div className="likes">
             <span className="like-icon"><img src={Like} /></span>
             <p>100 Likes</p>
           </div>
           <div className="comments">
-            <span className="comment-icon"><img src={Comment} /></span>
-            <p>50 Comments</p>
+            <span className="comment-icon">
+              <img src={Comment} />
+            </span>
+            <button onClick={toggleCommentModal} className="comment-button">Comment</button>
           </div>
         </div>
       </div>
-
       <Modal
         isOpen={showModal}
         onRequestClose={toggleModal}
@@ -68,10 +80,33 @@ function Feed() {
           </div>
         </div>
       </Modal>
-
-
+      <Modal
+        isOpen={showCommentModal}
+        onRequestClose={toggleCommentModal}
+        contentLabel="Add Comment"
+        className="modal-overlay"
+        overlayClassName="modal-container"
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Add Comment</h2>
+          </div>
+          <div className="modal-body">
+            <input
+              type="text"
+              placeholder="Write a comment..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </div>
+          <div className="modal-footer">
+            <button onClick={toggleCommentModal} className="cancel-button">Cancel</button>
+            <button onClick={handleCommentSubmit} className="add-comment-button">Add Comment</button>
+          </div>
+        </div>
+      </Modal>
     </div>
-  )
+  );
 }
 
 export default Feed;

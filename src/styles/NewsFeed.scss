@@ -32,7 +32,7 @@
     }
 }
 
-.profile-pic > img {
+.profile-pic>img {
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
@@ -43,7 +43,7 @@
     }
 }
 
-.input-feed{
+.input-feed {
     border-radius: 10px;
     width: 41vw;
     height: 3rem;
@@ -54,14 +54,27 @@
         width: 60%;
         margin-right: 2rem;
     }
-   
+
     // background-color: var(--grey-300);
 
     &::placeholder {
         font-weight: 400;
-      }
     }
+}
 
 
 
-      
+
+button[type="submit"] {
+    padding: 0.13rem .8rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-500);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+ 
