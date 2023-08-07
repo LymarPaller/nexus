@@ -1,5 +1,7 @@
 import "../styles/Feed.scss";
 import Profile from '../assets/wanda.jpg';
+import Comment from '../assets/icons/commenticon.svg';
+import Like from '../assets/icons/likeicon.svg';
 
 
 function Feed () {
@@ -28,9 +30,11 @@ function Feed () {
 
           <div className="likes-comments">
             <div className="likes">
+              <span className="like-icon"><img src={Like}/></span>
               <p>100 Likes</p>
             </div>
             <div className="comments">
+              <span className="comment-icon"><img src={Comment}/></span>
               <p>50 Comments</p>
             </div>
           </div>

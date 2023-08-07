@@ -1,7 +1,7 @@
 import AsideLeft from "../components/AsideLeft";
 import AsideRight from "../components/AsideRight";
 import ProfileDetail from "../components/ProfileDetail";
-import ProfileFeed from "../components/ProfileFeed";
+import Feed from "../components/Feed";
 import "../styles/ProfilePage.scss";
 import "../styles/ProfileFeed.scss";
 
@@ -12,7 +12,7 @@ function ProfilePage () {
             <AsideLeft />
             <div className="profile-feed-container">
                 <ProfileDetail />
-                <ProfileFeed />
+                <Feed />
             </div>
             <AsideRight />
         </div>
