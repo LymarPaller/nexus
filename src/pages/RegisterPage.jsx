@@ -1,9 +1,24 @@
+import { useState } from 'react';
 import '../styles/RegisterPage.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 
-function RegisterPage () {
+function RegisterPage() {
+    const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+
+        console.log('Username:', username);
+        console.log('Name:', name);
+        console.log('Email:', email);
+        console.log('Password:', password);
+    };
+
     return (
         <>
             <div className='logo-container'>
@@ -14,15 +29,38 @@ function RegisterPage () {
 
                 <div className='signup-login-container'>
                     <h1>Sign Up</h1>
-                    <form action="" className='form-login form-signup'>
-                        <input type="text" placeholder='Username' required/>
-                        <input type="text"  placeholder='Name' required/>
-                        <input type="email" placeholder='Email' required/>
-                        <input type="password"  placeholder='Password' required/>
-                        <div className='button-container button-register'>
-                            <Link to="/register" className='link-button'>
-                                <button type='submit'>Register</button>
-                            </Link>
+                    <form action="" className='form-login form-signup' onSubmit={handleRegister}>
+                        
+                        <input 
+                        type="text" 
+                        placeholder='Username' 
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required />
+
+                        <input 
+                        type="text" 
+                        placeholder='Name' 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required />
+
+                        <input 
+                        type="email" 
+                        placeholder='Email' 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required />
+
+                        <input 
+                        type="password" 
+                        placeholder='Password' 
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required />
+
+                        <div className='button-container button-register'>                          
+                                <button type='submit'>Register</button>                      
                             <Link to="/login" className='link-button '>
                                 <button type='submit' className=' register-back-button'>Back to Login</button>
                             </Link>
@@ -30,7 +68,7 @@ function RegisterPage () {
                     </form>
                 </div>
             </div>
-        <Footer />
+            <Footer />
         </>
     );
 };
