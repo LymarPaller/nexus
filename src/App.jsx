@@ -1,69 +1,49 @@
-import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom"
-import LoginPage from "./pages/LoginPage"
-import RegisterPage from "./pages/RegisterPage"
-import HomePage from "./pages/HomePage"
-import Footer from "./components/Footer"
-import './styles/main.scss';
-import './styles/normalize.scss';
+import { BrowserRouter, Outlet, Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ProfilePage from "./pages/ProfilePage";
-import Test from "./pages/Test"
-import { Provider } from "react-redux"
+import { Provider } from "react-redux";
+import './styles/main.scss';
+import './styles/normalize.scss';
 
 function App() {
 
-  const currentUser = false;
+  const Layout = () => {
+    return (
+      <>
+      <div>
+        <Navbar />
+        <Outlet />
+      </div>
+      </>
+    )
+  }
 
   const router = createBrowserRouter([
+    {
+      path:"/",
+      element: <Layout />,
+      children: [
+        {
+          path:"/",
+          element: <HomePage />
+        },
+        {
+          path:"/profile:id",
+          element: <ProfilePage />
+        },
+      ]
+    },
     { path:"/login", element: <LoginPage /> },
-    { path:"/register", element: <RegisterPage /> }
+    { path:"/register", element: <RegisterPage /> },
   ])
 
   return (
     <>
-    <RouterProvider router={router}>
-      <BrowserRouter>
-        <Routes>
-
-          {/* <Route path="/" element={
-            <>
-            <LoginPage />
-            <Footer />
-            </>
-          } /> */}
-
-          {/* <Route path="/register" element={
-            <>
-            <RegisterPage />
-            <Footer />
-            </>
-          } /> */}
-
-          <Route path="/Home" element={
-            <>
-            <Navbar />
-            <HomePage />
-            </>
-          } />
-
-          <Route path="/profile" element={
-            <>
-            <Navbar />
-            <ProfilePage />
-            </>
-          } />
-
-          <Route path="/test" element={
-            <>
-            <Navbar />
-            <Test />
-            </>
-          } />
-
-        </Routes>
-      </BrowserRouter>
-    </RouterProvider>
-      
+    <RouterProvider router={router} />
     </>
   )
 }

@@ -2,6 +2,8 @@ import AsideLeft from "../components/AsideLeft";
 import NewsFeed from "../components/NewsFeed";
 import AsideRight from "../components/AsideRight";
 import "../styles/HomePage.scss";
+import '../styles/main.scss';
+import '../styles/normalize.scss';
 
 function HomePage () {
     return (

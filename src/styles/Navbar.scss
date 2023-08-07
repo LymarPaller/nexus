@@ -1,5 +1,9 @@
 @import "main";
 
+body {
+  background-color: var(--grey-200);
+}
+
 .navbar {
     display: flex;
     width: 100%;
