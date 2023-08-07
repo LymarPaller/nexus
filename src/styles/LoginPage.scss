@@ -34,7 +34,7 @@
   
   .image-main-container {
     position: relative;
-    width: 30vw;
+    min-width: 25rem;
     height: 55vh;
     margin-right: 1rem;
     
@@ -49,7 +49,7 @@
     background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 18vw;
+    min-width: 16rem;
     height: 52vh;
     border-radius: 20px;
     margin-left: 1rem;
@@ -65,7 +65,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 18vw;
+    min-width: 16rem;
     height: 52vh;
     border-radius: 20px;
     margin-left: 1rem;
@@ -104,6 +104,7 @@
     text-align: center;
     letter-spacing: -2px;
     font-stretch: ultra-condensed;
+    margin-top: 2rem;
   }
   
   .form-login {
@@ -111,7 +112,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
   }
   
   .form-login input {

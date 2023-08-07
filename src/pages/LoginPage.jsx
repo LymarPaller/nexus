@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/LoginPage.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
+import Footer from '../components/Footer.jsx';
 
 function LoginPage () {
     return (
@@ -34,6 +35,7 @@ function LoginPage () {
 
             </div>
         </div>
+        <Footer />
         </>
     );
 };
