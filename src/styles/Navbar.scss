@@ -39,9 +39,11 @@
 
     &-search-icon {
         position: absolute;
+        right: .2rem;
 
         @include tablet {
           position: relative;
+          right: 0;
 
         }
         
