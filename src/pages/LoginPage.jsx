@@ -5,7 +5,7 @@ import Logo from '../assets/nexus-logo-blue.svg';
 function LoginPage () {
     return (
         <>
-        <div>
+        <div className='login-page-main-container'>
 
             <div className='logo-container'>
                 <img src={Logo} alt="Nexus-logo" />

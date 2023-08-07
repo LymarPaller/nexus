@@ -4,7 +4,7 @@ import EmailLink from '../app/linkEmail';
 
 
 function Footer() {
-    const klaneZurbanoFacebook = 'https://www.facebook.com/klanezurbano';
+    const klaneZurbanoFacebook = 'klanezurbano@gmail.com';
     const kodegoFacebook = 'https://www.facebook.com/KodegoPH'
     const facebookLink = 'https://www.facebook.com/cantleavethisempty';
     const instagramLink = 'https://www.instagram.com/your-instagram-link';

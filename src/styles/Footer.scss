@@ -1,10 +1,18 @@
+@import "main";
+
 .footer {
   margin-top: 10rem;
   display: flex;
+  width: 100%;
   flex-direction: column;
   background-color: var(--white);
   color: var(--grey-800);
   padding: 25px;
+
+  
+  @include tablet {
+    display: none;
+  }
 
   .footer-row-1 {
     display: flex;
@@ -17,13 +25,14 @@
 
   .footer-row-2 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 2rem;
+    font-size: .8rem;
 
     .footer-column {
       padding: 10px;
-      margin-left: 4rem;
-      margin-right: 4rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
 
       .footer-subrow {
         display: flex;
