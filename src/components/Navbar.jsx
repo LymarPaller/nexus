@@ -21,6 +21,10 @@ function Navbar() {
     }
   };
 
+  const handleLogOut = () => {
+    alert('logout');
+  };
+
   return (
     <div>
       <nav className={`navbar ${darkMode ? "dark-mode" : ""}`}>
@@ -49,7 +53,7 @@ function Navbar() {
             className="navbar-icon"
             onClick={handleDarkModeToggle}
           />
-          <img src={Logout} alt="Logout" className="navbar-icon" />
+          <img src={Logout} onClick={handleLogOut} alt="Logout" className="navbar-icon" />
         </div>
       </nav>
     </div>
