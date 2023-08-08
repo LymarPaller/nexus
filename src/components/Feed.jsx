@@ -28,6 +28,7 @@ function Feed() {
 
   return (
     <div className="feed-container">
+       <FontAwesomeIcon icon={faEllipsisH} className="ellipsis-icon" onClick={toggleModal} />
       <div className="profile-feed-details">
         <div className="profile-info">
           <div className="profile-image">
@@ -36,7 +37,6 @@ function Feed() {
           <div className="name-time">
             <div className="name-icon">
               <h3>Wanda Zurbano</h3>
-              <FontAwesomeIcon icon={faEllipsisH} className="ellipsis-icon" onClick={toggleModal} />
             </div>
             <p>1 minute ago</p>
           </div>
