@@ -32,6 +32,10 @@
     }
 }
 
+.cancel-button {
+    display: none;
+}
+
 .profile-pic>img {
     height: 3rem;
     width: 3rem;
@@ -43,38 +47,147 @@
     }
 }
 
-.input-feed {
-    border-radius: 10px;
-    width: 41vw;
-    height: 3rem;
-    border: .3px solid var(--black);
-    margin-right: 2rem;
-
-    @include tablet {
-        width: 60%;
-        margin-right: 2rem;
+.form-container{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    
+    .input-feed {
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
+        width: 35vw;
+        height: 3rem;
+        resize: none;
+        border: .3px solid var(--black);
+    
+        @include tablet {
+            width: 60%;
+            margin-right: 2rem;
+        }
+    
+        // background-color: var(--grey-300);
+    
+        &::placeholder {
+            font-weight: 400;
+        }
     }
 
-    // background-color: var(--grey-300);
-
-    &::placeholder {
-        font-weight: 400;
+    button[type="submit"] {
+        padding: 0.13rem .8rem;
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: var(--primary-500);
+        color: var(--white);
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
     }
 }
 
 
 
 
-button[type="submit"] {
-    padding: 0.13rem .8rem;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--primary-500);
-    color: var(--white);
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
 
 
 
  
+.new-create-post {
+    width: 50vw;
+    height: max-content;
+    position: absolute;
+    position: fixed;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    border-radius: 1rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--grey-500);
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+
+    .profile-pic{
+        width: 100%;
+    
+        img {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            margin-left: 1rem;
+            margin-top: 1rem;
+
+        
+            @include tablet {
+                margin-right: 2rem;
+            }
+        }
+    }
+
+    .upload-photo{
+        margin-top: 1rem;
+        width: 100%;
+        height: 20rem;
+        background-color: var(--primary-400);
+    }
+    
+    .form-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: auto;
+        margin-left: auto;
+        
+        .input-feed {
+            border-radius: 0;
+            width: 100%;
+            height: 7rem;
+            resize: none;
+            border: none;
+        
+            @include tablet {
+                width: 60%;
+                margin-right: 2rem;
+            }
+        
+            // background-color: var(--grey-300);
+        
+            &::placeholder {
+                font-weight: 400;
+            }
+        }
+    }
+    
+    button[type="submit"] {
+        width: 5rem;
+        padding: 0.13rem .8rem;
+        margin-top: 1rem;
+        border-radius: 1rem;
+        background-color: var(--primary-500);
+        color: var(--white);
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .cancel-button {
+        display: flex;
+        border-radius: .5rem;
+        width: 5rem;
+        height: 2rem;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: var(--accent);
+        border: none;
+        background-color: white;
+        font-weight: bolder;
+        margin-bottom: 1rem;
+    }
+    
+}
