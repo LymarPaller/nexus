@@ -22,7 +22,7 @@ function App() {
             <Navbar />
           </>
           } />
-          <Route path="/register" element={
+          <Route path="/profile" element={
           <>
             <ProfilePage />
             <Navbar />
