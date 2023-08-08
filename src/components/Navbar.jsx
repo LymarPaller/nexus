@@ -7,6 +7,7 @@ import Notification from '../assets/icons/notification.svg';
 import Profile from '../assets/icons/profile.svg';
 import Search from '../assets/icons/search.svg';
 import '../styles/Navbar.scss';
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
@@ -26,9 +27,15 @@ function Navbar() {
         <div className="navbar-left">
           <img src={Logo} alt="Logo" className="navbar-logo" />
           <div className='main-navbar-mobile'>
-            <img src={Home} alt="Home" className="navbar-icon" />
-            <img src={Profile} alt="Profile" className="navbar-icon" />
-            <img src={Notification} alt="Notification" className="navbar-icon" />
+            <Link to="/">
+              <img src={Home} alt="Home" className="navbar-icon" />
+            </Link>
+            <Link to="/profile">
+              <img src={Profile} alt="Profile" className="navbar-icon" />
+            </Link>
+            <Link to="/">
+              <img src={Notification} alt="Notification" className="navbar-icon" />
+            </Link>
           </div>
         </div>
         <div className="navbar-center">
