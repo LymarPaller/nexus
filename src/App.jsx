@@ -6,54 +6,44 @@ import Navbar from "./components/Navbar";
 import ProfilePage from "./pages/ProfilePage";
 import './styles/main.scss';
 import './styles/normalize.scss';
+import Footer from "./components/Footer";
 
 function App() {
 
-  const currentUser = true;
-
-  const Layout = () => {
-    return (
-      <>
-      <div>
-        <Navbar />
-        <Outlet />
-      </div>
-      </>
-    )
-  };
-
-  const ProtectedRoute = ({children}) => {
-    if(!currentUser) {
-      return <Navigate to="/login"/>
-    }
-
-    return children
-  }
-
-  const router = createBrowserRouter([
-    {
-      path:"/",
-      element: <ProtectedRoute>
-                  <Layout />
-                </ProtectedRoute>,
-      children: [
-        {
-          path:"/",
-          element: <HomePage />
-        },
-        {
-          path:"/profile",
-          element: <ProfilePage />
-        },
-      ]
-    },
-    { path:"/login", element: <LoginPage /> },
-    { path:"/register", element: <RegisterPage /> },
-  ])
 
   return (
     <>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+
+        <Routes>
+          <Route path="/" element={
+          <>
+            <HomePage />
+            <Navbar />
+          </>
+          } />
+          <Route path="/register" element={
+          <>
+            <ProfilePage />
+            <Navbar />
+          </>
+          } />
+          <Route path="/login" element={
+          <>
+            <LoginPage />
+            <Footer />
+          </>
+          } />
+          <Route path="/register" element={
+          <>
+            <RegisterPage />
+            <Footer />
+          </>
+          } />
+        </Routes>
+
+    </BrowserRouter>
+
     </>
   )
 }

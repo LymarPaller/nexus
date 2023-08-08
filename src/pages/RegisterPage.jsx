@@ -68,7 +68,6 @@ function RegisterPage() {
                     </form>
                 </div>
             </div>
-            <Footer />
         </>
     );
 };
