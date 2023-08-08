@@ -6,6 +6,7 @@ import Like from '../assets/icons/likeicon.svg';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import Comments from './Comments';
 
 function Feed() {
   const [showModal, setShowModal] = useState(false);
@@ -50,7 +51,7 @@ function Feed() {
         <div className="likes-comments">
           <div className="likes">
             <span className="like-icon"><img src={Like} /></span>
-            <p>100 Likes</p>
+            <button>100 Likes</button>
           </div>
           <div className="comments">
             <span className="comment-icon">
@@ -87,12 +88,13 @@ function Feed() {
         className="modal-overlay"
         overlayClassName="modal-container"
       >
-        <div className="modal-content">
+        <div className="modal-content comment-modal-container">
           <div className="modal-header">
-            <h2>Add Comment</h2>
+            <h2>Comments</h2>
+            <Comments/>
           </div>
           <div className="modal-body">
-            <input
+            <textarea
               type="text"
               placeholder="Write a comment..."
               value={comment}

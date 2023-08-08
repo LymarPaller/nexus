@@ -6,25 +6,25 @@
     margin-top: 1.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     background-color: var(--white);
+    position: relative;
 
     @include tablet {
         width: 100%;
         height: auto;
     }
 
+    .ellipsis-icon {
+        position: absolute;
+        right: 1rem;
+        top: 1.5rem;
+    }
 }
 
 .profile-feed-details {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    position: relative;
 
-    .ellipsis-icon {
-        position: absolute;
-        right: 1rem;
-        top: 1.5rem;
-    }
 
     .profile-info {
         display: flex;
@@ -103,35 +103,26 @@
     .likes-comments {
         display: flex;
         justify-content: space-around;
+        align-items: center;
         margin-top: 1rem;
+
+        button {
+            margin: 0;
+            background-color: var(--primary-500);
+            color: var(--white);
+            padding-top: 0.4rem;
+            padding-bottom: 0.4rem;
+            padding-left: 1.7rem;
+            padding-right: .9rem;
+            border-radius: 20px;
+            font-size: .9rem;
+            border: none;
+        }
 
         .likes,
         .comments {
             position: relative;
 
-            .comment-button {
-                margin: 0;
-                background-color: #000000;
-                color: var(--white);
-                padding-top: 0.4rem;
-                padding-bottom: 0.4rem;
-                padding-left: 1.7rem;
-                padding-right: .9rem;
-                border-radius: 20px;
-                font-size: .9rem;
-            }
-
-            p {
-                margin: 0;
-                background-color: #000000;
-                color: var(--white);
-                padding-top: 0.4rem;
-                padding-bottom: 0.4rem;
-                padding-left: 1.7rem;
-                padding-right: .9rem;
-                border-radius: 20px;
-                font-size: .9rem;
-            }
 
             .comment-icon img,
             .like-icon img {
@@ -146,7 +137,7 @@
     }
 }
 
-//MODAL
+//MODAL DELETE
 
 .modal-overlay {
     position: fixed;
@@ -208,3 +199,38 @@
     }
   }
   
+//MODAL COMMENT
+
+.comment-modal-container{
+    width: 50vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .modal-body {
+        width: 100%;
+
+        textarea{
+            margin-top: 1rem;
+            width: 80%;
+            height: 3rem;
+            border-radius: 1rem;
+            resize: none;
+            padding-left: 1rem;
+        }
+
+    }
+    .modal-footer{
+        margin-top: 1rem;
+
+        button{
+            background-color: var(--primary-500);
+            border: none;
+            border-radius: 1rem;
+            padding: .5rem 1rem;
+        }
+    }
+    
+}
