@@ -24,12 +24,20 @@ function Feed() {
 
   const handleCommentSubmit = (event) => {
     event.preventDefault();
-    setComment('');
+    if (comment.trim()) {
+      setFeedItems([...feedItems, { id: feedItems.length + 1, comment }]);
+      setComment('');
+    }
+  };
+
+  const handleDeletePost = () => {
+   
+    toggleModal();
   };
 
   return (
     <div className="feed-container">
-       <FontAwesomeIcon icon={faEllipsisH} className="ellipsis-icon" onClick={toggleModal} />
+      <FontAwesomeIcon icon={faEllipsisH} className="ellipsis-icon" onClick={toggleModal} />
       <div className="profile-feed-details">
         <div className="profile-info">
           <div className="profile-image">
@@ -77,7 +85,7 @@ function Feed() {
           </div>
           <div className="modal-footer">
             <button onClick={toggleModal} className="cancel-button">Cancel</button>
-            <button onClick={() => { /* delete logic here ask sir lemar */ }} className="delete-button">Delete</button>
+            <button onClick={handleDeletePost} className="delete-button">Delete</button>
           </div>
         </div>
       </Modal>
@@ -91,7 +99,7 @@ function Feed() {
         <div className="modal-content comment-modal-container">
           <div className="modal-header">
             <h2>Comments</h2>
-            <Comments/>
+            <Comments />
           </div>
           <div className="modal-body">
             <textarea
