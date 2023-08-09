@@ -3,6 +3,7 @@ import Profile from '../assets/wanda.jpg'
 import Friends from '../assets/icons/friends.png';
 import Groups from '../assets/icons/groups.png';
 import Memories from '../assets/icons/memories.png';
+import { Link } from 'react-router-dom';
 
 function AsideLeft() {
     return (
@@ -11,9 +12,13 @@ function AsideLeft() {
                 <div className="profile-info">
                     <div className="profile">
                         <div className="profile-image">
-                            <img src={Profile} alt="Profile" />
+                            <Link to="/profile">
+                                <img src={Profile} alt="Profile" />
+                            </Link>
                         </div>
-                        <h3>Wanda Zurbano</h3>
+                        <h3>
+                            <Link to="/profile">Wanda Zurbano</Link>
+                        </h3>
                     </div>
                     <div className="friends-section">
                         <div className="profile-image">
