@@ -1,18 +1,19 @@
+// NewsFeed.js
 import React, { useState } from 'react';
 import "../styles/NewsFeed.scss";
 import Feed from "./Feed";
 import Profile from '../assets/wanda.jpg';
 
-function NewsFeed () {
+function NewsFeed() {
     const [post, setPost] = useState('');
     const [feedItems, setFeedItems] = useState([]);
-    const [isPostModalOpen, setIsPostModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         const newPost = {
-            id: Date.now(), 
+            id: Date.now(),
             content: post,
             author: 'Wanda Zurbano',
             timestamp: new Date().toLocaleString(),
@@ -22,51 +23,43 @@ function NewsFeed () {
 
         setFeedItems([newPost, ...feedItems]);
         setPost('');
+        setIsModalOpen(false); // Close the modal after submitting
     };
 
     const handleClickToPost = () => {
-        const postModal = document.querySelector('.create-post');
-        if (postModal) {
-            postModal.classList.add('new-create-post');
-        }
+        setIsModalOpen(true);
     }
 
     const handleCancelPost = () => {
-        const postModal = document.querySelector('.create-post');
-        if (postModal) {
-            postModal.classList.remove('new-create-post');
-        }
+        setIsModalOpen(false);
     }
 
     return (
-        <>
         <div className="news-feed-container">
-            <div className="create-post">
-                <div className="profile-pic"> 
+            {isModalOpen && <div className="background-overlay" onClick={handleCancelPost}></div>}
+            <div className={`create-post ${isModalOpen ? 'new-create-post' : ''}`}>
+                <div className="profile-pic">
                     <img src={Profile} alt="Profile" />
                 </div>
                 <div className='upload-photo'>
-                    <input type="file" id="myFile" name="filename" className='upload-button'/>
+                    <input type="file" id="myFile" name="filename" className='upload-button' />
                 </div>
                 <form onSubmit={handleSubmit} className='form-container'>
-                        <textarea
-                            type="text"
-                            className="input-feed"
-                            placeholder="What's on your mind?"
-                            value={post}
-                            onChange={(e) => setPost(e.target.value)}
-                            onClick={handleClickToPost}
-                        />
-                        <button type="submit">Post</button>
+                    <textarea
+                        type="text"
+                        className="input-feed"
+                        placeholder="What's on your mind?"
+                        value={post}
+                        onChange={(e) => setPost(e.target.value)}
+                        onClick={handleClickToPost}
+                    />
+                    <button type="submit">Post</button>
                 </form>
-                
-                <button type="cancel" className="cancel-button"onClick={handleCancelPost}>Cancel</button>
+                <button type="cancel" className="cancel-button" onClick={handleCancelPost}>Cancel</button>
             </div>
-            <Feed/>
+            <Feed />
         </div>
-        
-        </>
-    )
+    );
 }
 
-export default NewsFeed
+export default NewsFeed;

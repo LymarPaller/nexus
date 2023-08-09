@@ -12,6 +12,16 @@
 
 }
 
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
 .create-post {
     width: 50vw;
     height: 15vh;
@@ -31,8 +41,8 @@
         padding-bottom: 1rem;
     }
 
-    .upload-photo{
-        .upload-button{
+    .upload-photo {
+        .upload-button {
             display: none;
         }
     }
@@ -53,27 +63,27 @@
     }
 }
 
-.form-container{
+.form-container {
     width: 84%;
     display: flex;
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
-    
+
     .input-feed {
         border-radius: 1rem;
         width: 50vw;
         height: 3rem;
         resize: none;
         border: .3px solid var(--black);
-    
+
         @include tablet {
             width: 60%;
             margin-right: 2rem;
         }
-    
+
         // background-color: var(--grey-300);
-    
+
         &::placeholder {
             font-weight: 400;
         }
@@ -91,7 +101,7 @@
 
 
 
- 
+
 .new-create-post {
     width: 50vw;
     height: max-content;
@@ -110,23 +120,24 @@
     justify-content: start;
     align-items: center;
 
-    .upload-photo{
+    .upload-photo {
         margin-top: 2rem;
         margin-bottom: 2rem;
         display: flex;
         width: 100%;
         justify-content: center;
         background-color: var(--grey-500);
-        .upload-button{
+
+        .upload-button {
             display: flex;
             margin-top: 2rem;
             margin-bottom: 2rem;
         }
     }
 
-    .profile-pic{
+    .profile-pic {
         width: 100%;
-    
+
         img {
             height: 3rem;
             width: 3rem;
@@ -134,14 +145,14 @@
             margin-left: 1rem;
             margin-top: 1rem;
 
-        
+
             @include tablet {
                 margin-right: 2rem;
             }
         }
     }
-    
-    .form-container{
+
+    .form-container {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -149,27 +160,27 @@
         align-items: center;
         margin-right: auto;
         margin-left: auto;
-        
+
         .input-feed {
             border-radius: 0;
             width: 100%;
             height: 7rem;
             resize: none;
             border: none;
-        
+
             @include tablet {
                 width: 60%;
                 margin-right: 2rem;
             }
-        
+
             // background-color: var(--grey-300);
-        
+
             &::placeholder {
                 font-weight: 400;
             }
         }
     }
-    
+
     button[type="submit"] {
         display: block;
         width: 5rem;
@@ -196,5 +207,5 @@
         font-weight: bolder;
         margin-bottom: 1rem;
     }
-    
+
 }
