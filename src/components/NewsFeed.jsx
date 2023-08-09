@@ -46,7 +46,7 @@ function NewsFeed () {
                     <img src={Profile} alt="Profile" />
                 </div>
                 <div className='upload-photo'>
-
+                    <input type="file" id="myFile" name="filename" className='upload-button'/>
                 </div>
                 <form onSubmit={handleSubmit} className='form-container'>
                         <textarea

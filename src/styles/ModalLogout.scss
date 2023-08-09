@@ -2,9 +2,8 @@
 
 .modal {
     position: absolute;
-    top: 20%;
-    left: 82%;
-    transform: translate(-50%, -50%);
+    top: 2rem;
+    right: 4.25rem;
     background-color: var(--white);
     border-radius: 8px;
     padding: 10px;
@@ -35,6 +34,9 @@
   
   .modal-close-button {
     background-color: transparent;
+    position: absolute;
+    right: 1.25rem;
+    top: 1.15rem;
     border: none;
     cursor: pointer;
     outline: none;
