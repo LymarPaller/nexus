@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/LoginPage.scss';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
 import Footer from '../components/Footer.jsx';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -42,13 +46,22 @@ function LoginPage() {
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
                             />
-                            <input 
-                                type="password" 
-                                placeholder='Password' 
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required 
-                            />
+                            <div className="password-input-container">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder='Password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="password-toggle-button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} className="eye-icon" />
+                                </button>
+                            </div>
                             <div className='button-container'>
                                 <button type='submit'>Login</button>
                                 <Link className='create-new-account' to="/register">Create New Account</Link>
