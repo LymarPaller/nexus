@@ -6,6 +6,9 @@ import PlaceholderCover from '../assets/landing-page-photo.jpg';
 import Profile from '../assets/wanda.jpg'
 
 function ProfileDetail() {
+    const handleWebsiteClick = () => {
+        window.open("https://www.instagram.com/wandaringmaltese/", '_blank');
+    };
     return (
         <>
             <div className="profile-main-container">
@@ -22,7 +25,7 @@ function ProfileDetail() {
                         <p>Works at Pawsitive Ventures</p>
                     </div>
                     <div className="detail-container-other-details">
-                        <span><img src={WebIcon} /></span><p className="profile-website detail-container-other-details-paragraph">Facebook</p>
+                        <span onClick={handleWebsiteClick}><img src={WebIcon} alt="Website"/></span><p className="profile-website detail-container-other-details-paragraph">Website</p>                       
                         <span><img src={LocationPin} /></span><p className="profile-location detail-container-other-details-paragraph">Barkingham Palace </p>
                     </div>
                 </div>
