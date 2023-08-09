@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Logo from '../assets/nexus-logo-blue.svg';
 import Home from '../assets/icons/home.svg';
@@ -11,6 +12,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
 
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
@@ -22,7 +24,14 @@ function Navbar() {
   };
 
   const handleLogOut = () => {
-    alert('logout');
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      // Perform logout actions here
+      // For example: Clear user session, reset state, etc.
+
+      // Redirect to login page
+      navigate("/login");
+    }
   };
 
   return (
@@ -53,7 +62,7 @@ function Navbar() {
             className="navbar-icon"
             onClick={handleDarkModeToggle}
           />
-          <img src={Logout} onClick={handleLogOut} alt="Logout" className="navbar-icon" />
+          <img src={Logout} onClick={handleLogOut} alt="Logout" className="navbar-icon logout-logout-button"/>
         </div>
       </nav>
     </div>
