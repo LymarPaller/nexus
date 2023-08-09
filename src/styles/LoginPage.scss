@@ -120,14 +120,16 @@
     align-items: center;
     position: relative;
     width: max-content;
-    margin-top: 1rem;
+    
+
+    input[type="password"] {
+      width: 100%;
+      border-radius: var(--borderRadius);
+      border: 1px solid var(--grey-700);
+    }
   }
 
-  input[type="password"] {
-    width: 100%;
-    border-radius: var(--borderRadius);
-    border: 1px solid var(--grey-700);
-  }
+
 
   .password-toggle-button {
     background: none;
