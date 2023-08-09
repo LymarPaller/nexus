@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import '../styles/RegisterPage.scss';
 import Logo from '../assets/nexus-logo-blue.svg';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 
@@ -30,40 +32,45 @@ function RegisterPage() {
                 <div className='signup-login-container'>
                     <h1>Sign Up</h1>
                     <form action="" className='form-login form-signup' onSubmit={handleRegister}>
-                        
-                        <input 
-                        type="text" 
-                        placeholder='Username' 
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required />
 
-                        <input 
-                        type="text" 
-                        placeholder='Name' 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required />
+                        <input
+                            type="text"
+                            placeholder='Username'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required />
 
-                        <input 
-                        type="email" 
-                        placeholder='Email' 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required />
+                        <input
+                            type="text"
+                            placeholder='Name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required />
 
-                        <input 
-                        type="password" 
-                        placeholder='Password' 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required />
+                        <input
+                            type="email"
+                            placeholder='Email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required />
 
-                        <div className='button-container button-register'>                          
-                                <button type='submit'>Register</button>                      
-                            <Link to="/login" className='link-button '>
-                                <button type='submit' className=' register-back-button'>Back to Login</button>
-                            </Link>
+                        <input
+                            type="password"
+                            placeholder='Password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required />
+
+                        <div className='button-container button-register'>
+                            <button type='submit'>Register</button>
+                            <div className='back-button-container back-button-register'>
+                        <Link to="/login" className='link-button'>
+                            <button type='submit' className='register-back-button'>
+                                <FontAwesomeIcon icon={faArrowLeft} className="back-icon" /> Back to Login
+                            </button>
+                        </Link>
+                    </div>
+
                         </div>
                     </form>
                 </div>
