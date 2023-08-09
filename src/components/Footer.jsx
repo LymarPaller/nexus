@@ -53,7 +53,7 @@ const Footer = () => {
                     <div className="footer-subrow">
                         <div className="footer-title">Instructor</div>
                         <div>
-                            <a className="klane" href={klaneZurbanoEmail} target="_blank" rel="noopener noreferrer">
+                            <a className="klane" href={`mailto:${klaneZurbanoEmail}`} target="_blank" rel="noopener noreferrer">
                                 Klane Zurbano
                             </a>
                         </div>
