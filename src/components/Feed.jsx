@@ -23,6 +23,10 @@ function Feed() {
     setShowCommentModal(!showCommentModal);
   };
 
+  const handleCloseCommentModal = () => {
+    setShowCommentModal(false);
+  };
+
   const handleCommentSubmit = (event) => {
     event.preventDefault();
     if (comment.trim()) {
@@ -103,7 +107,7 @@ function Feed() {
         <div className="modal-content comment-modal-container">
           <div className="modal-header">
             <h2>Comments</h2>
-            <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={handleCloseCommentModal} />
             <Comments />
           </div>
           <div className="modal-body">
@@ -115,7 +119,6 @@ function Feed() {
             />
           </div>
           <div className="modal-footer">
-            <button onClick={toggleCommentModal} className="cancel-button">Cancel</button>
             <button onClick={handleCommentSubmit} className="add-comment-button">Add Comment</button>
           </div>
         </div>
