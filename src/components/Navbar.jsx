@@ -19,11 +19,14 @@ import Notification from "../assets/icons/notification.svg";
 import Profile from "../assets/icons/profile.svg";
 import Search from "../assets/icons/search.svg";
 import "../styles/Navbar.scss";
+import "../styles/ModalLogout.scss"
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
 
   const handleDarkModeToggle = () => {
@@ -36,11 +39,12 @@ function Navbar() {
   };
 
   const handleLogOut = () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-      
-      navigate("/login");
-    }
+    setShowLogoutModal(true);
+  };
+
+  const handleLogoutConfirmed = () => {
+    setShowLogoutModal(false);
+    navigate("/login");
   };
 
   const notificationData = [
@@ -105,7 +109,7 @@ function Navbar() {
       icon: "user-friends",
     },
 
-    
+
 
 
 
@@ -157,9 +161,7 @@ function Navbar() {
       message: "Let's plan a playdate for our dogs soon!",
       icon: "calendar-alt",
     }
-    
 
-    
   ];
 
   return (
@@ -203,6 +205,31 @@ function Navbar() {
             alt="Logout"
             className="navbar-icon logout-logout-button"
           />
+
+          {/* Logout Confirmation Modal */}
+          <Modal
+            isOpen={showLogoutModal}
+            onRequestClose={() => setShowLogoutModal(false)}
+            className="modal"
+            overlayClassName="modal-overlay"
+          >
+            <div className="logout-header">
+              <h5>Logout Confirmation</h5>
+              <button
+                className="modal-close-button"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
+              </button>
+            </div>
+            <div className="modal-content">
+              <p>Are you sure you want to logout?</p>
+              <div className="modal-buttons">
+                <button className="add-btn" onClick={() => setShowLogoutModal(false)}>Cancel</button>
+                <button className="remove-btn" onClick={handleLogoutConfirmed}>Logout</button>
+              </div>
+            </div>
+          </Modal>
         </div>
       </nav>
 
