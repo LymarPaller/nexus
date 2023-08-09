@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import Comments from './Comments';
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
 function Feed() {
   const [showModal, setShowModal] = useState(false);
@@ -96,9 +97,13 @@ function Feed() {
         className="modal-overlay"
         overlayClassName="modal-container"
       >
+
+        {/* MODAL FOR COMMENT */}
+
         <div className="modal-content comment-modal-container">
           <div className="modal-header">
             <h2>Comments</h2>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
             <Comments />
           </div>
           <div className="modal-body">

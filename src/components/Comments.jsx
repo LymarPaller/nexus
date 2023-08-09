@@ -39,14 +39,14 @@ function Comments() {
                         <div className='comment'>
                             <h5>
                                 {comment.name}
-                                <span className='remove-comment' onClick={() => handleRemoveComment(comment.id)}>
-                                    <FontAwesomeIcon icon={faTrash} />
-                                </span>
                             </h5>
                             <div>
                                 <p>{comment.text}</p>
                             </div>
-                        </div>
+                            <span className='remove-comment' onClick={() => handleRemoveComment(comment.id)}>
+                                <FontAwesomeIcon icon={faTrash} className='trash-icon'/>
+                            </span>
+                    </div>
                     </div>
                 ))}
             </div>

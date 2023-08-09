@@ -19,7 +19,7 @@ import Notification from "../assets/icons/notification.svg";
 import Profile from "../assets/icons/profile.svg";
 import Search from "../assets/icons/search.svg";
 import "../styles/Navbar.scss";
-import "../styles/ModalLogout.scss"
+import "../styles/ModalLogout.scss";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 
