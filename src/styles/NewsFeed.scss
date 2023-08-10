@@ -9,7 +9,6 @@
     flex-direction: column;
     position: absolute;
     margin-top: 5rem;
-
 }
 
 .create-post {
@@ -50,7 +49,7 @@
     display: none;
 }
 
-.profile-pic>img {
+.profile-pic > img {
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
@@ -86,75 +85,67 @@
             font-weight: 400;
         }
     }
-
-    button[type="submit"] {
-        display: none;
-    }
-
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
 .new-create-post {
     width: 50vw;
-    height: max-content;
-    position: absolute;
     position: fixed;
-    top: 43%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
     border-radius: 1rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--grey-500);
     background-color: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    padding: 2rem;
 
     .create-post-header {
-        display: inline-block;
-        margin-top: 1rem;
+        font-size: 1.5rem;
         margin-bottom: 1rem;
     }
 
     .logout-xmark {
-        display: inline-block; 
         position: absolute;
-        top: 1.2rem;
-        right: 1.30rem;
-        
-    }
-
-    .upload-photo {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        background-color: var(--grey-500);
-
-        .upload-button {
-            display: flex;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
     }
 
     .profile-pic {
-        width: 100%;
-
         img {
             height: 3rem;
             width: 3rem;
             border-radius: 50%;
-            margin-left: 1rem;
             margin-top: 1rem;
+        }
+    }
 
+    .upload-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
 
-            @include tablet {
-                margin-right: 2rem;
-            }
+        .upload-button {
+            margin-top: 1rem;
         }
     }
 
@@ -162,56 +153,38 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        margin-right: auto;
-        margin-left: auto;
+        margin-top: 1rem;
 
         .input-feed {
-            border-radius: 0;
+            border-radius: 1rem;
             width: 100%;
-            height: 7rem;
+            height: 8rem;
             resize: none;
-            border: none;
-
-            @include tablet {
-                width: 60%;
-                margin-right: 2rem;
-            }
-
-            // background-color: var(--grey-300);
+            border: 1px solid var(--black);
+            padding: 0.5rem;
+            margin-top: 1rem;
 
             &::placeholder {
                 font-weight: 400;
             }
         }
-    }
+        
+        .post-button,
+        .cancel-button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: var(--primary-500);
+            color: var(--white);
 
-    button[type="submit"] {
-        display: block;
-        width: 5rem;
-        padding: 0.13rem .8rem;
-        margin-top: 1rem;
-        border-radius: 1rem;
-        background-color: var(--primary-500);
-        color: var(--white);
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
+            &:hover {
+                background-color: var(--primary-600);
+                color: var(--white);
+            }
+        }
     }
-
-    .cancel-button {
-        display: flex;
-        border-radius: .5rem;
-        width: 5rem;
-        height: 2rem;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        color: var(--accent);
-        border: none;
-        background-color: white;
-        font-weight: bolder;
-        margin-bottom: 1rem;
-    }
-
 }
