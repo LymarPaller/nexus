@@ -36,6 +36,10 @@
         display: none;
     }
 
+    .logout-xmark {
+        display: none; 
+    }
+
     @include tablet {
         width: 100%;
         justify-content: center;
@@ -100,12 +104,6 @@
 }
 
 
-
-
-
-
-
-
 .new-create-post {
     width: 50vw;
     height: max-content;
@@ -128,6 +126,14 @@
         display: inline-block;
         margin-top: 1rem;
         margin-bottom: 1rem;
+    }
+
+    .logout-xmark {
+        display: inline-block; 
+        position: absolute;
+        top: 1.2rem;
+        right: 1.30rem;
+        
     }
 
     .upload-photo {
