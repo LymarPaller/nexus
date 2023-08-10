@@ -69,6 +69,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--white);
 
     .modal-body {
         width: 100%;
@@ -92,7 +93,7 @@
             border: none;
             border-radius: 1rem;
             padding: .5rem 1rem;
-            color: var(--white);
+            color: white;
         }
     }
     

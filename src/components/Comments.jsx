@@ -79,12 +79,12 @@ function Comments() {
             </div>
             
             <div className="modal-body">
-            <textarea
-              type="text"
-              placeholder="Write a comment..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
+                <textarea
+                type="text"
+                placeholder="Write a comment..."
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                />
             </div>
             <div className="modal-footer">
                 <button onClick={handleCommentSubmit} className="add-comment-button">
@@ -105,7 +105,6 @@ function Comments() {
                         className="modal-close-button"
                         onClick={() => setShowDeleteModal(false)}
                     >
-                        {/* <FontAwesomeIcon icon={faTimes} className="logout-xmark" /> */}
                     </button>
                 </div>
                 <div className="modal-content">

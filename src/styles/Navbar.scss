@@ -163,6 +163,15 @@ body {
   color: var(--primary-500);
 }
 
+.navbar-search:hover {
+  background-color: white;
+  border: 2px solid var(--primary-500);
+}
+
+.navbar-search:hover .navbar-icon{
+  color: var(--primary-500);
+}
+
 
 
 //MODAL LOGOUT 

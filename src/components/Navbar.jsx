@@ -30,17 +30,20 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 
 function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
+  // const modalDarkMode = document.getElementsByClassName('modal')
 
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
     if (darkMode) {
       document.body.classList.add("dark-mode");
+      // modalDarkMode.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
+      // modalDarkMode.classList.remove("dark-mode");
     }
   };
 
@@ -172,7 +175,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className={`navbar ${darkMode ? "dark-mode" : ""}`}>
+      <nav className="navbar">
         <div className="navbar-left">
           <img src={Logo} alt="Logo" className="navbar-logo" />
           <div className="main-navbar-mobile">
@@ -193,7 +196,7 @@ function Navbar() {
         </div>
         <div className="navbar-center">
           <input type="text" className="navbar-search-bar" />
-          <Link className="icon-container">
+          <Link className="icon-container navbar-search">
             <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search"/>
           </Link>
           </div>
