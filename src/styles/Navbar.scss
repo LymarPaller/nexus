@@ -87,6 +87,9 @@ body {
 
       .navbar-icon {
 
+        fill: blueviolet;
+        // box-shadow: var(--shadow-4);
+
         cursor: pointer;
         
         @include tablet {
