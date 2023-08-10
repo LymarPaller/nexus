@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import "../styles/NewsFeed.scss";
 import Feed from "./Feed";
 import Profile from '../assets/wanda.jpg';
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
 function NewsFeed() {
     const [post, setPost] = useState('');
@@ -38,6 +39,8 @@ function NewsFeed() {
         <div className="news-feed-container">
             {isModalOpen && <div className="background-overlay" onClick={handleCancelPost}></div>}
             <div className={`create-post ${isModalOpen ? 'new-create-post' : ''}`}>
+                <h4 className='create-post-header'>Create Post</h4>
+                <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
                 <div className="profile-pic">
                     <img src={Profile} alt="Profile" />
                 </div>

@@ -12,12 +12,12 @@ function AsideLeft() {
                 <div className="profile-info">
                     <div className="profile">
                         <Link to="/profile">
-                        <div className="profile-image">
+                            <div className="profile-image">
                                 <img src={Profile} alt="Profile" />
-                        </div>
+                            </div>
                         </Link>
                         <Link to="/profile">
-                        <h3>Wanda Zurbano</h3>
+                            <h3>Wanda Zurbano</h3>
                         </Link>
                     </div>
                     <div className="friends-section">
