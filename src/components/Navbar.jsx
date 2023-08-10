@@ -177,15 +177,16 @@ function Navbar() {
           <img src={Logo} alt="Logo" className="navbar-logo" />
           <div className="main-navbar-mobile">
             <Link to="/" className="icon-container">
-                <FontAwesomeIcon icon={faHouse} className="navbar-icon"/>
+                <FontAwesomeIcon icon={faHouse} className="navbar-icon" title="Home"/>
             </Link>
             <Link to="/profile" className="icon-container">
-                <FontAwesomeIcon icon={faUser} className="navbar-icon"/>
+                <FontAwesomeIcon icon={faUser} className="navbar-icon" title="Account"/>
             </Link>
             <Link className="icon-container">
               <FontAwesomeIcon icon={faBell}
                 className="navbar-icon"
                 onClick={() => setShowNotifications(true)}
+                title="Notification"
               />
             </Link>
           </div>
@@ -193,15 +194,15 @@ function Navbar() {
         <div className="navbar-center">
           <input type="text" className="navbar-search-bar" />
           <Link className="icon-container">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon"/>
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search"/>
           </Link>
           </div>
         <div className="navbar-right">
           <Link className="icon-container">
-            <FontAwesomeIcon icon={faMoon} className="navbar-icon" onClick={handleDarkModeToggle}/>
+            <FontAwesomeIcon icon={faMoon} className="navbar-icon" onClick={handleDarkModeToggle} title="Darkmode"/>
           </Link>
           <Link className="icon-container">
-            <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button"/>
+            <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button" title="Logout"/>
           </Link>
             
           {/* Confirmation Modal */}
