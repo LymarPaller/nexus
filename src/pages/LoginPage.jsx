@@ -63,7 +63,7 @@ function LoginPage() {
                                 </button>
                             </div>
                             <div className='button-container'>
-                                <button type='submit'>Login</button>
+                                <button className='login-button' type='submit'>Login</button>
                                 <Link className='create-new-account' to="/register">Create New Account</Link>
                             </div>
                         </form>

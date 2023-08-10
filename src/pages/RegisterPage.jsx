@@ -62,7 +62,7 @@ function RegisterPage() {
                             required />
 
                         <div className='button-container button-register'>
-                            <button type='submit'>Register</button>
+                            <button className='button-register' type='submit'>Register</button>
                             <div className='back-button-container back-button-register'>
                         <Link to="/login" className='link-button'>
                             <button type='submit' className='register-back-button'>

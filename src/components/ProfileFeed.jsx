@@ -27,7 +27,7 @@ function ProfileFeed () {
 
           <div className="likes-comments">
             <div className="likes">
-              <p>100 Likes</p>
+              <p className='like-button'>100 Likes</p>
             </div>
             <div className="comments">
               <p>50 Comments</p>

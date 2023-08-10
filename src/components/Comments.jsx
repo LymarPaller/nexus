@@ -30,6 +30,8 @@ function Comments() {
         setComments(updatedComments);
     };
 
+    
+
     return (
         <div className='list-comments'>
             <div className='profile'>
@@ -44,12 +46,36 @@ function Comments() {
                                 <p>{comment.text}</p>
                             </div>
                             <span className='remove-comment' onClick={() => handleRemoveComment(comment.id)}>
-                                <FontAwesomeIcon icon={faTrash} className='trash-icon'/>
+                                <FontAwesomeIcon icon={faTrash} className='trash-icon' />
                             </span>
-                    </div>
+                        </div>
                     </div>
                 ))}
             </div>
+            {/* Confirmation Modal */}
+          <Modal
+            isOpen={showLogoutModal}
+            onRequestClose={() => setShowLogoutModal(false)}
+            className="modal"
+            overlayClassName="modal-overlay"
+          >
+            <div className="logout-header">
+              <h5>Logout Confirmation</h5>
+              <button
+                className="modal-close-button"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
+              </button>
+            </div>
+            <div className="modal-content">
+              <p>Are you sure you want to logout?</p>
+              <div className="modal-buttons">
+                <button className="add-btn" onClick={() => setShowLogoutModal(false)}>Cancel</button>
+                <button className="remove-btn" onClick={handleLogoutConfirmed}>Logout</button>
+              </div>
+            </div>
+          </Modal>
         </div>
     );
 }

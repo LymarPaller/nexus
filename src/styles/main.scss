@@ -297,3 +297,12 @@ ul {
   background-color: var(--grey-900);
   color: var(--black);
 }
+
+.button-register, 
+.register-back-button, 
+.logout-xmark, 
+.login-button
+.comment-button, 
+.like-button {
+  cursor: pointer;
+}

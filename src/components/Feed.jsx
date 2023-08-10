@@ -64,7 +64,7 @@ function Feed() {
         <div className="likes-comments">
           <div className="likes">
             <span className="like-icon"><img src={Like} /></span>
-            <button>100 Likes</button>
+            <button className='like-button'>100 Likes</button>
           </div>
           <div className="comments">
             <span className="comment-icon">

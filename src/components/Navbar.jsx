@@ -206,7 +206,7 @@ function Navbar() {
             className="navbar-icon logout-logout-button"
           />
 
-          {/* Logout Confirmation Modal */}
+          {/* Confirmation Modal */}
           <Modal
             isOpen={showLogoutModal}
             onRequestClose={() => setShowLogoutModal(false)}

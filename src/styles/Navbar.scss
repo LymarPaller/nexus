@@ -16,7 +16,6 @@ body {
     top: 0;
     z-index: 1;
 
-    
     @include tablet {
       justify-content: center;
       height: 15vh;
@@ -87,6 +86,8 @@ body {
       }
 
       .navbar-icon {
+
+        cursor: pointer;
         
         @include tablet {
           margin-left: 5rem;
@@ -219,3 +220,7 @@ body {
 .close-button:focus {
   outline: none;
 }
+
+.navbar-icon {
+      cursor: pointer;
+    }
