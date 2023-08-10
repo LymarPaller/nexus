@@ -42,19 +42,13 @@ body {
 
     &-center {
         position: relative;
-    }
 
-    &-search-icon {
-        position: absolute;
-        right: .2rem;
-
-        @include tablet {
-          position: relative;
-          right: 0;
-
+        .icon-container{
+          position: absolute;
+          right: .3rem;
         }
-        
     }
+
     
     &-logo {
       width: 70px;
@@ -84,31 +78,11 @@ body {
         padding-top: 4rem;
         z-index: -1;
       }
-
-      .navbar-icon {
-
-        fill: blueviolet;
-        // box-shadow: var(--shadow-4);
-
-        cursor: pointer;
-        
-        @include tablet {
-          margin-left: 5rem;
-          margin-right: 5rem;
-          padding-bottom: .5rem;
-      }
-
-        @include mobile {
-          margin-left: 2rem;
-          margin-right: 2rem;
-          padding-bottom: .5rem;
-      }
-      }
     }
 
     &-search-bar {
       width: 380px;
-      height: 30px;
+      height: 2.5rem;
       border-radius: 20px;
       border: .3px solid var(--black);
       padding: 6px 12px;
@@ -143,6 +117,52 @@ body {
       }
     }
   }
+
+//NAVBAR ICON CONTAINER
+
+.icon-container {
+  background-color: var(--primary-500);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  .navbar-icon {
+    width: 100%;
+    // box-shadow: var(--shadow-4);
+    color: var(--white);
+
+    cursor: pointer;
+    
+    @include tablet {
+      margin-left: 5rem;
+      margin-right: 5rem;
+      padding-bottom: .5rem;
+  }
+
+    @include mobile {
+      margin-left: 2rem;
+      margin-right: 2rem;
+      padding-bottom: .5rem;
+  }
+  }
+}
+
+.icon-container:hover {
+  background-color: var(--white);
+  border: 2px solid var(--primary-500);
+}
+
+.icon-container:hover .navbar-icon{
+  color: var(--primary-500);
+}
+
 
 
 //MODAL LOGOUT 

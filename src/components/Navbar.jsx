@@ -10,9 +10,15 @@ import {
   faCalendarAlt,
   faShare,
   faUserFriends,
+  faHouse,
+  faUser,
+  faBell,
+  faRightFromBracket,
+  faMoon,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
-import Home from "../assets/icons/home.svg";
+import Home from "../assets/icons/housesolid.svg";
 import Logout from "../assets/icons/logout.svg";
 import Moon from "../assets/icons/moon.svg";
 import Notification from "../assets/icons/notification.svg";
@@ -170,42 +176,34 @@ function Navbar() {
         <div className="navbar-left">
           <img src={Logo} alt="Logo" className="navbar-logo" />
           <div className="main-navbar-mobile">
-            <Link to="/">
-              <img src={Home} alt="Home" className="navbar-icon" />
+            <Link to="/" className="icon-container">
+                <FontAwesomeIcon icon={faHouse} className="navbar-icon"/>
             </Link>
-            <Link to="/profile">
-              <img src={Profile} alt="Profile" className="navbar-icon" />
+            <Link to="/profile" className="icon-container">
+                <FontAwesomeIcon icon={faUser} className="navbar-icon"/>
             </Link>
-            <img
-              src={Notification}
-              alt="Notification"
-              className="navbar-icon"
-              onClick={() => setShowNotifications(true)}
-            />
+            <Link className="icon-container">
+              <FontAwesomeIcon icon={faBell}
+                className="navbar-icon"
+                onClick={() => setShowNotifications(true)}
+              />
+            </Link>
           </div>
         </div>
         <div className="navbar-center">
           <input type="text" className="navbar-search-bar" />
-          <img
-            src={Search}
-            alt="Search"
-            className="navbar-icon navbar-search-icon"
-          />
-        </div>
+          <Link className="icon-container">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon"/>
+          </Link>
+          </div>
         <div className="navbar-right">
-          <img
-            src={Moon}
-            alt="Dark Mode"
-            className="navbar-icon"
-            onClick={handleDarkModeToggle}
-          />
-          <img
-            src={Logout}
-            onClick={handleLogOut}
-            alt="Logout"
-            className="navbar-icon logout-logout-button"
-          />
-
+          <Link className="icon-container">
+            <FontAwesomeIcon icon={faMoon} className="navbar-icon" onClick={handleDarkModeToggle}/>
+          </Link>
+          <Link className="icon-container">
+            <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button"/>
+          </Link>
+            
           {/* Confirmation Modal */}
           <Modal
             isOpen={showLogoutModal}
