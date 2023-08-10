@@ -48,12 +48,16 @@ function Comments() {
     const handleCommentSubmit = (event) => {
         event.preventDefault();
         if (comment.trim()) {
-          setFeedItems([...feedItems, { id: feedItems.length + 1, comment }]);
-          setComment('');
-        };
-
-        alert(comment)
-      };
+            const newComment = {
+                id: comments.length + 1,
+                name: 'Wanda Zurbano',
+                text: comment,
+            };
+            setFeedItems([...feedItems, { id: feedItems.length + 1, comment }]);
+            setComments([...comments, newComment]);
+            setComment('');
+        }
+    };
 
     return (
         <div className='list-comments'>
