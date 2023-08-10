@@ -4,6 +4,7 @@ import "../styles/NewsFeed.scss";
 import Feed from "./Feed";
 import Profile from '../assets/wanda.jpg';
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function NewsFeed() {
     const [post, setPost] = useState('');
