@@ -35,13 +35,15 @@ function NewsFeed() {
                     <div className="profile-pic">
                         <img src={Profile} alt="Profile" />
                     </div>
-                    <textarea
-                        onClick={openModal}
-                        className="input-feed"
-                        placeholder="What's on your mind?"
-                        value={postText}
-                        onChange={(e) => setPostText(e.target.value)}
-                    />
+                    <div className='post-text-area-container'>
+                        <textarea
+                            onClick={openModal}
+                            className="input-feed"
+                            placeholder="What's on your mind?"
+                            value={postText}
+                            onChange={(e) => setPostText(e.target.value)}
+                        />
+                    </div>
                     <button onClick={openModal} className="cancel-button">Cancel</button>
                 </div>
                 <Feed />
@@ -52,10 +54,13 @@ function NewsFeed() {
                 className="new-create-post"
                 overlayClassName="modal-overlay"
             >
-                <h4 className='create-post-header'>Create Post</h4>
-                <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeModal} />
+                <div className='create-post-header-container'>
+                    <h4 className='create-post-header'>Create Post</h4>
+                </div>
+                 <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeModal} />
                 <div className="profile-pic">
                     <img src={Profile} alt="Profile" />
+                    <h5>Wanda Zurbano</h5>
                 </div>
                 <div className='upload-photo'>
                     <input type="file" id="myFile" name="filename" className='upload-button' />
