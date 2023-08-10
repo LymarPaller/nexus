@@ -34,6 +34,7 @@ function NewsFeed() {
 
     const handleCancelPost = () => {
         setIsModalOpen(false);
+        setPost(''); 
     }
 
     return (
@@ -41,7 +42,7 @@ function NewsFeed() {
             {isModalOpen && <div className="background-overlay" onClick={handleCancelPost}></div>}
             <div className={`create-post ${isModalOpen ? 'new-create-post' : ''}`}>
                 <h4 className='create-post-header'>Create Post</h4>
-                <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
+                <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={handleCancelPost}/>
                 <div className="profile-pic">
                     <img src={Profile} alt="Profile" />
                 </div>

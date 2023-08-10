@@ -1,51 +1,43 @@
-import "../styles/AsideLeft.scss"
-import Profile from '../assets/wanda.jpg'
-import Friends from '../assets/icons/friends.png';
-import Groups from '../assets/icons/groups.png';
-import Memories from '../assets/icons/memories.png';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/AsideLeft.scss';
+import Profile from '../assets/wanda.jpg';
+import FriendsIcon from '../assets/icons/friends.png';
+import GroupsIcon from '../assets/icons/groups.png';
+import MemoriesIcon from '../assets/icons/memories.png';
 
 function AsideLeft() {
+    const sections = [
+        { title: 'Friends', icon: FriendsIcon },
+        { title: 'Groups', icon: GroupsIcon },
+        { title: 'Memories', icon: MemoriesIcon }
+    ];
+
     return (
-        <>
-            <div className="aside-left-container">
-                <div className="profile-info">
-                    <div className="profile">
-                        <Link to="/profile">
-                            <div className="profile-image">
-                                <img src={Profile} alt="Profile" />
-                            </div>
-                        </Link>
-                        <Link to="/profile">
-                            <h3>Wanda Zurbano</h3>
-                        </Link>
-                    </div>
-                    <div className="friends-section">
+        <div className="aside-left-container">
+            <div className="profile-info">
+                <div className="profile">
+                    <Link to="/profile">
                         <div className="profile-image">
-                            <img src={Friends} alt="Friend Profile" />
+                            <img src={Profile} alt="Profile" />
                         </div>
-                        <h3>Friends</h3>
-                        {/* Render list of friends */}
-                    </div>
-                    <div className="groups-section">
-                        <div className="profile-image">
-                            <img src={Groups} alt="Group Profile" />
-                        </div>
-                        <h3>Groups</h3>
-                        {/* Render list of groups */}
-                    </div>
-                    <div className="memories-section">
-                        <div className="profile-image">
-                            <img src={Memories} alt="Memory Profile" />
-                        </div>
-                        <h3>Memories</h3>
-                        {/* Render list of memories */}
-                    </div>
+                    </Link>
+                    <Link to="/profile">
+                        <h3>Wanda Zurbano</h3>
+                    </Link>
                 </div>
+                {sections.map((section, index) => (
+                    <div className={`${section.title.toLowerCase()}-section`} key={index}>
+                        <div className="profile-image">
+                            <img src={section.icon} alt={`${section.title} Profile`} />
+                        </div>
+                        <h3>{section.title}</h3>
+                        {/* Render list of {section.title.toLowerCase()} */}
+                    </div>
+                ))}
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default AsideLeft
-
+export default AsideLeft;

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
 import '../styles/Comments.scss';
 import Profile from '../assets/wanda.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function Comments() {
-    const [comments, setComments] = useState([
+    const initialComments = [
         {
             id: 1,
             name: 'Riya Villamor',
@@ -14,23 +15,32 @@ function Comments() {
         {
             id: 2,
             name: 'Lymar Paller',
-            text:
-                'I want to adopt this dog! Can I?',
+            text: 'I want to adopt this dog! Can I?',
         },
         {
             id: 3,
             name: 'Klane Zurbano',
-            text:
-                'This dog reminds me of my furry friend!',
+            text: 'This dog reminds me of my furry friend!',
         },
-    ]);
+    ];
 
-    const handleRemoveComment = (id) => {
-        const updatedComments = comments.filter(comment => comment.id !== id);
-        setComments(updatedComments);
+    const [comments, setComments] = useState(initialComments);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [commentToDelete, setCommentToDelete] = useState(null);
+
+    const openDeleteModal = (commentId) => {
+        setShowDeleteModal(true);
+        setCommentToDelete(commentId);
     };
 
-    
+    const handleDeleteComment = () => {
+        if (commentToDelete) {
+            const updatedComments = comments.filter(comment => comment.id !== commentToDelete);
+            setComments(updatedComments);
+        }
+        setShowDeleteModal(false);
+        setCommentToDelete(null);
+    };
 
     return (
         <div className='list-comments'>
@@ -39,13 +49,11 @@ function Comments() {
                     <div key={comment.id} className='profile-image'>
                         <img src={Profile} alt='Profile' />
                         <div className='comment'>
-                            <h5>
-                                {comment.name}
-                            </h5>
+                            <h5>{comment.name}</h5>
                             <div>
                                 <p>{comment.text}</p>
                             </div>
-                            <span className='remove-comment' onClick={() => handleRemoveComment(comment.id)}>
+                            <span className='remove-comment' onClick={() => openDeleteModal(comment.id)}>
                                 <FontAwesomeIcon icon={faTrash} className='trash-icon' />
                             </span>
                         </div>
@@ -53,29 +61,29 @@ function Comments() {
                 ))}
             </div>
             {/* Confirmation Modal */}
-          <Modal
-            isOpen={showLogoutModal}
-            onRequestClose={() => setShowLogoutModal(false)}
-            className="modal"
-            overlayClassName="modal-overlay"
-          >
-            <div className="logout-header">
-              <h5>Logout Confirmation</h5>
-              <button
-                className="modal-close-button"
-                onClick={() => setShowLogoutModal(false)}
-              >
-                <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
-              </button>
-            </div>
-            <div className="modal-content">
-              <p>Are you sure you want to logout?</p>
-              <div className="modal-buttons">
-                <button className="add-btn" onClick={() => setShowLogoutModal(false)}>Cancel</button>
-                <button className="remove-btn" onClick={handleLogoutConfirmed}>Logout</button>
-              </div>
-            </div>
-          </Modal>
+            <Modal
+                isOpen={showDeleteModal}
+                onRequestClose={() => setShowDeleteModal(false)}
+                className="modal"
+                overlayClassName="modal-overlay"
+            >
+                <div className="logout-header">
+                    <h5>Delete Confirmation</h5>
+                    <button
+                        className="modal-close-button"
+                        onClick={() => setShowDeleteModal(false)}
+                    >
+                        {/* <FontAwesomeIcon icon={faTimes} className="logout-xmark" /> */}
+                    </button>
+                </div>
+                <div className="modal-content">
+                    <p>Are you sure you want to delete this comment?</p>
+                    <div className="modal-buttons">
+                        <button className="add-btn" onClick={() => setShowDeleteModal(false)}>Cancel</button>
+                        <button className="remove-btn" onClick={handleDeleteComment}>Delete</button>
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 }
