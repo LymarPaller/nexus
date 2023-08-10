@@ -11,8 +11,7 @@ import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 function Feed() {
   const [showModal, setShowModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
-  const [comment, setComment] = useState('');
-  const [feedItems, setFeedItems] = useState([]);
+
 
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
@@ -24,14 +23,6 @@ function Feed() {
 
   const handleCloseCommentModal = () => {
     setShowCommentModal(false);
-  };
-
-  const handleCommentSubmit = (event) => {
-    event.preventDefault();
-    if (comment.trim()) {
-      setFeedItems([...feedItems, { id: feedItems.length + 1, comment }]);
-      setComment('');
-    }
   };
 
   const handleDeletePost = () => {
@@ -121,19 +112,7 @@ function Feed() {
             />
             <Comments />
           </div>
-          <div className="modal-body">
-            <textarea
-              type="text"
-              placeholder="Write a comment..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-          </div>
-          <div className="modal-footer">
-            <button onClick={handleCommentSubmit} className="add-comment-button">
-              Add Comment
-            </button>
-          </div>
+        
         </div>
       </Modal>
     </div>

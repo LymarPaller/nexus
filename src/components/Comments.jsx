@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import '../styles/Comments.scss';
 import Profile from '../assets/wanda.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import '../styles/modals/modal.scss';
+import '../styles/Comments.scss';
 
 function Comments() {
     const initialComments = [
@@ -27,6 +28,8 @@ function Comments() {
     const [comments, setComments] = useState(initialComments);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [commentToDelete, setCommentToDelete] = useState(null);
+    const [comment, setComment] = useState('');
+    const [feedItems, setFeedItems] = useState([]);
 
     const openDeleteModal = (commentId) => {
         setShowDeleteModal(true);
@@ -41,6 +44,16 @@ function Comments() {
         setShowDeleteModal(false);
         setCommentToDelete(null);
     };
+
+    const handleCommentSubmit = (event) => {
+        event.preventDefault();
+        if (comment.trim()) {
+          setFeedItems([...feedItems, { id: feedItems.length + 1, comment }]);
+          setComment('');
+        };
+
+        alert(comment)
+      };
 
     return (
         <div className='list-comments'>
@@ -60,11 +73,26 @@ function Comments() {
                     </div>
                 ))}
             </div>
+            
+            <div className="modal-body">
+            <textarea
+              type="text"
+              placeholder="Write a comment..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            </div>
+            <div className="modal-footer">
+                <button onClick={handleCommentSubmit} className="add-comment-button">
+                Add Comment
+                </button>
+            </div>
+
             {/* Confirmation Modal */}
             <Modal
                 isOpen={showDeleteModal}
                 onRequestClose={() => setShowDeleteModal(false)}
-                className="modal"
+                className="modal-delete-comment"
                 overlayClassName="modal-overlay"
             >
                 <div className="logout-header">

@@ -35,6 +35,16 @@ function NewsFeed() {
     const handleCancelPost = () => {
         setIsModalOpen(false);
         setPost(''); 
+        // const backgroundSetClass = document.getElementsByClassName('background-overlay');
+        // for (const bgclass of backgroundSetClass) {
+        //     if(backgroundSetClass) {
+        //         bgclass.classList.add('background-overlay-new');
+        //         bgclass.classList.remove('background-overlay');
+        //     } else {
+        //         bgclass.classList.add('background-overlay-new');
+        //         bgclass.classList.remove('background-overlay');
+        //     }
+        // }
     }
 
     return (
