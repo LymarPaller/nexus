@@ -53,8 +53,6 @@
         }
 
         .input-feed::placeholder{
-            padding-left: 1rem;
-            padding-top: .5rem;
             color: var(--grey-700);
         }
     }
@@ -100,6 +98,9 @@
         height: 3rem;
         resize: none;
         border: .3px solid var(--black);
+        padding-left: 1rem;
+        padding-top: .5rem;
+
 
         @include tablet {
             width: 60%;

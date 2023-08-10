@@ -7,6 +7,7 @@ import Like from '../assets/icons/likeicon.svg';
 import Comments from './Comments';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import LikeButton from './LikeButton';
 
 function Feed() {
   const [showModal, setShowModal] = useState(false);
@@ -59,7 +60,7 @@ function Feed() {
             <span className="like-icon">
               <img src={Like} alt="Like Icon" />
             </span>
-            <button className='like-button'>100 Likes</button>
+            <LikeButton/>
           </div>
           <div className="comments">
             <span className="comment-icon">
