@@ -28,7 +28,7 @@ body {
     &-center,
     &-right {
       display: flex;
-      align-items: center;  
+      align-items: center;
       
       @include tablet {
         margin-left: 1rem;
@@ -37,15 +37,25 @@ body {
     } 
 
     &-right {
-      position: relative;
+      justify-content: space-around;
+      width: 10rem;
     }
 
     &-center {
-        position: relative;
 
-        .icon-container{
-          position: absolute;
-          right: .3rem;
+        .search-wrapper{
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .icon-container{
+            position: absolute;
+            top: .25rem;
+            right: .25rem;
+        }
+
         }
     }
 
@@ -64,6 +74,9 @@ body {
     .main-navbar-mobile {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
+      width: 15rem;
+      flex-wrap: wrap;
 
       @include tablet {
         position: absolute;
@@ -86,7 +99,6 @@ body {
       border-radius: 20px;
       border: .3px solid var(--black);
       padding: 6px 12px;
-      margin-right: 16px;
 
       
       @include tablet {
@@ -120,6 +132,13 @@ body {
 
 //NAVBAR ICON CONTAINER
 
+.icon-wrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  display: flex;
+}
+
 .icon-container {
   background-color: var(--primary-500);
   width: 2rem;
@@ -128,16 +147,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   margin: auto;
-  margin-left: 1rem;
-  margin-right: 1rem;
+
+  transition-duration: .5s;
 
   .navbar-icon {
     width: 100%;
-    // box-shadow: var(--shadow-4);
     color: var(--white);
-
+    transition-duration: .5s;
     cursor: pointer;
     
     @include tablet {
@@ -157,6 +174,8 @@ body {
 .icon-container:hover {
   background-color: var(--white);
   border: 2px solid var(--primary-500);
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .icon-container:hover .navbar-icon{
@@ -166,6 +185,8 @@ body {
 .navbar-search:hover {
   background-color: white;
   border: 2px solid var(--primary-500);
+  width: 2rem;
+  height: 2rem;
 }
 
 .navbar-search:hover .navbar-icon{

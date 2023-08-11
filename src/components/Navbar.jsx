@@ -179,34 +179,46 @@ function Navbar() {
         <div className="navbar-left">
           <img src={Logo} alt="Logo" className="navbar-logo" />
           <div className="main-navbar-mobile">
-            <Link to="/" className="icon-container">
-                <FontAwesomeIcon icon={faHouse} className="navbar-icon" title="Home"/>
-            </Link>
-            <Link to="/profile" className="icon-container">
-                <FontAwesomeIcon icon={faUser} className="navbar-icon" title="Account"/>
-            </Link>
-            <Link className="icon-container">
-              <FontAwesomeIcon icon={faBell}
-                className="navbar-icon"
-                onClick={() => setShowNotifications(true)}
-                title="Notification"
-              />
-            </Link>
+            <div className="icon-wrapper">
+              <Link to="/" className="icon-container">
+                  <FontAwesomeIcon icon={faHouse} className="navbar-icon" title="Home"/>
+              </Link>
+            </div>
+            <div className="icon-wrapper">
+              <Link to="/profile" className="icon-container">
+                  <FontAwesomeIcon icon={faUser} className="navbar-icon" title="Account"/>
+              </Link>
+            </div>
+            <div className="icon-wrapper">
+              <Link className="icon-container">
+                <FontAwesomeIcon icon={faBell}
+                  className="navbar-icon"
+                  onClick={() => setShowNotifications(true)}
+                  title="Notification"
+                />
+              </Link>
+            </div>
           </div>
         </div>
         <div className="navbar-center">
-          <input type="text" className="navbar-search-bar" />
-          <Link className="icon-container navbar-search">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search"/>
-          </Link>
+          <div className="search-wrapper">
+            <input type="text" className="navbar-search-bar" />
+            <Link className="icon-container navbar-search">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search"/>
+            </Link>
           </div>
+        </div>
         <div className="navbar-right">
-          <Link className="icon-container">
-            <FontAwesomeIcon icon={faMoon} className="navbar-icon" onClick={handleDarkModeToggle} title="Darkmode"/>
-          </Link>
-          <Link className="icon-container">
-            <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button" title="Logout"/>
-          </Link>
+          <div className="icon-wrapper">
+            <Link className="icon-container" onClick={handleDarkModeToggle} >
+              <FontAwesomeIcon icon={faMoon} className="navbar-icon" title="Darkmode"/>
+            </Link>
+          </div>
+          <div className="icon-wrapper">
+            <Link className="icon-container">
+              <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button" title="Logout"/>
+            </Link>
+          </div>
             
           {/* Confirmation Modal */}
           <Modal
