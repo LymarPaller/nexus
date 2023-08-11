@@ -1,14 +1,13 @@
 @import "main";
 
-
 .signup-login-container {
-  background-color: var(--white);
+  background-color: $white;
   min-width: 16rem;
   height: max-content;
   border-radius: 20px;
   margin-left: 0;
   margin-right: 0;
-  box-shadow: var(--shadow-4);
+  box-shadow: $shadow-4;
 
   @include tablet {
     min-width: 16rem;
@@ -18,16 +17,16 @@
 }
 
 .signup-login-container > h1 {
-  font-family: var(--headingFont);
+  font-family: $headingFont;
   font-weight: 700;
-  color: var(--primary-500);
+  color: $primary-500;
   text-align: center;
   letter-spacing: -2px;
   margin-top: 2rem;
 }
 
 .form-signup {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .button-register {
@@ -41,8 +40,8 @@
       width: 10rem;
       border: none;
       border-radius: 13px;
-      color: var(--white);
-      background-color: var(--primary-500);
+      color: $white;
+      background-color: $primary-500;
     }
   }
 }
@@ -50,8 +49,8 @@
 //NEW STYLE FOR BACK BUTTON
 
 .back-button-register {
-  margin-top: .3rem;
-  padding: .5rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem;
 
   .link-button {
 
@@ -60,23 +59,21 @@
       width: 10rem;
       border: none;
       border-radius: 13px;
-      color: var(--white);
-      background-color: var(--primary-500);
+      color: $white;
+      background-color: $primary-500;
     }
 
     .register-back-button {
       width: 7rem;
-      font-size: .8rem;
+      font-size: 0.8rem;
       margin-top: 0;
     }
   }
 }
 
-
 .back-icon {
   margin-right: 0.2rem;
 }
-
 
 form {
   input {

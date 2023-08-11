@@ -1,134 +1,132 @@
 @import "main";
 
 body {
-  background-color: var(--grey-200);
+  background-color: $grey-200;
 }
 
 .navbar {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+  padding: 10px 70px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+
+  @include tablet {
+    justify-content: center;
+    height: 15vh;
+    padding: 5px 60px;
     align-items: center;
-    background-color: var(--white);
-    padding: 10px 70px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    z-index: 1;
-
-    @include tablet {
-      justify-content: center;
-      height: 15vh;
-      padding: 5px 60px;
-      align-items: center;
-
-    }
+  }
   
-    &-left,
-    &-center,
-    &-right {
+  &-left,
+  &-center,
+  &-right {
+    display: flex;
+    align-items: center;
+    
+    @include tablet {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }  
+  } 
+
+  &-right {
+    justify-content: space-around;
+    width: 10rem;
+  }
+
+  &-center {
+
+    .search-wrapper{
+      position: relative;
+      width: 100%;
       display: flex;
+      justify-content: center;
       align-items: center;
-      
-      @include tablet {
-        margin-left: 1rem;
-        margin-right: 1rem;
-      }  
-    } 
 
-    &-right {
-      justify-content: space-around;
-      width: 10rem;
+      .icon-container{
+        position: absolute;
+        top: .25rem;
+        right: .25rem;
     }
 
-    &-center {
-
-        .search-wrapper{
-          position: relative;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          .icon-container{
-            position: absolute;
-            top: .25rem;
-            right: .25rem;
-        }
-
-        }
     }
+  }
 
     
-    &-logo {
-      width: 70px;
-      height: 70px;
-      margin-right: 50px;
-      
-      @include tablet {
-        margin-right: 1rem;
-  
-      }
+  &-logo {
+    width: 70px;
+    height: 70px;
+    margin-right: 50px;
+    
+    @include tablet {
+      margin-right: 1rem;
     }
+  }
   
-    .main-navbar-mobile {
+  .main-navbar-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 15rem;
+    flex-wrap: wrap;
+
+    @include tablet {
+      position: absolute;
+      top: 50;
+      left: 50%;
+      margin-top: 12rem;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      width: 100%;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 15rem;
-      flex-wrap: wrap;
-
-      @include tablet {
-        position: absolute;
-        top: 50;
-        left: 50%;
-        margin-top: 12rem;
-        transform: translate(-50%, -50%);
-        background-color: var(--white);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        padding-top: 4rem;
-        z-index: -1;
-      }
+      justify-content: center;
+      padding-top: 4rem;
+      z-index: -1;
     }
+  }
 
-    &-search-bar {
-      width: 380px;
-      height: 2.5rem;
-      border-radius: 20px;
-      border: .3px solid var(--black);
-      padding: 6px 12px;
+  &-search-bar {
+    width: 380px;
+    height: 2.5rem;
+    border-radius: 20px;
+    border: .3px solid $black;
+    padding: 6px 12px;
 
-      
-      @include tablet {
-        display: none;
-        width: 0;
-      }
+    
+    @include tablet {
+      display: none;
+      width: 0;
     }
+  }
 
-    &-icon {
-      width: 24px;
-      margin-right: 16px;
-      margin-left: 16px;
+  &-icon {
+    width: 24px;
+    margin-right: 16px;
+    margin-left: 16px;
 
-      @include tablet {
+    @include tablet {
       width: 1.8rem;
       margin-right: 1rem;
       margin-left: 1rem;
-      }  
-    }
+    }  
+  }
 
-    &-icon:hover {
-      fill: var(--black);
-    }
-  
-    &-right {
-      & > img {
-        margin-left: 16px;
-      }
+  &-icon:hover {
+    fill: $black;
+  }
+
+  &-right {
+    & > img {
+      margin-left: 16px;
     }
   }
+}
 
 //NAVBAR ICON CONTAINER
 
@@ -140,7 +138,7 @@ body {
 }
 
 .icon-container {
-  background-color: var(--primary-500);
+  background-color: $primary-500;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -153,7 +151,7 @@ body {
 
   .navbar-icon {
     width: 100%;
-    color: var(--white);
+    color: $white;
     transition-duration: .5s;
     cursor: pointer;
     
@@ -161,39 +159,37 @@ body {
       margin-left: 5rem;
       margin-right: 5rem;
       padding-bottom: .5rem;
-  }
+    }
 
     @include mobile {
       margin-left: 2rem;
       margin-right: 2rem;
       padding-bottom: .5rem;
-  }
+    }
   }
 }
 
 .icon-container:hover {
-  background-color: var(--white);
-  border: 2px solid var(--primary-500);
+  background-color: $white;
+  border: 2px solid $primary-500;
   width: 2.5rem;
   height: 2.5rem;
 }
 
 .icon-container:hover .navbar-icon{
-  color: var(--primary-500);
+  color: $primary-500;
 }
 
 .navbar-search:hover {
   background-color: white;
-  border: 2px solid var(--primary-500);
+  border: 2px solid $primary-500;
   width: 2rem;
   height: 2rem;
 }
 
 .navbar-search:hover .navbar-icon{
-  color: var(--primary-500);
+  color: $primary-500;
 }
-
-
 
 //MODAL LOGOUT 
 
@@ -219,8 +215,8 @@ body {
   justify-content: space-between;
   width: 40%;
   padding: 10px 20px;
-  background-color: var(--white);
-  border-bottom: 1px solid var(--grey-300);
+  background-color: $white;
+  border-bottom: 1px solid $grey-300;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -230,7 +226,7 @@ body {
   width: 40%;
   max-height: 80vh;
   overflow-y: auto;
-  background-color: var(--white);
+  background-color: $white;
   padding: 20px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -275,5 +271,5 @@ body {
 }
 
 .navbar-icon {
-      cursor: pointer;
-    }
+  cursor: pointer;
+}

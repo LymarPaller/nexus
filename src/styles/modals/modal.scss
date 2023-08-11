@@ -1,153 +1,155 @@
-//MODAL DELETE
+@import "../main.scss";
+
+// MODAL DELETE
 
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    text-align: start;
   }
-  
-  .modal-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+
+  p {
+    margin-bottom: 1rem;
+    color: $grey-800;
   }
-  
-  .modal-content {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  
-    h2 {
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-      text-align: start;
-    }
-  
-    p {
-      margin-bottom: 1rem;
-      color: var(--grey-800);
-    }
-  
-    .cancel-button,
-    .delete-button {
-      padding: 0.15rem .8rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-right: 0.5rem;
-      transition: background-color 0.3s, color 0.3s;
-    }
-  
-    .cancel-button {
-      background-color: var(--primary-500);
-      color: var(--white);
-    }
-  
-    .delete-button {
-      background-color: var(--accent);
-      color: var(--white);
-    }
+
+  .cancel-button,
+  .delete-button {
+    padding: 0.15rem .8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
   }
-  
-//MODAL COMMENT
+
+  .cancel-button {
+    background-color: $primary-500;
+    color: $white;
+  }
+
+  .delete-button {
+    background-color: $accent;
+    color: $white;
+  }
+}
+
+// MODAL COMMENT
 
 .comment-modal-container{
-    width: 50vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--white);
+  width: 50vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
 
-    .modal-body {
-        width: 100%;
+  .modal-body {
+      width: 100%;
 
-        textarea{
-            margin-top: 1rem;
-            width: 80%;
-            height: 3rem;
-            border-radius: 1rem;
-            resize: none;
-            padding-left: 1rem;
-            outline: none;
-        }
+      textarea{
+          margin-top: 1rem;
+          width: 80%;
+          height: 3rem;
+          border-radius: 1rem;
+          resize: none;
+          padding-left: 1rem;
+          outline: none;
+      }
 
-    }
-    .modal-footer{
-        margin-top: 1rem;
+  }
+  .modal-footer{
+      margin-top: 1rem;
 
-        button{
-            background-color: var(--primary-500);
-            border: none;
-            border-radius: 1rem;
-            padding: .5rem 1rem;
-            color: white;
-        }
-    }
-    
+      button{
+          background-color: $primary-500;
+          border: none;
+          border-radius: 1rem;
+          padding: .5rem 1rem;
+          color: $white;
+      }
+  }
+  
 }
 
 // delete comment modal
 
 .modal-delete-comment {
-    // position: absolute;
-    // top: 50%;
-    // right: 50%;
-    // transform: translate(-50% -50%);
-    background-color: var(--white);
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;   
-    
-    h5 {
-        padding: .5rem;
-        
-    }
-    p {
-      margin-bottom: 20px;
-    }
+  // position: absolute;
+  // top: 50%;
+  // right: 50%;
+  // transform: translate(-50% -50%);
+  background-color: $white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;   
   
-    .modal-buttons {    
-      button {
-        margin: 0 10px;
-        padding: 5px 10px;
-        
-      }
-    }
+  h5 {
+      padding: .5rem;
+      
   }
-  
-  
-  .modal-close-button {
-    background-color: transparent;
-    position: absolute;
-    right: 1.25rem;
-    top: 1.15rem;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
+  p {
+    margin-bottom: 20px;
+  }
 
+  .modal-buttons {    
+    button {
+      margin: 0 10px;
+      padding: 5px 10px;
+      
+    }
   }
-  
-  .modal-close-button:focus {
-    outline: none;
-  }
-  
-  .logout-header {
-    display: flex;
-    flex: auto;
-  }
+}
+
+
+.modal-close-button {
+  background-color: transparent;
+  position: absolute;
+  right: 1.25rem;
+  top: 1.15rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+
+}
+
+.modal-close-button:focus {
+  outline: none;
+}
+
+.logout-header {
+  display: flex;
+  flex: auto;
+}

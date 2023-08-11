@@ -27,8 +27,7 @@
         height: 50vh;
     }
 
-
-    img{
+    img {
         width: 100%;
         position: absolute;
         background-size: contain;
@@ -56,13 +55,13 @@
 
 .detail-container {
     width: 50vw;
-    background-color: var(--white);
+    background-color: $white;
     height: 35vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--shadow-4);
+    box-shadow: $shadow-4;
 
     @include tablet {
         width: 100%;
@@ -80,7 +79,7 @@
     justify-content: center;
     align-items: center;
 
-    p{
+    p {
         font-size: 1rem;
         margin-top: .3rem;
     }
@@ -96,7 +95,7 @@
         margin-right: 3rem;
     }
 
-    img{
+    img {
         width: 1.3rem;
         margin-left: 3rem;
         margin-right: .5rem;

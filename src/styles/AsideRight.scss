@@ -30,7 +30,7 @@
     min-width: 20vw;
     margin: 1rem 0.3rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
+    background-color: $white;
     padding: 1rem;
 
     h5 {
@@ -63,16 +63,16 @@
     padding: 0.15rem 0.8rem;
     border: none;
     border-radius: 4px;
-    color: var(--white);
+    color: $white;
     cursor: pointer;
     font-size: 0.8rem;
     text-align: center;
 }
 
 .add-btn {
-    background-color: var(--primary-500);
+    background-color: $primary-500;
 }
 
 .remove-btn {
-    background-color: var(--accent);
+    background-color: $accent;
 }
