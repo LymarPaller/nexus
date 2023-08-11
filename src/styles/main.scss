@@ -179,6 +179,7 @@ ul {
   width: 100%;
 }
 
+
 /* Alert styles */
 .alert {
   padding: 0.375rem 0.75rem;
@@ -274,6 +275,8 @@ ul {
   margin-top: 1rem;
 }
 
+// Media Query
+
 @mixin mobile {
   @media (max-width: 480px) {
     @content;
@@ -285,6 +288,41 @@ ul {
     @content;
   }
 }
+
+//Display flex Reusable code
+
+//2 MOST USED D-FLEX AND JUSTIFY
+@mixin flexJs {
+  display: flex;
+  justify-content: start;
+}
+
+@mixin flexJc {
+  display: flex;
+  justify-content: center;
+}
+
+
+//3 MOST USED D-FLEX, JUSTIFY AND ALIGN ITEMS
+
+@mixin flexJcAs {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+@mixin flexJcAc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexJcAe {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
 
 .dark-mode {
   // background-color: $grey-900;
@@ -300,11 +338,31 @@ ul {
   $white: #2e2e2e;
 }
 
-.button-register, 
-.register-back-button, 
-.logout-xmark, 
-.login-button
-.comment-button, 
+.button-register,
+.register-back-button,
+.logout-xmark,
+.login-button .comment-button,
 .like-button {
   cursor: pointer;
 }
+
+//Custom button for Nexus
+
+.add-btn {
+  background-color: $primary-500;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  color: $white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: center;    
+}
+
+.remove-btn {
+  @extend .add-btn;
+  background-color: $accent;
+}
+

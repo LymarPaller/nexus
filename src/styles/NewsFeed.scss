@@ -23,9 +23,7 @@
 
     .profile-pic {
         flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexJcAc;
         
         img {
             height: 3rem;
@@ -87,8 +85,7 @@
 
 .form-container {
     width: 84%;
-    display: flex;
-    justify-content: center;
+    @include flexJc;
     margin-right: auto;
     margin-left: auto;
 
@@ -138,8 +135,7 @@
     padding: 2rem;
 
     .create-post-header-container{
-        display: flex;
-        justify-content: center;
+        @include flexJc;
         width: 100%;
 
         .create-post-header {

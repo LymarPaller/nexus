@@ -14,9 +14,7 @@
   }
 
   .footer-row-1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexJcAc;
     font-size: 16px;
     font-weight: bold;
     padding-bottom: 10px;

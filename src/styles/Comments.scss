@@ -1,9 +1,7 @@
 @import "main";
 
 .modal-header {
-    display: flex;
-    justify-content: center;
-    align-items: start;
+    @include flexJcAs;
     flex-direction: column;
     width: 100%;
     position: relative;
