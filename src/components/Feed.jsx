@@ -8,34 +8,15 @@ import Comments from './Comments';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH, faTimes, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import LikeButton from './LikeButton';
+import { useModal } from '../app/useModal';
 
 function Feed() {
-  const [showOptionsModal, setShowOptionsModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [showCommentModal, setShowCommentModal] = useState(false);
-  const [showEditCaptionModal, setShowEditCaptionModal] = useState(false);
+  const { isOpen: showOptionsModal, openModal: toggleOptionsModal, closeModal: closeOptionsModal } = useModal();
+  const { isOpen: showDeleteModal, openModal: toggleDeleteModal, closeModal: closeDeleteModal } = useModal();
+  const { isOpen: showCommentModal, openModal: toggleCommentModal, closeModal: closeCommentModal } = useModal();
+  const { isOpen: showEditCaptionModal, openModal: toggleEditCaptionModal, closeModal: closeEditCaptionModal } = useModal();
   const [editedCaption, setEditedCaption] = useState('Pupparazzi caught me posing 📸');
   const [editedCaptionModal, setEditedCaptionModal] = useState(editedCaption);
-
-  const toggleOptionsModal = () => {
-    setShowOptionsModal(prevState => !prevState);
-  };
-
-  const toggleDeleteModal = () => {
-    setShowDeleteModal(prevState => !prevState);
-  };
-
-  const toggleCommentModal = () => {
-    setShowCommentModal(prevState => !prevState);
-  };
-
-  const toggleEditCaptionModal = () => {
-    setShowEditCaptionModal(prevState => !prevState);
-  };
-
-  const handleCloseCommentModal = () => {
-    setShowCommentModal(false);
-  };
 
   const handleDeletePost = () => {
     toggleDeleteModal();
@@ -98,7 +79,7 @@ function Feed() {
 
       <Modal
         isOpen={showOptionsModal}
-        onRequestClose={toggleOptionsModal}
+        onRequestClose={closeOptionsModal}
         contentLabel="Edit and Delete Post"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -133,7 +114,7 @@ function Feed() {
 
       <Modal
         isOpen={showEditCaptionModal}
-        onRequestClose={toggleEditCaptionModal}
+        onRequestClose={closeEditCaptionModal}
         contentLabel="Edit Caption"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -162,7 +143,7 @@ function Feed() {
 
       <Modal
         isOpen={showDeleteModal}
-        onRequestClose={toggleDeleteModal}
+        onRequestClose={closeDeleteModal}
         contentLabel="Delete Post"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -187,7 +168,7 @@ function Feed() {
 
       <Modal
         isOpen={showCommentModal}
-        onRequestClose={toggleCommentModal}
+        onRequestClose={closeCommentModal}
         contentLabel="Add Comment"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -198,7 +179,7 @@ function Feed() {
             <FontAwesomeIcon
               icon={faTimes}
               className="logout-xmark"
-              onClick={handleCloseCommentModal}
+              onClick={closeCommentModal}
             />
             <Comments />
           </div>

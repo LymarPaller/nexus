@@ -5,23 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Profile from '../assets/wanda.jpg';
 import '../styles/NewsFeed.scss';
 import Feed from './Feed';
+import { useModal } from '../app/useModal';
 
 function NewsFeed() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const { isOpen: modalIsOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
-
-    const openModal = () => {
-        setModalIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
 
     const handlePost = (event) => {
         event.preventDefault();
         console.log('Posted:', postText);
-
          
         setPostText('');
         closeModal();
@@ -57,7 +49,7 @@ function NewsFeed() {
                 <div className='create-post-header-container'>
                     <h4 className='create-post-header'>Create Post</h4>
                 </div>
-                 <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeModal} />
+                <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeModal} />
                 <div className="profile-pic">
                     <img src={Profile} alt="Profile" />
                     <h5>Wanda Zurbano</h5>

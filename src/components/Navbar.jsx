@@ -18,21 +18,17 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
-import Home from "../assets/icons/housesolid.svg";
-import Logout from "../assets/icons/logout.svg";
-import Moon from "../assets/icons/moon.svg";
-import Notification from "../assets/icons/notification.svg";
 import Profile from "../assets/icons/profile.svg";
-import Search from "../assets/icons/search.svg";
 import "../styles/Navbar.scss";
 import "../styles/ModalLogout.scss";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
+import { useModal } from '../app/useModal';
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
   // const modalDarkMode = document.getElementsByClassName('modal')
 
@@ -48,12 +44,12 @@ function Navbar() {
   };
 
   const handleLogOut = () => {
-    setShowLogoutModal(true);
+    openModal();
   };
 
   const handleLogoutConfirmed = () => {
-    setShowLogoutModal(false);
-    navigate("/login");
+    closeModal(); // Close the modal and navigate to login
+    navigate('/login');
   };
 
   const notificationData = [
@@ -117,9 +113,6 @@ function Navbar() {
       message: "Sent you a friend request.",
       icon: "user-friends",
     },
-
-
-
 
 
     {
@@ -220,27 +213,28 @@ function Navbar() {
             </Link>
           </div>
             
-          {/* Confirmation Modal */}
+          {/* Logout Confirmation Modal */}
           <Modal
-            isOpen={showLogoutModal}
-            onRequestClose={() => setShowLogoutModal(false)}
+            isOpen={isOpen}
+            onRequestClose={closeModal}
             className="modal"
             overlayClassName="modal-overlay"
           >
             <div className="logout-header">
               <h5>Logout Confirmation</h5>
-              <button
-                className="modal-close-button"
-                onClick={() => setShowLogoutModal(false)}
-              >
-                <FontAwesomeIcon icon={faTimes} className="logout-xmark"/>
+              <button className="modal-close-button" onClick={closeModal}>
+                <FontAwesomeIcon icon={faTimes} className="logout-xmark" />
               </button>
             </div>
             <div className="modal-content">
               <p>Are you sure you want to logout?</p>
               <div className="modal-buttons">
-                <button className="add-btn" onClick={() => setShowLogoutModal(false)}>Cancel</button>
-                <button className="remove-btn" onClick={handleLogoutConfirmed}>Logout</button>
+                <button className="add-btn" onClick={closeModal}>
+                  Cancel
+                </button>
+                <button className="remove-btn" onClick={handleLogoutConfirmed}>
+                  Logout
+                </button>
               </div>
             </div>
           </Modal>
