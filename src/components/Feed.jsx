@@ -6,20 +6,31 @@ import Comment from '../assets/icons/commenticon.svg';
 import Like from '../assets/icons/likeicon.svg';
 import Comments from './Comments';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faTimes, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import LikeButton from './LikeButton';
 
 function Feed() {
-  const [showModal, setShowModal] = useState(false);
+  const [showOptionsModal, setShowOptionsModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
+  const [showEditCaptionModal, setShowEditCaptionModal] = useState(false);
+  const [editedCaption, setEditedCaption] = useState('Pupparazzi caught me posing 📸');
+  const [editedCaptionModal, setEditedCaptionModal] = useState(editedCaption);
 
+  const toggleOptionsModal = () => {
+    setShowOptionsModal(prevState => !prevState);
+  };
 
-  const toggleModal = () => {
-    setShowModal(prevState => !prevState);
+  const toggleDeleteModal = () => {
+    setShowDeleteModal(prevState => !prevState);
   };
 
   const toggleCommentModal = () => {
     setShowCommentModal(prevState => !prevState);
+  };
+
+  const toggleEditCaptionModal = () => {
+    setShowEditCaptionModal(prevState => !prevState);
   };
 
   const handleCloseCommentModal = () => {
@@ -27,7 +38,18 @@ function Feed() {
   };
 
   const handleDeletePost = () => {
-    toggleModal();
+    toggleDeleteModal();
+  };
+
+  const handleEditCaption = () => {
+    setEditedCaptionModal(editedCaption);
+    toggleOptionsModal();
+    toggleEditCaptionModal();
+  };
+
+  const handleSaveCaption = () => {
+    setEditedCaption(editedCaptionModal);
+    toggleEditCaptionModal();
   };
 
   return (
@@ -35,7 +57,7 @@ function Feed() {
       <FontAwesomeIcon
         icon={faEllipsisH}
         className="ellipsis-icon"
-        onClick={toggleModal}
+        onClick={toggleOptionsModal}
       />
       <div className="profile-feed-details">
         <div className="profile-info">
@@ -50,17 +72,18 @@ function Feed() {
           </div>
         </div>
         <div className="captions">
-          <p>Pupparazzi caught me posing 📸</p>
+          <p>{editedCaption}</p>
         </div>
         <div className="post-image">
-          <img src={Profile} alt="Profile" />
+          {/* Replace this with actual post image soon */}
+          <img src={Profile} alt="Post" />
         </div>
         <div className="likes-comments">
           <div className="likes">
             <span className="like-icon">
               <img src={Like} alt="Like Icon" />
             </span>
-            <LikeButton/>
+            <LikeButton />
           </div>
           <div className="comments">
             <span className="comment-icon">
@@ -72,9 +95,74 @@ function Feed() {
           </div>
         </div>
       </div>
+
       <Modal
-        isOpen={showModal}
-        onRequestClose={toggleModal}
+        isOpen={showOptionsModal}
+        onRequestClose={toggleOptionsModal}
+        contentLabel="Edit and Delete Post"
+        className="modal-overlay"
+        overlayClassName="modal-container"
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Edit and Delete Post</h2>
+          </div>
+          <div className="modal-body">
+            <div className="options-list">
+              <div className="option" onClick={handleDeletePost}>
+                <span className="option-icon">
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </span>
+                <span className="option-label">Delete Post</span>
+              </div>
+              <div className="option" onClick={handleEditCaption}>
+                <span className="option-icon">
+                  <FontAwesomeIcon icon={faEdit} />
+                </span>
+                <span className="option-label">Edit Caption</span>
+              </div>
+            </div>
+          </div>
+          <div className="modal-footer">
+            <button onClick={toggleOptionsModal} className="cancel-button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={showEditCaptionModal}
+        onRequestClose={toggleEditCaptionModal}
+        contentLabel="Edit Caption"
+        className="modal-overlay"
+        overlayClassName="modal-container"
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Edit Caption</h2>
+          </div>
+          <div className="modal-body">
+            <textarea
+              value={editedCaptionModal}
+              onChange={(e) => setEditedCaptionModal(e.target.value)}
+              className="caption-textarea"
+            />
+            <button onClick={handleSaveCaption} className="save-caption-button">
+              Save
+            </button>
+          </div>
+          <div className="modal-footer">
+            <button onClick={toggleEditCaptionModal} className="cancel-button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={showDeleteModal}
+        onRequestClose={toggleDeleteModal}
         contentLabel="Delete Post"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -87,7 +175,7 @@ function Feed() {
             <p>Are you sure you want to delete this post?</p>
           </div>
           <div className="modal-footer">
-            <button onClick={toggleModal} className="cancel-button">
+            <button onClick={toggleDeleteModal} className="cancel-button">
               Cancel
             </button>
             <button onClick={handleDeletePost} className="delete-button">
@@ -96,6 +184,7 @@ function Feed() {
           </div>
         </div>
       </Modal>
+
       <Modal
         isOpen={showCommentModal}
         onRequestClose={toggleCommentModal}
@@ -113,7 +202,6 @@ function Feed() {
             />
             <Comments />
           </div>
-        
         </div>
       </Modal>
     </div>
