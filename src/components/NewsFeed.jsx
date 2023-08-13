@@ -11,6 +11,7 @@ function NewsFeed() {
     const { isOpen: modalIsOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
 
+    // Handler for posting a new post
     const handlePost = (event) => {
         event.preventDefault();
         console.log('Posted:', postText);
@@ -40,6 +41,7 @@ function NewsFeed() {
                 </div>
                 <Feed />
             </div>
+            {/* Modal for creating a post */}
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

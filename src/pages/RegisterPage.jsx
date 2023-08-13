@@ -64,17 +64,18 @@ function RegisterPage() {
                         <div className='button-container button-register'>
                             <button className='button-register' type='submit'>Register</button>
                             <div className='back-button-container back-button-register'>
-                        <Link to="/login" className='link-button'>
-                            <button type='submit' className='register-back-button'>
-                                <FontAwesomeIcon icon={faArrowLeft} className="back-icon" /> Back to Login
-                            </button>
-                        </Link>
-                    </div>
+                                <Link to="/login" className='link-button'>
+                                    <button type='submit' className='register-back-button'>
+                                        <FontAwesomeIcon icon={faArrowLeft} className="back-icon" /> Back to Login
+                                    </button>
+                                </Link>
+                            </div>
 
                         </div>
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

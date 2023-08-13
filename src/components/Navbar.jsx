@@ -30,16 +30,15 @@ function Navbar() {
   const [showNotifications, setShowNotifications] = useState(false);
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
-  // const modalDarkMode = document.getElementsByClassName('modal')
+   
 
+  // Handler for toggling dark mode
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
     if (darkMode) {
       document.body.classList.add("dark-mode");
-      // modalDarkMode.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
-      // modalDarkMode.classList.remove("dark-mode");
     }
   };
 

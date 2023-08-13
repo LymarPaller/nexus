@@ -17,6 +17,8 @@ function AsideRight() {
         { name: 'Riya Villamor' }
     ]);
 
+    
+
     return (
         <div className="aside-right-container">
             <div className="suggestion-container">

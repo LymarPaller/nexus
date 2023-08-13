@@ -31,6 +31,10 @@ function Feed() {
   const handleSaveCaption = () => {
     setEditedCaption(editedCaptionModal);
     toggleEditCaptionModal();
+    closeOptionsModal();
+    closeCommentModal();
+    closeDeleteModal();
+    closeEditCaptionModal();
   };
 
   return (
@@ -80,13 +84,13 @@ function Feed() {
       <Modal
         isOpen={showOptionsModal}
         onRequestClose={closeOptionsModal}
-        contentLabel="Edit and Delete Post"
+        contentLabel="Options"
         className="modal-overlay"
         overlayClassName="modal-container"
       >
         <div className="modal-content">
           <div className="modal-header">
-            <h2>Edit and Delete Post</h2>
+            <h2>Options</h2>
           </div>
           <div className="modal-body">
             <div className="options-list">
@@ -140,6 +144,7 @@ function Feed() {
           </div>
         </div>
       </Modal>
+
 
       <Modal
         isOpen={showDeleteModal}
