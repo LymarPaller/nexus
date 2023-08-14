@@ -52,8 +52,7 @@
 
 .delete-button {
   @extend .cancel-button;
-  background-color: var(--accent);
-}
+  background-color: var(--accent);yar
 
 
 
@@ -149,4 +148,6 @@
 .logout-header {
   display: flex;
   flex: auto;
+}
+
 }
