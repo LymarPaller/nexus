@@ -366,3 +366,20 @@ ul {
   background-color: $accent;
 }
 
+.modal-header {
+  @include flexJcAs;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+
+  .logout-xmark {
+      position: absolute;
+      top: .5rem;
+      right: 1.30rem;
+  }
+
+  h2 {
+      margin-left: 1rem;
+      color: $black;
+  }
+}

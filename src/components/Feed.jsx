@@ -20,6 +20,7 @@ function Feed() {
 
   const handleDeletePost = () => {
     toggleDeleteModal();
+    //logic for delete put here soon
   };
 
   const handleEditCaption = () => {
@@ -35,7 +36,6 @@ function Feed() {
     toggleEditCaptionModal();
     closeOptionsModal();
     closeCommentModal();
-    closeDeleteModal();
     closeEditCaptionModal();
   };
 
@@ -91,9 +91,9 @@ function Feed() {
         overlayClassName="modal-container"
       >
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header-options">
             <h2>Options</h2>
-            <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeOptionsModal}/>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark-options" onClick={closeOptionsModal} />
           </div>
           <div className="modal-body">
             <div className="options-list">
@@ -129,7 +129,7 @@ function Feed() {
         <div className="modal-content">
           <div className="modal-header">
             <h2>Edit Caption</h2>
-            <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeEditCaptionModal}/>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark-options" onClick={closeEditCaptionModal} />
           </div>
           <div className="modal-body">
             <textarea
@@ -138,9 +138,9 @@ function Feed() {
               className="caption-textarea"
             />
             <div>
-            <button onClick={handleSaveCaption} className="save-caption-button">
-              Save
-            </button>
+              <button onClick={handleSaveCaption} className="save-caption-button">
+                Save
+              </button>
             </div>
           </div>
           <div className="modal-footer">
@@ -162,12 +162,13 @@ function Feed() {
         <div className="modal-content">
           <div className="modal-header">
             <h2>Confirm Delete</h2>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark-options" onClick={closeDeleteModal} />
           </div>
           <div className="modal-body">
             <p>Are you sure you want to delete this post?</p>
           </div>
           <div className="modal-footer">
-            <button onClick={toggleDeleteModal} className="cancel-button">
+            <button onClick={closeDeleteModal} className="add-btn">
               Cancel
             </button>
             <button onClick={handleDeletePost} className="delete-button">

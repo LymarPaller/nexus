@@ -138,12 +138,26 @@
 .save-caption-button {
     @extend .add-btn;
     margin-top: .9rem;
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .caption-textarea {
-        border-radius: 1rem;
-        resize: none;
-        padding-left: 1rem;
-        padding-top: 1rem;
+    border-radius: 1rem;
+    resize: none;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.option {
+    margin: .7rem;
+}
+
+.logout-xmark-options {
+    position: absolute;
+    top: .20rem;
+    right: -.30rem;
+}
+
+.modal-header-options {
+    @extend .modal-header;
 }
