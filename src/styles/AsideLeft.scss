@@ -4,7 +4,7 @@
     min-width: 20vw;
     height: 100vh;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
+    background-color: $white;
     position: fixed;
     left: 0;
     padding-top: 6rem;
@@ -43,7 +43,7 @@
             }
 
             a {
-                color: var(--black);
+                color: $black;
             }
         }
   
@@ -68,4 +68,3 @@
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 2;
 }
-

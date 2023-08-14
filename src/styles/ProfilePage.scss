@@ -1,6 +1,8 @@
+@import "main";
+
 .profile-page-main-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--grey-200);
+    background-color: $grey-200;
 }

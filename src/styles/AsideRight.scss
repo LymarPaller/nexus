@@ -23,9 +23,8 @@
     }
 }
 
-.button-add-remove {
-    display: flex;
-    justify-content: start;
+.button-add-remove  {
+    @include flexJs ;
     flex-wrap: wrap;
 
     @include tablet {
@@ -38,7 +37,7 @@
     min-width: 20vw;
     margin: 1rem 0.3rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
+    background-color: $white;
     padding: 1rem;
 
     @include tablet {
@@ -79,23 +78,3 @@
     }
 }
 
-.add-btn,
-.remove-btn {
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
-    padding: 0.15rem 0.8rem;
-    border: none;
-    border-radius: 4px;
-    color: var(--white);
-    cursor: pointer;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-.add-btn {
-    background-color: var(--primary-500);
-}
-
-.remove-btn {
-    background-color: var(--accent);
-}

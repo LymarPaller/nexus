@@ -5,7 +5,7 @@ import Feed from "../components/Feed";
 import "../styles/ProfilePage.scss";
 import "../styles/ProfileFeed.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "axios"
 
 function ProfilePage () {
 

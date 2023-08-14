@@ -1,7 +1,7 @@
+@import "main";
+
 .modal-header {
-    display: flex;
-    justify-content: center;
-    align-items: start;
+    @include flexJcAs;
     flex-direction: column;
     width: 100%;
     position: relative;
@@ -14,7 +14,7 @@
 
     h2 {
         margin-left: 1rem;
-        color: var(--black);
+        color: $black;
     }
 }
 
@@ -29,8 +29,8 @@
             margin-top: 1rem;
             display: flex;
             flex-wrap: wrap;
-            border-bottom: 2px solid var(--grey-600);
-            border-top: 2px solid var(--grey-400);
+            border-bottom: 2px solid $grey-600;
+            border-top: 2px solid $grey-400;
             border-radius: 10px;
             justify-content: start;
             align-items: center;

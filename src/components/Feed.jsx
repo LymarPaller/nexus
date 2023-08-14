@@ -6,28 +6,35 @@ import Comment from '../assets/icons/commenticon.svg';
 import Like from '../assets/icons/likeicon.svg';
 import Comments from './Comments';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faTimes, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import LikeButton from './LikeButton';
+import { useModal } from '../app/useModal';
 
 function Feed() {
-  const [showModal, setShowModal] = useState(false);
-  const [showCommentModal, setShowCommentModal] = useState(false);
-
-
-  const toggleModal = () => {
-    setShowModal(prevState => !prevState);
-  };
-
-  const toggleCommentModal = () => {
-    setShowCommentModal(prevState => !prevState);
-  };
-
-  const handleCloseCommentModal = () => {
-    setShowCommentModal(false);
-  };
+  const { isOpen: showOptionsModal, openModal: toggleOptionsModal, closeModal: closeOptionsModal } = useModal();
+  const { isOpen: showDeleteModal, openModal: toggleDeleteModal, closeModal: closeDeleteModal } = useModal();
+  const { isOpen: showCommentModal, openModal: toggleCommentModal, closeModal: closeCommentModal } = useModal();
+  const { isOpen: showEditCaptionModal, openModal: toggleEditCaptionModal, closeModal: closeEditCaptionModal } = useModal();
+  const [editedCaption, setEditedCaption] = useState('Pupparazzi caught me posing 📸');
+  const [editedCaptionModal, setEditedCaptionModal] = useState(editedCaption);
 
   const handleDeletePost = () => {
-    toggleModal();
+    toggleDeleteModal();
+  };
+
+  const handleEditCaption = () => {
+    setEditedCaptionModal(editedCaption);
+    toggleOptionsModal();
+    toggleEditCaptionModal();
+  };
+
+  const handleSaveCaption = () => {
+    setEditedCaption(editedCaptionModal);
+    toggleEditCaptionModal();
+    closeOptionsModal();
+    closeCommentModal();
+    closeDeleteModal();
+    closeEditCaptionModal();
   };
 
   return (
@@ -35,7 +42,7 @@ function Feed() {
       <FontAwesomeIcon
         icon={faEllipsisH}
         className="ellipsis-icon"
-        onClick={toggleModal}
+        onClick={toggleOptionsModal}
       />
       <div className="profile-feed-details">
         <div className="profile-info">
@@ -50,17 +57,18 @@ function Feed() {
           </div>
         </div>
         <div className="captions">
-          <p>Pupparazzi caught me posing 📸</p>
+          <p>{editedCaption}</p>
         </div>
         <div className="post-image">
-          <img src={Profile} alt="Profile" />
+          {/* Replace this with actual post image soon */}
+          <img src={Profile} alt="Post" />
         </div>
         <div className="likes-comments">
           <div className="likes">
             <span className="like-icon">
               <img src={Like} alt="Like Icon" />
             </span>
-            <LikeButton/>
+            <LikeButton />
           </div>
           <div className="comments">
             <span className="comment-icon">
@@ -72,9 +80,75 @@ function Feed() {
           </div>
         </div>
       </div>
+
       <Modal
-        isOpen={showModal}
-        onRequestClose={toggleModal}
+        isOpen={showOptionsModal}
+        onRequestClose={closeOptionsModal}
+        contentLabel="Options"
+        className="modal-overlay"
+        overlayClassName="modal-container"
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Options</h2>
+          </div>
+          <div className="modal-body">
+            <div className="options-list">
+              <div className="option" onClick={handleDeletePost}>
+                <span className="option-icon">
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </span>
+                <span className="option-label">Delete Post</span>
+              </div>
+              <div className="option" onClick={handleEditCaption}>
+                <span className="option-icon">
+                  <FontAwesomeIcon icon={faEdit} />
+                </span>
+                <span className="option-label">Edit Caption</span>
+              </div>
+            </div>
+          </div>
+          <div className="modal-footer">
+            <button onClick={toggleOptionsModal} className="cancel-button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={showEditCaptionModal}
+        onRequestClose={closeEditCaptionModal}
+        contentLabel="Edit Caption"
+        className="modal-overlay"
+        overlayClassName="modal-container"
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Edit Caption</h2>
+          </div>
+          <div className="modal-body">
+            <textarea
+              value={editedCaptionModal}
+              onChange={(e) => setEditedCaptionModal(e.target.value)}
+              className="caption-textarea"
+            />
+            <button onClick={handleSaveCaption} className="save-caption-button">
+              Save
+            </button>
+          </div>
+          <div className="modal-footer">
+            <button onClick={toggleEditCaptionModal} className="cancel-button">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+
+      <Modal
+        isOpen={showDeleteModal}
+        onRequestClose={closeDeleteModal}
         contentLabel="Delete Post"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -87,7 +161,7 @@ function Feed() {
             <p>Are you sure you want to delete this post?</p>
           </div>
           <div className="modal-footer">
-            <button onClick={toggleModal} className="cancel-button">
+            <button onClick={toggleDeleteModal} className="cancel-button">
               Cancel
             </button>
             <button onClick={handleDeletePost} className="delete-button">
@@ -96,9 +170,10 @@ function Feed() {
           </div>
         </div>
       </Modal>
+
       <Modal
         isOpen={showCommentModal}
-        onRequestClose={toggleCommentModal}
+        onRequestClose={closeCommentModal}
         contentLabel="Add Comment"
         className="modal-overlay"
         overlayClassName="modal-container"
@@ -109,11 +184,10 @@ function Feed() {
             <FontAwesomeIcon
               icon={faTimes}
               className="logout-xmark"
-              onClick={handleCloseCommentModal}
+              onClick={closeCommentModal}
             />
             <Comments />
           </div>
-        
         </div>
       </Modal>
     </div>
