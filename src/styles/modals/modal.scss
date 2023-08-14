@@ -37,7 +37,6 @@
   }
 
   .cancel-button {
-<<<<<<< HEAD
     padding: 0.15rem .8rem;
     border: none;
     border-radius: 4px;
@@ -45,22 +44,15 @@
     font-size: 0.9rem;
     margin-right: 0.5rem;
     transition: background-color 0.3s, color 0.3s;
-    background-color: var(--primary-500);
+    background-color: var(--accent);
     color:  var(--white);
-=======
     @extend .add-btn;
->>>>>>> 9018796528649db3be684768f6872f4809ea26ef
   }
 }
 
 .delete-button {
-<<<<<<< HEAD
   @extend .cancel-button;
-  background-color: var(--primary-700);
-=======
-  @extend .add-btn;
-  background-color: $accent;
->>>>>>> 9018796528649db3be684768f6872f4809ea26ef
+  background-color: var(--accent);
 }
 
 

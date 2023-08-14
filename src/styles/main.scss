@@ -359,7 +359,7 @@ ul {
 
 .remove-btn {
   @extend .add-btn;
-  background-color: var(--primary-700);
+  background-color: var(--accent);
 }
 
 .modal-header {
@@ -376,7 +376,7 @@ ul {
 
   h2 {
       margin-left: 1rem;
-      color: $black;
+      color: var(--black);
   }
 }
 .dark-mode {
