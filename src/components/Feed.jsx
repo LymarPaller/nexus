@@ -26,6 +26,8 @@ function Feed() {
     setEditedCaptionModal(editedCaption);
     toggleOptionsModal();
     toggleEditCaptionModal();
+    closeOptionsModal();
+    closeCommentModal();
   };
 
   const handleSaveCaption = () => {
