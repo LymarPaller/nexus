@@ -97,6 +97,7 @@ function Comments() {
                 onRequestClose={closeDeleteModal}
                 className="modal-delete-comment"
                 overlayClassName="modal-overlay"
+                ariaHideApp={false}
             >
                 <div className="logout-header">
                     <h5>Delete Confirmation</h5>

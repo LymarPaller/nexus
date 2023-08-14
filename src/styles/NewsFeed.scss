@@ -9,8 +9,10 @@
     flex-direction: column;
     position: absolute;
     margin-top: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    @include tablet {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 .create-post {
@@ -24,6 +26,9 @@
     align-items: center;
     padding: 1rem;
 
+    @include tablet {
+    }
+
     .profile-pic {
         flex: 1;
         @include flexJcAc;
@@ -32,10 +37,9 @@
             height: 3rem;
             width: 3rem;
             border-radius: 50%;
-        
-            @include tablet {
-                margin-right: 2rem;
-            }
+        }
+        @include tablet {
+            margin-left: 1rem;
         }
     }
 
@@ -45,6 +49,11 @@
         justify-content: start;
         align-items: start;
         margin-left: 1rem;
+        @include tablet {
+            padding-right: 2rem;
+            padding-left: 2rem;
+            margin-left: 0;
+        }
 
         .input-feed{
             border-radius: 1rem;

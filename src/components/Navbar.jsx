@@ -255,6 +255,7 @@ function Navbar() {
             onRequestClose={closeModal}
             className="modal"
             overlayClassName="modal-overlay"
+            ariaHideApp={false}
           >
             <div className="logout-header">
               <h5>Logout Confirmation</h5>

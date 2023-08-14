@@ -7,6 +7,7 @@ import '../styles/normalize.scss';
 import { Link } from "react-router-dom";
 
 function HomePage () {
+
     return (
         <>
             <div className="home-page-main-container">

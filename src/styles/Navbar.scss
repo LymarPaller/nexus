@@ -282,29 +282,43 @@ body {
   flex-direction: column; 
   z-index: 2;
   @include flexJcAc;
+
 }
 
 .notifications-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 35rem;
   padding: 10px 20px;
   background-color:  var(--white);
   border-bottom: 1px solid var(--grey-300);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+
+  @include tablet {
+    width: 80%;
+  }
+  @include mobile {
+    width: 90%;
+  }
 }
 
 .notifications-content {
   flex: 1;
-  width: 40%;
+  width: 35rem;
   max-height: 80vh;
   overflow-y: auto;
   background-color:  var(--white);
   padding: 20px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  @include tablet {
+    width: 80%;
+  }
+  @include mobile {
+    width: 90%;
+  }
 }
 
 .notification-item {
@@ -322,6 +336,7 @@ body {
 
 .notification-text {
   flex: 1;
+  margin-left: 1rem;
 }
 
 .notification-name {

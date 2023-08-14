@@ -47,6 +47,7 @@ function NewsFeed() {
                 onRequestClose={closeModal}
                 className="new-create-post"
                 overlayClassName="modal-overlay"
+                ariaHideApp={false}
             >
                 <div className='create-post-header-container'>
                     <h4 className='create-post-header'>Create Post</h4>

@@ -137,8 +137,8 @@
 
 .save-caption-button {
     @extend .add-btn;
-    margin-top: .9rem;
-    margin-left: 0;
+    width: 5rem;
+    height: 2rem;
 }
 
 .caption-textarea {
@@ -146,10 +146,6 @@
     resize: none;
     padding-left: 1rem;
     padding-top: 1rem;
-}
-
-.option {
-    margin: .7rem;
 }
 
 .logout-xmark-options {

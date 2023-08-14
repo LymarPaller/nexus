@@ -19,14 +19,90 @@
 }
 
 .modal-content {
-  background-color: white;
+  width: auto;
+  height: auto;
+  background-color: var(--white);
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  .modal-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logout-xmark-options{
+    right: 1rem;
+    top: .25rem;
+  }
+
+  .modal-body-edit-caption{
+    display: flex;
+    width: 45vw;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    @include tablet {
+      width: 80vw;
+    }
+
+  }
+
+  //option main modal
+  
+  .modal-body-edit-comment {
+    display: flex;
+    width: 20vw;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+
+    
+    @include tablet {
+      width: 50vw;
+    }
+
+    .options-list{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .option{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        span{
+          margin-left: .5rem;
+          margin-right: .5rem;
+        }
+      }
+    }
+
+  }
+
+  
+
+  textarea {
+    margin-top: 1rem;
+    width: 80%;
+    height: 3rem;
+    border-radius: 1rem;
+    resize: none;
+    padding-left: 1rem;
+    outline: none;
+  }
 
   h2 {
-    margin-bottom: 0.5rem;
     font-size: 1.5rem;
     text-align: start;
   }
@@ -52,49 +128,10 @@
 
 .delete-button {
   @extend .cancel-button;
-  background-color: var(--accent);yar
-
-
-
-// MODAL COMMENT
-
-.comment-modal-container {
-  width: 50vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color:  var(--white);
-
-  .modal-body {
-    width: 100%;
-
-    textarea {
-      margin-top: 1rem;
-      width: 80%;
-      height: 3rem;
-      border-radius: 1rem;
-      resize: none;
-      padding-left: 1rem;
-      outline: none;
-    }
-
-  }
-
-  .modal-footer {
-    margin-top: 1rem;
-
-    button {
-      background-color: var(--primary-500);
-      border: none;
-      border-radius: 1rem;
-      padding: .5rem 1rem;
-      color:  var(--white);
-    }
-  }
-
+  background-color: var(--accent);
 }
+
+
 
 // delete comment modal
 
@@ -129,21 +166,6 @@
 }
 
 
-.modal-close-button {
-  background-color: transparent;
-  position: absolute;
-  right: 1.25rem;
-  top: 1.15rem;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  svg {
-    color: var(--black);
-  }
-
-}
-
 .modal-close-button:focus {
   outline: none;
 }
@@ -151,6 +173,4 @@
 .logout-header {
   display: flex;
   flex: auto;
-}
-
 }

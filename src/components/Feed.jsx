@@ -89,13 +89,14 @@ function Feed() {
         contentLabel="Options"
         className="modal-overlay"
         overlayClassName="modal-container"
+        ariaHideApp={false}
       >
         <div className="modal-content">
           <div className="modal-header-options">
             <h2>Options</h2>
             <FontAwesomeIcon icon={faTimes} className="logout-xmark-options" onClick={closeOptionsModal} />
           </div>
-          <div className="modal-body">
+          <div className="modal-body-edit-comment">
             <div className="options-list">
               <div className="option" onClick={handleEditCaption}>
                 <span className="option-icon">
@@ -125,13 +126,14 @@ function Feed() {
         contentLabel="Edit Caption"
         className="modal-overlay"
         overlayClassName="modal-container"
+        ariaHideApp={false}
       >
         <div className="modal-content">
           <div className="modal-header">
             <h2>Edit Caption</h2>
             <FontAwesomeIcon icon={faTimes} className="logout-xmark-options" onClick={closeEditCaptionModal} />
           </div>
-          <div className="modal-body">
+          <div className="modal-body-edit-caption">
             <textarea
               value={editedCaptionModal}
               onChange={(e) => setEditedCaptionModal(e.target.value)}
@@ -158,6 +160,7 @@ function Feed() {
         contentLabel="Delete Post"
         className="modal-overlay"
         overlayClassName="modal-container"
+        ariaHideApp={false}
       >
         <div className="modal-content">
           <div className="modal-header">
@@ -184,6 +187,7 @@ function Feed() {
         contentLabel="Add Comment"
         className="modal-overlay"
         overlayClassName="modal-container"
+        ariaHideApp={false}
       >
         <div className="modal-content comment-modal-container">
           <div className="modal-header">

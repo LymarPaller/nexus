@@ -12,6 +12,11 @@
   width: 300px;
   text-align: center;
 
+  @include tablet {
+    top: 1rem;
+    right: 2rem;
+  }
+
   h5 {
     padding: .5rem;
   }
