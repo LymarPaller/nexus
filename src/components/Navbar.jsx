@@ -16,6 +16,10 @@ import {
   faRightFromBracket,
   faMoon,
   faMagnifyingGlass,
+  faHamburger,
+  faBars,
+  faCircleXmark,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
 import Home from "../assets/icons/housesolid.svg";
@@ -33,17 +37,18 @@ function Navbar() {
   const [darkMode, setDarkMode] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showNavbarAside, setShowNavbarAside] = useState(false);
   const navigate = useNavigate();
   // const modalDarkMode = document.getElementsByClassName('modal')
+  const navbarAsideNav = document.querySelector(".navbar-right");
+  const navbarAsideLeft = document.querySelector(".aside-left-container");
 
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
     if (darkMode) {
       document.body.classList.add("dark-mode");
-      // modalDarkMode.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
-      // modalDarkMode.classList.remove("dark-mode");
     }
   };
 
@@ -55,6 +60,17 @@ function Navbar() {
     setShowLogoutModal(false);
     navigate("/login");
   };
+
+  let handleNavbarToggle = () => {
+    setShowNavbarAside(!showNavbarAside)
+    if (showNavbarAside) {
+      navbarAsideNav.classList.add("navbar-aside-toggled");
+      navbarAsideLeft.classList.add("navbar-aside-toggled");
+    } else if (showNavbarAside) {
+      navbarAsideNav.classList.remove("navbar-aside-toggled");
+      navbarAsideLeft.classList.remove("navbar-aside-toggled");
+    } 
+  }
 
   const notificationData = [
     {
@@ -176,8 +192,12 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar">
-        <div className="navbar-left">
+
+        <div className="navbar-logo-container-nexus">
           <img src={Logo} alt="Logo" className="navbar-logo" />
+        </div>
+        
+        <div className="navbar-left">
           <div className="main-navbar-mobile">
             <div className="icon-wrapper">
               <Link to="/" className="icon-container">
@@ -200,6 +220,7 @@ function Navbar() {
             </div>
           </div>
         </div>
+
         <div className="navbar-center">
           <div className="search-wrapper">
             <input type="text" className="navbar-search-bar" />
@@ -207,8 +228,14 @@ function Navbar() {
               <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search"/>
             </Link>
           </div>
+          <div className="toggler-container">
+            <div className="icon-container toggler-navbar" onClick={handleNavbarToggle}>
+              <FontAwesomeIcon icon={faBars} className="navbar-icon"/>
+            </div>
+          </div>
         </div>
-        <div className="navbar-right">
+
+        <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
             <Link className="icon-container" onClick={handleDarkModeToggle} >
               <FontAwesomeIcon icon={faMoon} className="navbar-icon" title="Darkmode"/>
@@ -217,6 +244,11 @@ function Navbar() {
           <div className="icon-wrapper">
             <Link className="icon-container">
               <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button" title="Logout"/>
+            </Link>
+          </div>
+          <div className="icon-wrapper x-toggler-aside" onClick={handleNavbarToggle}>
+            <Link className="icon-container">
+              <FontAwesomeIcon icon={faXmark}/>
             </Link>
           </div>
             

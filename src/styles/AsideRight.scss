@@ -11,7 +11,15 @@
     padding-top: 6rem;
 
     @include tablet {
-        display: none;
+        width: 20rem;
+        height: auto;
+        margin-top: 30rem;
+        z-index: 2;
+        position: fixed;
+        left: auto;
+        right: 0;
+        padding-top: 0;
+        background-color: var(--white);
     }
 }
 
@@ -33,9 +41,24 @@
     background-color: var(--white);
     padding: 1rem;
 
+    @include tablet {
+        display: none;
+    }
+    
+
     h5 {
         font-size: 1rem;
         margin-bottom: 10px;
+    }
+}
+
+.online-container {
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        width: 20rem;
+        height: 30vh;
+        overflow-y: scroll;
     }
 }
 

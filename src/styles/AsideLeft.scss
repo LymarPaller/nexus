@@ -10,7 +10,15 @@
     padding-top: 6rem;
     
     @include tablet {
-        display: none;
+        width: 20rem;
+        height: 50%;
+        margin-top: 10rem;
+        z-index: 2;
+        position: fixed;
+        left: auto;
+        right: -20rem;
+        padding-top: 0;
+        background-color: var(--white);
     }
   
     .profile-info {

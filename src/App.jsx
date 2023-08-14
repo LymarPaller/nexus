@@ -7,41 +7,45 @@ import ProfilePage from "./pages/ProfilePage";
 import './styles/main.scss';
 import './styles/normalize.scss';
 import Footer from "./components/Footer";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
 
 
   return (
     <>
-    <BrowserRouter>
-        <Routes>
-          <Route path="/" element={
-          <>
-            <HomePage />
-            <Navbar />
-          </>
-          } />
-          <Route path="/profile" element={
-          <>
-            <ProfilePage />
-            <Navbar />
-          </>
-          } />
-          <Route path="/login" element={
-          <>
-            <LoginPage />
-            <Footer />
-          </>
-          } />
-          <Route path="/register" element={
-          <>
-            <RegisterPage />
-            <Footer />
-          </>
-          } />
-        </Routes>
+    <Provider store={store}>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={
+            <>
+              <HomePage />
+              <Navbar />
+            </>
+            } />
+            <Route path="/profile" element={
+            <>
+              <ProfilePage />
+              <Navbar />
+            </>
+            } />
+            <Route path="/login" element={
+            <>
+              <LoginPage />
+              <Footer />
+            </>
+            } />
+            <Route path="/register" element={
+            <>
+              <RegisterPage />
+              <Footer />
+            </>
+            } />
+          </Routes>
 
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
 
     </>
   )
