@@ -34,6 +34,8 @@ function Navbar() {
   const [showNotifications, setShowNotifications] = useState(false);
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
+  const navbarAsideNav = document.querySelector(".navbar-right");
+  const [showNavbarAside, setShowNavbarAside] = useState(false);
    
 
   // Handler for toggling dark mode
@@ -59,10 +61,8 @@ function Navbar() {
     setShowNavbarAside(!showNavbarAside)
     if (showNavbarAside) {
       navbarAsideNav.classList.add("navbar-aside-toggled");
-      navbarAsideLeft.classList.add("navbar-aside-toggled");
     } else if (showNavbarAside) {
       navbarAsideNav.classList.remove("navbar-aside-toggled");
-      navbarAsideLeft.classList.remove("navbar-aside-toggled");
     } 
   }
 

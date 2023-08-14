@@ -7,15 +7,12 @@ import ProfilePage from "./pages/ProfilePage";
 import './styles/main.scss';
 import './styles/normalize.scss';
 import Footer from "./components/Footer";
-import { Provider } from "react-redux";
-import store from "./store/store";
 
 function App() {
 
 
   return (
     <>
-    <Provider store={store}>
       <BrowserRouter>
           <Routes>
             <Route path="/" element={
@@ -45,7 +42,6 @@ function App() {
           </Routes>
 
       </BrowserRouter>
-    </Provider>
 
     </>
   )
