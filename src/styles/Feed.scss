@@ -133,3 +133,17 @@
         }
     }
 }
+
+
+.save-caption-button {
+    @extend .add-btn;
+    margin-top: .9rem;
+  margin-left: 0;
+}
+
+.caption-textarea {
+        border-radius: 1rem;
+        resize: none;
+        padding-left: 1rem;
+        padding-top: 1rem;
+}

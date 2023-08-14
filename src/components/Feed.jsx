@@ -91,20 +91,21 @@ function Feed() {
         <div className="modal-content">
           <div className="modal-header">
             <h2>Options</h2>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeOptionsModal}/>
           </div>
           <div className="modal-body">
             <div className="options-list">
-              <div className="option" onClick={handleDeletePost}>
-                <span className="option-icon">
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                </span>
-                <span className="option-label">Delete Post</span>
-              </div>
               <div className="option" onClick={handleEditCaption}>
                 <span className="option-icon">
                   <FontAwesomeIcon icon={faEdit} />
                 </span>
                 <span className="option-label">Edit Caption</span>
+              </div>
+              <div className="option" onClick={handleDeletePost}>
+                <span className="option-icon">
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </span>
+                <span className="option-label">Delete Post</span>
               </div>
             </div>
           </div>
@@ -126,6 +127,7 @@ function Feed() {
         <div className="modal-content">
           <div className="modal-header">
             <h2>Edit Caption</h2>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark" onClick={closeEditCaptionModal}/>
           </div>
           <div className="modal-body">
             <textarea
@@ -133,9 +135,11 @@ function Feed() {
               onChange={(e) => setEditedCaptionModal(e.target.value)}
               className="caption-textarea"
             />
+            <div>
             <button onClick={handleSaveCaption} className="save-caption-button">
               Save
             </button>
+            </div>
           </div>
           <div className="modal-footer">
             <button onClick={toggleEditCaptionModal} className="cancel-button">
