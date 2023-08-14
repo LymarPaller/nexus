@@ -74,7 +74,7 @@
 }
 
 .login-container {
-  background-color: $white;
+  background-color:  var(--white);
   min-width: 16rem;
   height: 52vh;
   border-radius: 20px;
@@ -85,7 +85,7 @@
   h1 {
     font-family: $headingFont;
     font-weight: 700;
-    color: $primary-500;
+    color: var(--primary-500);
     text-align: center;
     letter-spacing: -2px;
     font-stretch: ultra-condensed;
@@ -120,7 +120,7 @@
     input[type="password"] {
       width: 100%;
       border-radius: $borderRadius;
-      border: 1px solid $grey-700;
+      border: 1px solid var(--grey-700);
     }
   }
 
@@ -136,7 +136,7 @@
   }
 
   .eye-icon {
-    color: $grey-600;
+    color: var(--grey-600);
     font-size: .9rem;
   }
 }
@@ -145,12 +145,12 @@
   width: max-content;
   margin-top: 1rem;
   height: 2rem;
-  border: 1px solid $grey-700;
+  border: 1px solid var(--grey-700);
   border-radius: $borderRadius;
 }
 
 input::placeholder {
-  color: $grey-600;
+  color: var(--grey-600);
   font-weight: 400;
   padding: 10px;
 }
@@ -169,23 +169,23 @@ input::placeholder {
   border: none;
   border-radius: 13px;
   padding: .5rem 3rem;
-  color: $white;
-  background-color: $primary-500;
+  color:  var(--white);
+  background-color: var(--primary-500);
 }
 
 .create-new-account {
   margin: .5rem;
-  color: $primary-500;
+  color: var(--primary-500);
   font-weight: bold;
 }
 
 input::placeholder {
-  color: $grey-600;
+  color: var(--grey-600);
   font-weight: 400;
 }
 
 .create-new-account {
   margin: .5rem;
-  color: $primary-500;
+  color: var(--primary-500);
   font-weight: 500;
 }

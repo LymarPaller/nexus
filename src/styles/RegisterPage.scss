@@ -1,7 +1,7 @@
 @import "main";
 
 .signup-login-container {
-  background-color: $white;
+  background-color:  var(--white);
   min-width: 16rem;
   height: max-content;
   border-radius: 20px;
@@ -19,7 +19,7 @@
 .signup-login-container > h1 {
   font-family: $headingFont;
   font-weight: 700;
-  color: $primary-500;
+  color: var(--primary-500);
   text-align: center;
   letter-spacing: -2px;
   margin-top: 2rem;
@@ -40,8 +40,8 @@
       width: 10rem;
       border: none;
       border-radius: 13px;
-      color: $white;
-      background-color: $primary-500;
+      color:  var(--white);
+      background-color: var(--primary-500);
     }
   }
 }
@@ -59,8 +59,8 @@
       width: 10rem;
       border: none;
       border-radius: 13px;
-      color: $white;
-      background-color: $primary-500;
+      color:  var(--white);
+      background-color: var(--primary-500);
     }
 
     .register-back-button {

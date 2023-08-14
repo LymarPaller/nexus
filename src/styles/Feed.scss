@@ -5,7 +5,7 @@
     height: 70vh;
     margin-top: 1.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    background-color: $white;
+    background-color:  var(--white);
     position: relative;
 
     @include tablet {
@@ -54,7 +54,7 @@
 
             p {
                 margin: 0;
-                color: $grey-800;
+                color: var(--grey-800);
                 font-size: .8rem;
                 margin-top: .1rem;
             }
@@ -67,7 +67,7 @@
         transition: color 0.3s;
 
         &:hover {
-            color: $accent;
+            color: var(--primary-700);
         }
     }
 
@@ -105,7 +105,7 @@
 
         button {
             margin: 0;
-            background-color: $primary-500;
+            background-color: var(--primary-500);
             color: white;
             padding-top: 0.4rem;
             padding-bottom: 0.4rem;

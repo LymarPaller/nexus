@@ -5,8 +5,8 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  background-color: $white;
-  color: $grey-800;
+  background-color:  var(--white);
+  color: var(--grey-800);
   padding: 25px;
 
   @include tablet {
@@ -55,7 +55,7 @@
   .klane,
   .email-link,
   .footer-column > div:not(.footer-subrow) {
-    color: $grey-800;
+    color: var(--grey-800);
     list-style: none;
     position: relative;
     display: inline-block;
@@ -63,7 +63,7 @@
     transition: color 0.3s ease;
 
     &:hover {
-      color: $primary-600;
+      color: var(--primary-600);
     }
 
     &::before {
@@ -73,7 +73,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background-color: $primary-600;
+      background-color: var(--primary-600);
       transition: width 0.3s ease;
     }
 
@@ -83,6 +83,6 @@
   }
 
   .footer-column > div:not(.footer-subrow) > a {
-    color: $primary-600;
+    color: var(--primary-600);
   }
 }

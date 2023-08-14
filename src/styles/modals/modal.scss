@@ -33,7 +33,7 @@
 
   p {
     margin-bottom: 1rem;
-    color: $grey-800;
+    color: var(--grey-800);
   }
 
   .cancel-button {
@@ -44,14 +44,14 @@
     font-size: 0.9rem;
     margin-right: 0.5rem;
     transition: background-color 0.3s, color 0.3s;
-    background-color: $primary-500;
-    color: $white;
+    background-color: var(--primary-500);
+    color:  var(--white);
   }
 }
 
 .delete-button {
   @extend .cancel-button;
-  background-color: $accent;
+  background-color: var(--primary-700);
 }
 
 
@@ -65,7 +65,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: $white;
+  background-color:  var(--white);
 
   .modal-body {
     width: 100%;
@@ -86,11 +86,11 @@
     margin-top: 1rem;
 
     button {
-      background-color: $primary-500;
+      background-color: var(--primary-500);
       border: none;
       border-radius: 1rem;
       padding: .5rem 1rem;
-      color: $white;
+      color:  var(--white);
     }
   }
 
@@ -103,7 +103,7 @@
   // top: 50%;
   // right: 50%;
   // transform: translate(-50% -50%);
-  background-color: $white;
+  background-color:  var(--white);
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
