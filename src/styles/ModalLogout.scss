@@ -46,6 +46,10 @@
   outline: none;
   padding: 0;
 
+  svg {
+    color: var(--black);
+  }
+
   &:focus {
     outline: none;
   }

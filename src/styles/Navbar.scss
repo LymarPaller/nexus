@@ -54,15 +54,29 @@ body {
       margin-left: 16px;
     }
 
+    .icon-wrapper{
+      @include tablet {
+      }
+    }
+
+    .navbar-slider{
+      display: none;
+      @include tablet {
+        display: flex;
+      }
+      
+    }
+
     @include tablet {
       position: absolute;
       display: flex;
-      flex-direction: column;
+      justify-content: space-evenly;
       height: 10rem;
-      width: 20rem;
+      width: 100%;
       background-color: var(--white);
-      right: -20rem;
+      right: -100%;
       top: 0;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -180,11 +194,23 @@ body {
   .x-toggler-aside {
     display: none;
     position: absolute;
-    right: .5rem;
-    top: 0.5rem;
+    right: 3%;
+    top: 15.5%;
+
+    svg{
+      color: var(--white);
+    }
     
     @include tablet {
       display: flex;
+      right: 3.60%;
+      top: 15.5%;
+    }
+    
+    @include mobile {
+      display: flex;
+      right: 3%;
+      top: 15.5%;
     }
   }
 
@@ -313,6 +339,10 @@ body {
   cursor: pointer;
   outline: none;
   padding: 0;
+
+  svg {
+    color: var(--black);
+  }
 }
 
 .close-button:focus {

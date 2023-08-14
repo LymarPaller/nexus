@@ -11,45 +11,33 @@
     padding-top: 6rem;
 
     @include tablet {
+        margin-top: 1rem;
         display: none;
+        position: relative;
+        height: auto;
+        padding-top: 0;
     }
 }
 
 .button-add-remove  {
     @include flexJs ;
     flex-wrap: wrap;
-
-    @include tablet {
-        display: none;
-    }
 }
 
 .suggestion-container,
 .online-container {
-    min-width: 20vw;
     margin: 1rem 0.3rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     background-color:  var(--white);
     padding: 1rem;
 
     @include tablet {
-        display: none;
+        min-width: 50vw;
     }
-    
 
     h5 {
         font-size: 1rem;
         margin-bottom: 10px;
-    }
-}
-
-.online-container {
-    @include tablet {
-        display: flex;
-        flex-direction: column;
-        width: 20rem;
-        height: 30vh;
-        overflow-y: scroll;
     }
 }
 
@@ -59,6 +47,9 @@
     align-items: center;
     margin-bottom: 1rem;
     min-width: 20vw;
+    @include tablet {
+        min-width: 50vw;
+    }
 }
 
 .aside-right-image {

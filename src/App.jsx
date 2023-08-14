@@ -7,6 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import './styles/main.scss';
 import './styles/normalize.scss';
 import Footer from "./components/Footer";
+import AsideMenu from "./pages/AsideMenu";
 
 function App() {
 
@@ -37,6 +38,12 @@ function App() {
             <>
               <RegisterPage />
               <Footer />
+            </>
+            } />
+            <Route path="/aside" element={
+            <>
+              <AsideMenu />
+              <Navbar />
             </>
             } />
           </Routes>

@@ -20,6 +20,7 @@ import {
   faBars,
   faCircleXmark,
   faXmark,
+  faSliders,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
 import Profile from "../assets/icons/profile.svg";
@@ -230,6 +231,11 @@ function Navbar() {
           <div className="icon-wrapper">
             <Link className="icon-container" onClick={handleDarkModeToggle} >
               <FontAwesomeIcon icon={faMoon} className="navbar-icon" title="Darkmode"/>
+            </Link>
+          </div>
+          <div className="icon-wrapper  navbar-slider">
+            <Link className="icon-container" to='/aside'>
+              <FontAwesomeIcon icon={faSliders} className="navbar-icon"/>
             </Link>
           </div>
           <div className="icon-wrapper">

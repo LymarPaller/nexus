@@ -9,10 +9,12 @@
     flex-direction: column;
     position: absolute;
     margin-top: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .create-post {
-    width: 50vw;
+    min-width: 50%;
     height: 15vh;
     margin-top: 2rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
@@ -20,6 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem;
 
     .profile-pic {
         flex: 1;
@@ -37,14 +40,15 @@
     }
 
     .post-text-area-container{
-        width: 90%;
+        width: 100%;
         display: flex;
         justify-content: start;
         align-items: start;
+        margin-left: 1rem;
 
         .input-feed{
             border-radius: 1rem;
-            width: 97%;
+            width: 100%;
             resize: none;
             padding-left: 1rem;
             padding-top: 1rem;

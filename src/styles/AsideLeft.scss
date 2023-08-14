@@ -8,9 +8,17 @@
     position: fixed;
     left: 0;
     padding-top: 6rem;
+    flex: 1;
     
     @include tablet {
+        width: 100%;
+        margin-top: 5rem;
         display: none;
+        position: relative;
+        height: auto;
+        left: auto;
+        background-color:  var(--grey-200);
+        box-shadow: none;
     }
   
     .profile-info {
@@ -19,6 +27,14 @@
         align-items: flex-start;
         padding: 20px;
         z-index: 4;
+
+        @include tablet {
+            width: 55vw;
+            padding: 1rem;
+            z-index: 0;
+            background-color:  var(--white);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        }
   
         .profile,
         .friends-section,
@@ -28,6 +44,10 @@
             align-items: center;
             padding: 8px;
             z-index: 4;
+            
+            @include tablet {
+                padding-left: 0;
+            }
   
             h3 {
                 margin: 0;

@@ -86,6 +86,13 @@
     flex-direction: row;
     margin-top: 2rem;
     align-items: center;
+    justify-content: center;
+
+    span{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
 
     &-paragraph {
         margin-right: 3rem;

@@ -80,7 +80,7 @@ body {
   --black: #222;
   --white: #fff;
 
-  background-color: var(--white);
+  background-color: var(--grey-200);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   line-height: 1;
@@ -351,7 +351,7 @@ ul {
   padding: 0.15rem 0.8rem;
   border: none;
   border-radius: 4px;
-  color: var(--white);
+  color: white;
   cursor: pointer;
   font-size: 0.8rem;
   text-align: center;    
@@ -387,4 +387,8 @@ ul {
   // var(--grey-900): #fff;
   --black: #fff;
   --white: #222;
+  --grey-200: #424242;
+  --grey-400: #424242;
+  --grey-600: #424242;
+  --grey-800: #acacac;
 }

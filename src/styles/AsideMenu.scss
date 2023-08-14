@@ -1,0 +1,25 @@
+@import 'main';
+
+.aside-menu-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .aside-left-container{
+        @include tablet {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+    }
+
+    .aside-right-container{
+        
+        @include tablet {
+            display: flex;
+            justify-content: center;
+
+        }
+    }
+}
