@@ -11,8 +11,8 @@ function HomePage () {
     return (
         <>
             <div className="home-page-main-container">
-                <AsideLeft/>
                 <NewsFeed />
+                <AsideLeft/>
                 <AsideRight />
             </div>
         </>
