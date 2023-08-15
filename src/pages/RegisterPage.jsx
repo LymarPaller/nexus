@@ -4,7 +4,7 @@ import Logo from '../assets/nexus-logo-blue.svg';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer.jsx';
+
 
 function RegisterPage() {
     const [username, setUsername] = useState('');
