@@ -21,6 +21,7 @@ import {
   faCircleXmark,
   faXmark,
   faSliders,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
 import Profile from "../assets/icons/profile.svg";
@@ -36,6 +37,8 @@ function Navbar() {
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
   const navbarAsideNav = document.querySelector(".navbar-right");
+  const navbarMoon = document.querySelector(".moon-toggle");
+  const navbarSun = document.querySelector(".sun-toggle");
   const [showNavbarAside, setShowNavbarAside] = useState(false);
    
 
@@ -44,8 +47,10 @@ function Navbar() {
     setDarkMode(!darkMode);
     if (darkMode) {
       document.body.classList.add("dark-mode");
+      navbarMoon.classList.add("hide-toggle")
     } else {
       document.body.classList.remove("dark-mode");
+      navbarMoon.classList.remove("hide-toggle")
     }
   };
 
@@ -230,7 +235,8 @@ function Navbar() {
         <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
             <Link className="icon-container" onClick={handleDarkModeToggle} >
-              <FontAwesomeIcon icon={faMoon} className="navbar-icon" title="Darkmode"/>
+              <FontAwesomeIcon icon={faMoon} className="navbar-icon moon-toggle" title="Darkmode"/>
+              <FontAwesomeIcon icon={faSun} className="navbar-icon sun-toggle" title="Darkmode"/>
             </Link>
           </div>
           <div className="icon-wrapper  navbar-slider">

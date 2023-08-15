@@ -385,10 +385,26 @@ ul {
   // var(--grey-600): #424242;
   // var(--grey-800): #acacac;
   // var(--grey-900): #fff;
+
   --black: #fff;
   --white: #222;
   --grey-200: #424242;
   --grey-400: #424242;
   --grey-600: #424242;
   --grey-800: #acacac;
+}
+
+.moon-toggle {
+  display: flex;
+}
+
+.sun-toggle {
+  display: flex;
+}
+
+.hide-toggle{
+  display: none;
+}
+.show-toggle{
+  display: flex;
 }
