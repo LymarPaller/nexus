@@ -19,6 +19,7 @@
         left: auto;
         background-color:  var(--grey-200);
         box-shadow: none;
+        flex-direction: column;
     }
   
     .profile-info {
@@ -27,14 +28,6 @@
         align-items: flex-start;
         padding: 20px;
         z-index: 4;
-
-        @include tablet {
-            width: 55vw;
-            padding: 1rem;
-            z-index: 0;
-            background-color:  var(--white);
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-        }
   
         .profile,
         .friends-section,
