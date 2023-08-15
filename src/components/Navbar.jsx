@@ -37,8 +37,8 @@ function Navbar() {
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
   const navbarAsideNav = document.querySelector(".navbar-right");
-  const navbarMoon = document.querySelector(".moon-toggle");
-  const navbarSun = document.querySelector(".sun-toggle");
+   
+  const [moonIcon, setMoonIcon] = useState(faMoon);
   const [showNavbarAside, setShowNavbarAside] = useState(false);
    
 
@@ -47,10 +47,10 @@ function Navbar() {
     setDarkMode(!darkMode);
     if (darkMode) {
       document.body.classList.add("dark-mode");
-      navbarMoon.classList.add("hide-toggle")
+      setMoonIcon(faSun);
     } else {
       document.body.classList.remove("dark-mode");
-      navbarMoon.classList.remove("hide-toggle")
+      setMoonIcon(faMoon);
     }
   };
 
@@ -235,8 +235,7 @@ function Navbar() {
         <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
             <Link className="icon-container" onClick={handleDarkModeToggle} >
-              <FontAwesomeIcon icon={faMoon} className="navbar-icon moon-toggle" title="Darkmode"/>
-              <FontAwesomeIcon icon={faSun} className="navbar-icon sun-toggle" title="Darkmode"/>
+            <FontAwesomeIcon icon={moonIcon} className="navbar-icon" title="Darkmode"/>
             </Link>
           </div>
           <div className="icon-wrapper  navbar-slider">
