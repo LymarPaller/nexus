@@ -4,7 +4,7 @@ import '../styles/LoginPage.scss';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
-import Footer from '../components/Footer.jsx';
+
 
 function LoginPage() {
     const [username, setUsername] = useState('');
