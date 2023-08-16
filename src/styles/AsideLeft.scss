@@ -45,7 +45,8 @@
         .saved-section,
         .feeds-section,
         .weather-section,
-        .currency-section {
+        .currency-section
+         {
             display: flex;
             align-items: center;
             padding: 8px;
@@ -89,3 +90,22 @@
 }
 
 
+.section {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    z-index: 4;
+
+    @include tablet {
+        padding-left: 0;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    a {
+        color: var(--black);
+    }
+}
