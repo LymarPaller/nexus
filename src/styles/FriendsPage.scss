@@ -6,14 +6,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
 
-    h1{
+
+    h1 {
         flex-basis: 100%;
         margin-left: 1rem;
     }
 
-    .friend-container{
+    .friend-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,7 +21,8 @@
         margin-top: 2rem;
         width: 90vw;
 
-        .online-friends{
+
+        .online-friends {
             display: flex;
             justify-content: start;
             align-items: center;
@@ -31,7 +32,13 @@
             margin: 1rem;
             background-color: var(--white);
             box-shadow: $shadow-4;
+            border-radius: .5rem;
+
         }
     }
 
+}
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.1);
 }
