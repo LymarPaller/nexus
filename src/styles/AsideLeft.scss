@@ -4,12 +4,12 @@
     min-width: 20vw;
     height: 100vh;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    background-color:  var(--white);
+    background-color: var(--white);
     position: fixed;
     left: 0;
     padding-top: 6rem;
     flex: 1;
-    
+
     @include tablet {
         width: 100%;
         margin-top: 5rem;
@@ -17,10 +17,10 @@
         position: relative;
         height: auto;
         left: auto;
-        background-color:  var(--grey-200);
+        background-color: var(--grey-200);
         box-shadow: none;
     }
-  
+
     .profile-info {
         display: flex;
         flex-direction: column;
@@ -32,35 +32,40 @@
             width: 55vw;
             padding: 1rem;
             z-index: 0;
-            background-color:  var(--white);
+            background-color: var(--white);
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
         }
-  
+
         .profile,
         .friends-section,
         .groups-section,
-        .memories-section {
+        .memories-section,
+        .saved-section,
+        .feeds-section,
+        .weather-section,
+        .currency-section {
             display: flex;
             align-items: center;
             padding: 8px;
             z-index: 4;
-            
+
             @include tablet {
                 padding-left: 0;
             }
-  
+
             h3 {
                 margin: 0;
                 font-size: 1rem;
             }
 
             a {
-                color:  var(--black);
+                color: var(--black);
             }
         }
-  
+
         .profile-image {
             z-index: 4;
+
             img {
                 width: 43px;
                 height: 43px;
@@ -79,4 +84,9 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 2;
+}
+
+.currency-converter-section h3 {
+    margin: 0;
+    font-size: 0.9rem; 
 }

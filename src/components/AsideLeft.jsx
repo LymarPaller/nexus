@@ -5,12 +5,21 @@ import Profile from '../assets/wanda.jpg';
 import FriendsIcon from '../assets/icons/friends.png';
 import GroupsIcon from '../assets/icons/groups.png';
 import MemoriesIcon from '../assets/icons/memories.png';
+import SavedIcon from '../assets/icons/saved.png'
+import FeedsIcon from '../assets/icons/feeds.png'
+import CurrencyIcon from '../assets/icons/currency.png'
+import WeatherIcon from '../assets/icons/weather.png'
 
 function AsideLeft() {
     const sections = [
         { title: 'Friends', icon: FriendsIcon },
         { title: 'Groups', icon: GroupsIcon },
-        { title: 'Memories', icon: MemoriesIcon }
+        { title: 'Memories', icon: MemoriesIcon },
+        { title: 'Saved', icon: SavedIcon },
+        { title: 'Feeds', icon: FeedsIcon },
+        { title: 'Weather', icon: WeatherIcon},
+        { title: 'Currency', icon: CurrencyIcon}
+        
     ];
 
     return (

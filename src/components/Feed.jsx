@@ -6,7 +6,7 @@ import Comment from '../assets/icons/commenticon.svg';
 import Like from '../assets/icons/likeicon.svg';
 import Comments from './Comments';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH, faTimes, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faTimes, faTrashAlt, faEdit, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 
@@ -15,6 +15,7 @@ function Feed() {
   const { isOpen: showDeleteModal, openModal: toggleDeleteModal, closeModal: closeDeleteModal } = useModal();
   const { isOpen: showCommentModal, openModal: toggleCommentModal, closeModal: closeCommentModal } = useModal();
   const { isOpen: showEditCaptionModal, openModal: toggleEditCaptionModal, closeModal: closeEditCaptionModal } = useModal();
+  const { isOpen: showSaveModal, openModal: toggleSaveModal, closeModal: closeSaveModal } = useModal();
   const [editedCaption, setEditedCaption] = useState('Pupparazzi caught me posing 📸');
   const [editedCaptionModal, setEditedCaptionModal] = useState(editedCaption);
 
@@ -38,6 +39,14 @@ function Feed() {
     closeCommentModal();
     closeEditCaptionModal();
   };
+
+  const handleSavePost = () => {
+    toggleOptionsModal();
+    toggleSaveModal(); 
+    closeOptionsModal();
+    closeCommentModal();
+    closeEditCaptionModal();
+  }; 
 
   return (
     <div className="feed-container">
@@ -110,6 +119,12 @@ function Feed() {
                 </span>
                 <span className="option-label">Delete Post</span>
               </div>
+              <div className="option" onClick={handleSavePost}>
+                <span className="option-icon">
+                  <FontAwesomeIcon icon={faBookmark} />
+                </span>
+                <span className="option-label">Save Post</span>
+              </div>
             </div>
           </div>
           <div className="modal-footer">
@@ -180,6 +195,34 @@ function Feed() {
           </div>
         </div>
       </Modal>
+
+      <Modal
+        isOpen={showSaveModal}
+        onRequestClose={closeSaveModal}
+        contentLabel="Save Post"
+        className="modal-overlay"
+        overlayClassName="modal-container"
+        ariaHideApp={false}
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Save Post</h2>
+            <FontAwesomeIcon icon={faTimes} className="logout-xmark-options" onClick={closeSaveModal} />
+          </div>
+          <div className="modal-body">
+            <p>Add this to your saved items?</p>
+          </div>
+          <div className="modal-footer">
+            <button onClick={closeSaveModal} className="add-btn">
+              Cancel
+            </button>
+            <button onClick={handleSavePost} className="delete-button">
+              Save
+            </button>
+          </div>
+        </div>
+      </Modal>
+
 
       <Modal
         isOpen={showCommentModal}
