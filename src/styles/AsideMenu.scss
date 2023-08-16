@@ -2,24 +2,59 @@
 
 .aside-menu-container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
 
     .aside-left-container{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        left: auto;
+        background-color: transparent;
+
         @include tablet {
             display: flex;
             justify-content: center;
             align-items: center;
 
         }
+
+        .profile-info{
+            margin-top: 1rem;
+            min-width: 23%;
+            height: auto;
+            padding: 1rem;
+            z-index: 0;
+            background-color:  var(--white);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+
+            @include tablet {
+                min-width: 55vw;
+                padding: 1rem;
+                height: auto;
+            }
+            @include mobile {
+                min-width: 60%;
+            }
+        }
     }
 
     .aside-right-container{
-        
+        display: flex;
+        right: auto;
+        position: relative;
+        margin-top: 1rem;
+        padding-top: 0;
+        align-items: center;
+
         @include tablet {
+            margin-top: 1rem;
             display: flex;
             justify-content: center;
 
+        }
+        .suggestion-container,
+        .online-container{
+            min-width: 23%;
         }
     }
 }

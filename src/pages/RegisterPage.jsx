@@ -4,22 +4,22 @@ import Logo from '../assets/nexus-logo-blue.svg';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
 
 
 function RegisterPage() {
-    const [username, setUsername] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleRegister = (event) => {
-        event.preventDefault();
-
-        console.log('Username:', username);
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Password:', password);
-    };
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            name: '',
+            email: '',
+            password: '',
+        },
+        
+        onSubmit: (value) => {
+            console.log(value)
+        }
+    })
 
     return (
         <>
@@ -31,34 +31,38 @@ function RegisterPage() {
 
                 <div className='signup-login-container'>
                     <h1>Sign Up</h1>
-                    <form action="" className='form-login form-signup' onSubmit={handleRegister}>
+                    <form action="" className='form-login form-signup' onSubmit={formik.handleSubmit}>
 
                         <input
+                            id='username'
                             type="text"
                             placeholder='Username'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={formik.values.username}
+                            onChange={formik.handleChange}
                             required />
 
                         <input
+                            id='name'
                             type="text"
                             placeholder='Name'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
                             required />
 
                         <input
+                            id='email'
                             type="email"
                             placeholder='Email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
                             required />
 
                         <input
+                            id='password'
                             type="password"
                             placeholder='Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
                             required />
 
                         <div className='button-container button-register'>
@@ -70,7 +74,6 @@ function RegisterPage() {
                                     </button>
                                 </Link>
                             </div>
-
                         </div>
                     </form>
                 </div>
