@@ -213,11 +213,11 @@ function Feed() {
             <p>Add this to your saved items?</p>
           </div>
           <div className="modal-footer">
-            <button onClick={closeSaveModal} className="add-btn">
-              Cancel
-            </button>
-            <button onClick={handleSavePost} className="delete-button">
+            <button onClick={handleSavePost} className="add-btn">
               Save
+            </button>
+            <button onClick={closeSaveModal} className="delete-button">
+              Cancel
             </button>
           </div>
         </div>
