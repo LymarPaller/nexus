@@ -20,7 +20,7 @@ function AsideLeft() {
     };
 
     const sections = [
-        { title: 'Friends', icon: FriendsIcon },
+        { title: 'Friends', icon: FriendsIcon},
         { title: 'Groups', icon: GroupsIcon },
         { title: 'Memories', icon: MemoriesIcon },
         { title: 'Saved', icon: SavedIcon },
