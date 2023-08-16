@@ -1,0 +1,58 @@
+@import "main";
+
+.modal-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    height: 90vh;
+
+    h2 {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: start;
+        font-size: 1.3rem;
+    }
+
+    p {
+        text-align: end;
+        font-size: 1.1rem;
+    }
+
+  
+    
+}
+
+.profile-picture-modal>img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+
+    @include tablet {
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+.cover-photo-modal>img {
+    width: 70%;
+    height: 30vh;
+    margin-top: 1rem;
+    overflow: hidden;
+    border-radius: 7px;
+
+    @include tablet {
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+.save-button {
+    @extend .add-btn;
+}
+
+
+ 

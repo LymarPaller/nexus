@@ -339,7 +339,8 @@ ul {
 .login-button .comment-button,
 .like-button,
 .login-button,
-.comment-button {
+.comment-button,
+.logout-xmark-edit {
   cursor: pointer;
 }
 
@@ -431,7 +432,8 @@ ul {
 
 .ellipsis-icon-delete,
 .logout-xmark,
-.logout-xmark-options {
+.logout-xmark-options,
+.logout-xmark-edit {
   @extend .ellipsis-icon;
 
   &:hover {
