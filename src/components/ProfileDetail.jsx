@@ -78,7 +78,7 @@ function ProfileDetail() {
         ariaHideApp={false}
       >
         {/* Modal content */}
-        <div className="modal-content">
+        <div className="modal-content-edit-profile">
           <h2>Edit Profile</h2>
           <FontAwesomeIcon
             icon={faTimes}

@@ -1,6 +1,6 @@
 @import "main";
 
-.modal-content {
+.modal-content-edit-profile {
     background-color: white;
     padding: 1rem;
     border-radius: 8px;
@@ -22,8 +22,8 @@
         font-size: 1.1rem;
     }
 
-  
-    
+
+
 }
 
 .profile-picture-modal>img {
@@ -53,6 +53,3 @@
 .save-button {
     @extend .add-btn;
 }
-
-
- 

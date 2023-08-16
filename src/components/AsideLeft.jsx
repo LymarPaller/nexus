@@ -19,14 +19,6 @@ function AsideLeft() {
         setExpanded(!expanded);
     };
 
-    const sections = [
-        { title: 'Friends', icon: FriendsIcon},
-        { title: 'Groups', icon: GroupsIcon },
-        { title: 'Memories', icon: MemoriesIcon },
-        { title: 'Saved', icon: SavedIcon },
-        { title: 'Feeds', icon: FeedsIcon },
-    ];
-
     const seeMoreText = expanded ? 'See Less' : 'See More';
 
     const openWeatherLink = () => {
@@ -50,15 +42,60 @@ function AsideLeft() {
                         <h3>Wanda Zurbano</h3>
                     </Link>
                 </div>
-                {sections.map((section, index) => (
-                    <div className={`section ${section.title.toLowerCase()}-section`} key={index}>
+
+                {/* Friends section */}
+                <div className="section friends-section">
+                    <Link to="/friends">
                         <div className="profile-image">
-                            <img src={section.icon} alt={`${section.title} Profile`} />
+                            <img src={FriendsIcon} alt="Friends Profile" />
                         </div>
-                        <h3>{section.title}</h3>
-                        {/* Render section content */}
-                    </div>
-                ))}
+                    </Link>
+                    <Link to="/friends">
+                        <h3>Friends</h3>
+                    </Link>
+                </div>
+
+                {/* Other sections */}
+                <div className="section groups-section">
+                    <Link to="/friends">
+                        <div className="profile-image">
+                            <img src={GroupsIcon} alt="Groups Profile" />
+                        </div>
+                    </Link>
+                    <Link to="/friends">
+                        <h3>Groups</h3>
+                    </Link>
+                </div>
+                <div className="section memories-section">
+                    <Link to="/friends">
+                        <div className="profile-image">
+                            <img src={MemoriesIcon} alt="Memories Profile" />
+                        </div>
+                    </Link>
+                    <Link to="/friends">
+                    <h3>Memories</h3>
+                    </Link>
+                </div>
+                <div className="section saved-section">
+                    <Link to="/save">
+                        <div className="profile-image">
+                            <img src={SavedIcon} alt="Saved Profile" />
+                        </div>
+                    </Link>
+                    <Link to="/save">
+                        <h3>Saved</h3>
+                    </Link>
+                </div>
+                <div className="section feeds-section">
+                    <Link to="/friends">
+                        <div className="profile-image">
+                            <img src={FeedsIcon} alt="Feeds Profile" />
+                        </div>
+                    </Link>
+                    <Link to="/friends">
+                        <h3>Feeds</h3>
+                    </Link>
+                </div>
 
                 {/* Toggle button */}
                 <div className="section see-more-section" onClick={toggleExpansion}>
