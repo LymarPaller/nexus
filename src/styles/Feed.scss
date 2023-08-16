@@ -5,7 +5,7 @@
     height: 70vh;
     margin-top: 1.5rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    background-color:  var(--white);
+    background-color: var(--white);
     position: relative;
 
     @include tablet {
@@ -156,4 +156,27 @@
 
 .modal-header-options {
     @extend .modal-header;
+}
+
+//OPTIONS ICON ANF TEXT HOVER
+
+.option-label,
+.option-icon {
+    @extend .ellipsis-icon;
+
+    &:hover {
+        color: var(--primary-500);
+        padding: .1rem;
+        border-radius: 5px;
+    }
+
+}
+
+.option-label-delete,
+.option-icon-delete {
+    @extend .option-icon;
+
+    &:hover {
+        color: var(--accent);
+    }
 }

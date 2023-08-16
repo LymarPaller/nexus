@@ -114,10 +114,10 @@ function Feed() {
                 <span className="option-label">Edit Caption</span>
               </div>
               <div className="option" onClick={handleDeletePost}>
-                <span className="option-icon">
+                <span className="option-icon-delete">
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </span>
-                <span className="option-label">Delete Post</span>
+                <span className="option-label-delete">Delete Post</span>
               </div>
               <div className="option" onClick={handleSavePost}>
                 <span className="option-icon">

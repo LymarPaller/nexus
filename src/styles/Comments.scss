@@ -5,108 +5,123 @@
     height: auto;
 
     .modal-header {
-    @include flexJcAs;
-    flex-direction: column;
-    width: 100%;
-    padding-top: 2rem;
-
-    .logout-xmark {
-        position: absolute;
-        top: .5rem;
-        right: 1.30rem;
-    }
-
-    h2 {
-        margin-left: 1rem;
-        color:  var(--black);
-    }
-
-    
-
-  .modal-footer {
-    margin-top: 1rem;
-
-    button {
-      background-color: var(--primary-500);
-      border: none;
-      border-radius: 1rem;
-      padding: .5rem 1rem;
-      color:  var(--white);
-    }
-  }
-}
-
-.list-comments {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    textarea {
-      margin-top: 1rem;
-      width: 80%;
-      height: 3rem;
-      border-radius: 1rem;
-      resize: none;
-      padding-left: 1rem;
-      outline: none;
-    }
-
-    .profile {
+        @include flexJcAs;
+        flex-direction: column;
         width: 100%;
-        height: 40vh;
-        overflow-y: scroll;
+        padding-top: 2rem;
 
-        .profile-image {
-            height: auto;
+        .logout-xmark {
+            position: absolute;
+            top: .5rem;
+            right: 1.30rem;
+        }
+
+        h2 {
+            margin-left: 1rem;
+            color: var(--black);
+        }
+
+
+
+        .modal-footer {
             margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            border-bottom: 2px solid var(--grey-600);
-            border-top: 2px solid var(--grey-400);
-            border-radius: 10px;
-            justify-content: start;
-            align-items: center;
 
-            img {
-                margin-top: .5rem;
-                width: 43px;
-                height: 43px;
-                border-radius: 50%;
-                margin-right: 10px;
-                margin-left: 1rem;
+            button {
+                background-color: var(--primary-500);
+                border: none;
+                border-radius: 1rem;
+                padding: .5rem 1rem;
+                color: var(--white);
+
+                &:hover {
+                    background-color: var(--primary-600);
+                    cursor: pointer;
+                }
+
             }
+        }
+    }
 
-            .comment {
+    .list-comments {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+            margin-top: 1rem;
+            width: 80%;
+            height: 3rem;
+            border-radius: 1rem;
+            resize: none;
+            padding-left: 1rem;
+            outline: none;
+        }
+
+        .profile {
+            width: 100%;
+            height: 40vh;
+            overflow-y: scroll;
+
+            .profile-image {
+                height: auto;
+                margin-top: 1rem;
                 display: flex;
-                flex-direction: column;
-                align-items: start;
-                justify-content: start;
                 flex-wrap: wrap;
-                width: auto;
-                width: 85%;
-                position: relative;
+                border-bottom: 2px solid var(--grey-600);
+                border-top: 2px solid var(--grey-400);
+                border-radius: 10px;
+                justify-content: start;
+                align-items: center;
 
-                .remove-comment {   
-                    position: absolute;
-                    right: 0;
-                    top: 35%;
-                    transform: translate(-50%);
-                }
-
-                h5 {
+                img {
                     margin-top: .5rem;
-                    font-size: 1rem;
+                    width: 43px;
+                    height: 43px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    margin-left: 1rem;
                 }
 
-                p {
-                    font-size: 1rem;
-                    width: 100%;
-                    text-align: start;
+                .comment {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: start;
+                    flex-wrap: wrap;
+                    width: auto;
+                    width: 85%;
+                    position: relative;
+
+                    .remove-comment {
+                        position: absolute;
+                        right: 0;
+                        top: 35%;
+                        transform: translate(-50%);
+
+                        transition: color 0.3s ease;
+
+                        :hover {
+                            color: var(--accent);
+                            cursor: pointer;
+                        }
+                    }
+
+                    h5 {
+                        margin-top: .5rem;
+                        font-size: 1rem;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                        width: 100%;
+                        text-align: start;
+                    }
                 }
             }
         }
     }
-}
 
 
 }
+
+ 

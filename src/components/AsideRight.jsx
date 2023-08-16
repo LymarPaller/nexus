@@ -40,7 +40,7 @@ function AsideRight() {
             </div>
 
             <div className="online-container">
-                <h5>Contact</h5>
+                <h5>Friends</h5>
                 {onlineFriends.map((friend, index) => (
                     <div className="online-friends" key={index}>
                         <div className="aside-right-image">

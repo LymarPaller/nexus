@@ -64,7 +64,16 @@
             a {
                 color: var(--black);
             }
+
+            &:hover {
+                background-color: var(--grey-200);
+                width: 14rem;
+                cursor: pointer;
+                border-radius: 5px;
+            }
         }
+
+        
 
         .profile-image {
             z-index: 4;
@@ -95,6 +104,13 @@
     align-items: center;
     padding: 8px;
     z-index: 4;
+
+    &:hover {
+        background-color: var(--grey-200);
+        width: 14rem;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 
     @include tablet {
         padding-left: 0;

@@ -34,7 +34,7 @@ function AsideLeft() {
     };
 
     const openCurrencyLink = () => {
-        window.open('https://exploredia.vercel.app/', '_blank');
+        window.open('https://exploredia.vercel.app/convert.html', '_blank');
     };
 
     return (
