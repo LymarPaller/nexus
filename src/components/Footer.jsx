@@ -1,3 +1,4 @@
+import React from 'react';
 import '../styles/Footer.scss';
 import EmailLink from '../app/linkEmail';
 
@@ -14,8 +15,8 @@ const Footer = () => {
     const renderSocialLinks = () => {
         return (
             <div>
-                {socialLinks.map((linkObj, index) => (
-                    <div key={index}>
+                {socialLinks.map((linkObj) => (
+                    <div key={linkObj.text}>
                         <a href={linkObj.link} target="_blank" rel="noopener noreferrer">
                             {linkObj.text}
                         </a>
@@ -37,7 +38,7 @@ const Footer = () => {
                         <div>Mariya Villamor</div>
                         <EmailLink recipient="mariyavillamor@gmail.com" />
                         <div className='name-spacing'>Lymar Paul Paller</div>
-                        <EmailLink recipient="lymarpaller@gmail.com" />
+                        <EmailLink recipient={lymarPallerEmail} />
                     </div>
                 </div>
                 <div className="footer-column">

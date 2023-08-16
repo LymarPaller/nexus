@@ -7,11 +7,11 @@ function SuggestedFriendContainer () {
     const [suggestedFriends, setSuggestedFriends] = useState([
         { name: 'Faith Mariano' },
         { name: 'Saylor Twift' }
-        // Add more suggested friends here
     ]);
 
     return(
         <>
+        {/* Add unique Id soon index part */}
         {suggestedFriends.map((friend, index) => (
             <div className="friend-suggestion" key={index}>
                 <div className="aside-right-image">

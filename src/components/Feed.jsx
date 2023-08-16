@@ -11,17 +11,37 @@ import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 
 function Feed() {
-  const { isOpen: showOptionsModal, openModal: toggleOptionsModal, closeModal: closeOptionsModal } = useModal();
-  const { isOpen: showDeleteModal, openModal: toggleDeleteModal, closeModal: closeDeleteModal } = useModal();
-  const { isOpen: showCommentModal, openModal: toggleCommentModal, closeModal: closeCommentModal } = useModal();
-  const { isOpen: showEditCaptionModal, openModal: toggleEditCaptionModal, closeModal: closeEditCaptionModal } = useModal();
-  const { isOpen: showSaveModal, openModal: toggleSaveModal, closeModal: closeSaveModal } = useModal();
+  const {
+    isOpen: showOptionsModal,
+    openModal: toggleOptionsModal,
+    closeModal: closeOptionsModal
+  } = useModal();
+  const {
+    isOpen: showDeleteModal,
+    openModal: toggleDeleteModal,
+    closeModal: closeDeleteModal
+  } = useModal();
+  const {
+    isOpen: showCommentModal,
+    openModal: toggleCommentModal,
+    closeModal: closeCommentModal
+  } = useModal();
+  const {
+    isOpen: showEditCaptionModal,
+    openModal: toggleEditCaptionModal,
+    closeModal: closeEditCaptionModal
+  } = useModal();
+  const {
+    isOpen: showSaveModal,
+    openModal: toggleSaveModal,
+    closeModal: closeSaveModal
+  } = useModal();
   const [editedCaption, setEditedCaption] = useState('Pupparazzi caught me posing 📸');
   const [editedCaptionModal, setEditedCaptionModal] = useState(editedCaption);
 
   const handleDeletePost = () => {
     toggleDeleteModal();
-    //logic for delete put here soon
+    // Logic for delete post will be added here soon
   };
 
   const handleEditCaption = () => {
@@ -42,11 +62,12 @@ function Feed() {
 
   const handleSavePost = () => {
     toggleOptionsModal();
-    toggleSaveModal(); 
+    toggleSaveModal();
     closeOptionsModal();
     closeCommentModal();
     closeEditCaptionModal();
-  }; 
+  };
+
 
   return (
     <div className="feed-container">
@@ -71,7 +92,7 @@ function Feed() {
           <p>{editedCaption}</p>
         </div>
         <div className="post-image">
-          {/* Replace this with actual post image soon */}
+          {/* Replace this with actual post props image soon */}
           <img src={Profile} alt="Post" />
         </div>
         <div className="likes-comments">

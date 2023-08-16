@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import { useModal } from '../app/useModal';
 
 function FriendsContainer() {
-    const [onlineFriends, setOnlineFriends] = useState([
+    const [friends, setFriends] = useState([
         { name: 'Klane Zurbano' },
         { name: 'Ryan Azur' },
         { name: 'Kodego PH' },
@@ -30,7 +30,8 @@ function FriendsContainer() {
 
     return (
         <div className="friend-container">
-            {onlineFriends.map((friend, index) => (
+            {/* Change index to UserId soon */}
+            {friends.map((friend, index) => (
                 <div className="online-friends" key={index}>
                     <div className="aside-right-image">
                         <img src={Profile} alt="Profile" />

@@ -2,26 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTimes,
-  faHeart,
-  faComment,
-  faTag,
-  faThumbsUp,
-  faCalendarAlt,
-  faShare,
-  faUserFriends,
-  faHouse,
-  faUser,
-  faBell,
-  faRightFromBracket,
-  faMoon,
-  faMagnifyingGlass,
-  faHamburger,
-  faBars,
-  faCircleXmark,
-  faXmark,
-  faSliders,
-  faSun,
+  faTimes, faHeart, faComment, faTag,faThumbsUp, faCalendarAlt, faShare,
+  faUserFriends, faHouse, faUser, faBell, faRightFromBracket,faMoon,
+  faMagnifyingGlass, faBars, faXmark, faSliders, faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
 import Profile from "../assets/icons/profile.svg";

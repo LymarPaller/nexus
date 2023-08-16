@@ -26,9 +26,6 @@ function ProfileFeed() {
             <p>1 minute ago</p>
           </div>
         </div>
-        <div className="delete-icon">
-          {/* Add delete icon modal upper right side */}
-        </div>
         <div className="captions">
           <p>Sample captions here</p>
         </div>
