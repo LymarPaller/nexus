@@ -8,6 +8,8 @@ import './styles/main.scss';
 import './styles/normalize.scss';
 import Footer from "./components/Footer";
 import AsideMenu from "./pages/AsideMenu";
+import FriendsPage from "./pages/FriendsPage";
+import SavedPage from "./pages/SavedPage";
 
 function App() {
 
@@ -43,6 +45,18 @@ function App() {
             <Route path="/aside" element={
             <>
               <AsideMenu />
+              <Navbar />
+            </>
+            } />
+            <Route path="/friends" element={
+            <>
+              <FriendsPage />
+              <Navbar />
+            </>
+            } />
+            <Route path="/save" element={
+            <>
+              <SavedPage />
               <Navbar />
             </>
             } />
