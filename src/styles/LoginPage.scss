@@ -14,12 +14,12 @@
 
   img {
     max-width: 6rem;
-  
+
     @include mobile {
       min-width: 5rem;
       margin-top: 3rem;
     }
-  
+
     @include tablet {
       min-width: 5rem;
       margin-top: 3rem;
@@ -74,7 +74,7 @@
 }
 
 .login-container {
-  background-color:  var(--white);
+  background-color: var(--white);
   min-width: 16rem;
   height: 52vh;
   border-radius: 20px;
@@ -163,14 +163,15 @@ input::placeholder {
   align-items: center;
 }
 
-.button-container > button {
+.button-container>button {
   margin-top: 2rem;
   width: max-content;
   border: none;
   border-radius: 13px;
   padding: .5rem 3rem;
-  color:  var(--white);
+  color: var(--white);
   background-color: var(--primary-500);
+
 }
 
 .create-new-account {
@@ -189,3 +190,4 @@ input::placeholder {
   color: var(--primary-500);
   font-weight: 500;
 }
+

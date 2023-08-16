@@ -25,6 +25,7 @@ html {
   --primary-700: #005f99;
   --primary-800: #003f66;
   --primary-900: #002033;
+  --accent-light: #ffdddd;
   --accent: #ff1f4a;
   --accent-hover: #e61a43;
   /* Grey */
@@ -438,5 +439,26 @@ ul {
 
   &:hover {
       color: var(--accent)
+  }
+}
+
+
+//ERROR MEESAGE STYLE GLOBAL
+
+.error-container {
+  background-color: var(--accent-light);
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  margin-top: 2px;
+  
+
+  .error-icon {
+    margin-right: 6px;
+    color: var(--accent);
+    font-size: 18px;
   }
 }
