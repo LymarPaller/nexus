@@ -28,6 +28,9 @@
         align-items: flex-start;
         padding: 20px;
         z-index: 4;
+        overflow-y: scroll;
+        height: 90vh;
+        padding-bottom: 4rem;
 
         @include tablet {
             width: 55vw;
