@@ -51,7 +51,7 @@ function FriendsContainer() {
                         ariaHideApp={false}
                     >
                         {/* Options Modal content */}
-                        <div className="modal-content">
+                        <div className="modal-content friend-option">
                             <button className="add-btn" onClick={unfollowModal.openModal}>
                                 <FontAwesomeIcon icon={faUserTimes}  />
                                 Unfollow

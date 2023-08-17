@@ -1,44 +1,82 @@
 @import "main";
 
-.friends-page-container {
-    margin-top: 20vh;
+
+.friends-main-container {
+    
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    width: 100%;
+    background-color: var(--grey-200);
 
-
-    h1 {
-        flex-basis: 100%;
-        margin-left: 1rem;
-    }
-
-    .friend-container {
+    .friends-page-container {
+        margin-top: 20vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-        width: 90vw;
-
-
-        .online-friends {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            overflow-x: hidden;
-            width: 18vw;
-            padding: 1rem;
-            margin: 1rem;
-            background-color: var(--white);
-            box-shadow: $shadow-4;
-            border-radius: .5rem;
-
+        flex-direction: column;
+        width: 100%;
+        margin-left: 20vw;
+    
+    
+        h1 {
+            margin-left: 1rem;
+            height: auto;
+            flex-basis: 100%;
+            margin-top: 1rem;
         }
+    
+        .friend-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 90%;
+            min-height: 70vh;
+            background-color: var(--white);
+            padding: 1rem;
+    
+    
+            .online-friends {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                overflow-x: hidden;
+                width: 18vw;
+                padding: 1rem;
+                margin: 1rem;
+                background-color: var(--white);
+                box-shadow: $shadow-4;
+                border-radius: .5rem;
+                position: relative;
+
+                svg {
+                    position: absolute;
+                    right: 1rem;
+                    top: 1rem;
+                }
+    
+            }
+        }
+    
     }
 
 }
 
 .modal-overlay {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.friend-option {
+    width: 20rem;
+    height: 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        width: 10rem;
+        height: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
 }
