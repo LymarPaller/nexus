@@ -12,6 +12,9 @@ import Footer from './components/Footer';
 import AsideMenu from './pages/AsideMenu';
 import FriendsPage from './pages/FriendsPage';
 import SavedPage from './pages/SavedPage';
+import MemoriesPage from './pages/MemoriesPage';
+import GamesPage from './pages/GamesPage';
+import FeedsPage from './pages/FeedsPage';
 
 function App() {
   return (
@@ -65,6 +68,27 @@ function App() {
             <>
               <WelcomePage /> 
               <Footer />
+            </>
+          } />
+          
+          <Route path="/memories" element={
+            <>
+              <MemoriesPage />
+              <Navbar />
+            </>
+          } />
+          
+          <Route path="/games" element={
+            <>
+              <GamesPage />
+              <Navbar />
+            </>
+          } />
+          
+          <Route path="/feeds" element={
+            <>
+              <FeedsPage />
+              <Navbar />
             </>
           } />
         </Routes>

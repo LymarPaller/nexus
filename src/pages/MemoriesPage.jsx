@@ -2,7 +2,7 @@ import AsideLeft from "../components/AsideLeft";
 import AsideRight from "../components/AsideRight"
 import Feed from "../components/Feed";
 
-function SavedPage () {
+function MemoriesPage () {
     return(
         <>
         <div className="save-page-container">
@@ -17,4 +17,4 @@ function SavedPage () {
     )
 }
 
-export default SavedPage
+export default MemoriesPage

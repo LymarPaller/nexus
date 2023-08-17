@@ -12,11 +12,11 @@ function ProfilePage () {
     return (
         <>
         <div className="profile-page-main-container">
-            <AsideLeft />
             <div className="profile-feed-container">
                 <ProfileDetail />
                 <Feed />
             </div>
+            <AsideLeft />
             <AsideRight />
         </div>
         </>
