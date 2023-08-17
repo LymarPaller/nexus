@@ -1,18 +1,18 @@
 import AsideLeft from "../components/AsideLeft";
 import AsideRight from "../components/AsideRight"
-import Feed from "../components/Feed";
+import Tictactoe from "../games/TicTacToe";
+import '../styles/gameslayout/TicTacToe.scss';
 
-function GamesPage () {
-    return(
+function GamesPage() {
+    return (
         <>
-        <div className="save-page-container">
-            <div className="news-feed-container">
-                <Feed />
-                <Feed />
+            <div className="games-main-container">
+                <div className="games-page-container">
+                    <AsideLeft />
+                    <AsideRight />
+                    <Tictactoe />
+                </div>
             </div>
-            <AsideLeft />
-            <AsideRight />
-        </div>
         </>
     )
 }
