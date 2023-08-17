@@ -2,12 +2,14 @@ import React from 'react';
 import Logo from '../assets/nexus-logo-blue.svg';
 import { faArrowLeft, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';  
 import '../styles/RegisterPage.scss';
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object({
     username: Yup.string().required('Username is required'),
     name: Yup.string().required('Name is required'),
@@ -15,16 +17,19 @@ function RegisterPage() {
     password: Yup.string().required('Password is required'),
   });
 
+  const initialValues = {
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+  };
+
   const formik = useFormik({
-    initialValues: {
-      username: '',
-      name: '',
-      email: '',
-      password: '',
-    },
-    validationSchema: validationSchema,  
+    initialValues: initialValues,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      console.log(values);      
+      navigate(`/welcome/${values.username}`);
     },
   });
 
@@ -37,7 +42,7 @@ function RegisterPage() {
       <div className='card-container-login'>
         <div className='signup-login-container'>
           <h1>Sign Up</h1>
-          <form action='' className='form-login form-signup' onSubmit={formik.handleSubmit}>
+          <form className='form-login form-signup' onSubmit={formik.handleSubmit}>
             <input
               id='username'
               type='text'
