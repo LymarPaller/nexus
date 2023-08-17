@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/AsideLeft.scss';
 import Profile from '../assets/wanda.jpg';
 import FriendsIcon from '../assets/icons/friends.png';
-import GroupsIcon from '../assets/icons/groups.png';
+import GamesIcon from '../assets/icons/games.png';
 import MemoriesIcon from '../assets/icons/memories.png';
 import SavedIcon from '../assets/icons/saved.png';
 import FeedsIcon from '../assets/icons/feeds.png';
@@ -46,7 +46,7 @@ function AsideLeft() {
 
     const sections = [
         { to: '/friends', imgSrc: FriendsIcon, imgAlt: 'Friends Profile', title: 'Friends' },
-        { to: '/groups', imgSrc: GroupsIcon, imgAlt: 'Groups Profile', title: 'Groups' },
+        { to: '/games', imgSrc:GamesIcon, imgAlt: 'Games Profile', title: 'Games' },
         { to: '/memories', imgSrc: MemoriesIcon, imgAlt: 'Memories Profile', title: 'Memories' },
         { to: '/save', imgSrc: SavedIcon, imgAlt: 'Saved Profile', title: 'Saved' },
         { to: '/feeds', imgSrc: FeedsIcon, imgAlt: 'Feeds Profile', title: 'Feeds' }

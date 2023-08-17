@@ -66,6 +66,7 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< HEAD
 .friend-option {
     width: 20rem;
     height: 13rem;
@@ -80,3 +81,18 @@
         margin-bottom: 1rem;
     }
 }
+=======
+ 
+
+.friend-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ellipsis-icon {
+    cursor: pointer;
+    
+}
+ 
+>>>>>>> c041c2b72189d493e3dbbe3b1e74a4b041d8d231
