@@ -21,6 +21,7 @@ function FriendsContainer() {
     const handleUnfollow = () => {
         // Implement unfollow logic here
         unfollowModal.closeModal();
+        
     };
 
     const handleUnfriend = () => {
@@ -30,19 +31,21 @@ function FriendsContainer() {
 
     return (
         <div className="friend-container">
-            {/* Change index to UserId soon */}
             {friends.map((friend, index) => (
                 <div className="online-friends" key={index}>
                     <div className="aside-right-image">
                         <img src={Profile} alt="Profile" />
                     </div>
-                    <span className="friend-name">{friend.name}</span>
-                    <FontAwesomeIcon
-                        icon={faEllipsisH}
-                        className="ellipsis-icon"
-                        onClick={optionsModal.openModal}
-                    />
-
+                    <div className="friend-details">
+                        <span className="friend-name">{friend.name}
+                            <FontAwesomeIcon
+                                icon={faEllipsisH}
+                                className="ellipsis-icon"
+                                onClick={optionsModal.openModal}
+                            />
+                        </span>
+                    </div>
+            
                     <Modal
                         isOpen={optionsModal.isOpen}
                         onRequestClose={optionsModal.closeModal}

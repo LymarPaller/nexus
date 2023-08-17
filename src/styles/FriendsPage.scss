@@ -42,3 +42,17 @@
 .modal-overlay {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+ 
+
+.friend-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ellipsis-icon {
+    cursor: pointer;
+    
+}
+ 
