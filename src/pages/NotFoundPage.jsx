@@ -3,6 +3,11 @@ import Logo from "../assets/nexus-logo-blue.svg";
 import "../styles/NotFoundPage.scss";
 
 function NotFoundPage() {
+
+  useEffect(() => {
+    document.title = 'Page Not Found';  
+  }, []);
+
   const [x, setX] = useState(100);
   const [y, setY] = useState(100);
   const [xVelocity, setXVelocity] = useState(1);

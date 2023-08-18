@@ -15,7 +15,7 @@ import SavedPage from './pages/SavedPage';
 import MemoriesPage from './pages/MemoriesPage';
 import GamesPage from './pages/GamesPage';
 import FeedsPage from './pages/FeedsPage';
-import NotFoundPage from './pages/Notfound';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
