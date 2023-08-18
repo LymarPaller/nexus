@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Profile from '../assets/wanda.jpg';
 import '../styles/NewsFeed.scss';
 import Feed from './Feed';
 import { useModal } from '../app/useModal';
 import CreatePostModal from '../components/CreatePost';
+import axios from 'axios';
 
 function NewsFeed() {
     const { isOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
+    const [feeds, setFeed] = useState([])
 
 
     const handlePost = (event) => {
@@ -17,6 +19,15 @@ function NewsFeed() {
         setPostText('');
         closeModal();
     };
+
+    const fetchFeed = async () => {
+        const res = await axios('http://localhost:8000/api/v1/post')
+        console.log(res.data.data)
+    }
+
+    useEffect(()=> {
+        fetchFeed()
+    }, [])
 
     return (
         <>
@@ -37,6 +48,9 @@ function NewsFeed() {
                     </div>
                     <button onClick={openModal} className="cancel-button">Cancel</button>
                 </div>
+                {
+                    
+                }
                 <Feed />
             </div>
             {/* Using the extracted CreatePostModal component */}
