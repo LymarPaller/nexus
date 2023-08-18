@@ -12,6 +12,7 @@ function NewsFeed() {
     const [postText, setPostText] = useState('');
     const [feeds, setFeeds] = useState([])
     const [loading, setLoading] = useState(true);
+    const [comments, setComments] = useState([])
 
 
     const handlePost = (event) => {
@@ -31,6 +32,10 @@ function NewsFeed() {
         } finally {
             setLoading(false); 
         }
+        // const res = await axios('http://localhost:8000/api/v1/post')
+        // setFeeds(res.data.data)
+        // setComments(res.data.data.comment_description)
+        // // const photo = (res.data.data.user.profile_photo)
     }
 
     useEffect(() => {
