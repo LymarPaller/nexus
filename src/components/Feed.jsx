@@ -10,7 +10,7 @@ import { faEllipsisH, faTimes, faTrashAlt, faEdit, faBookmark } from '@fortaweso
 import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 
-function Feed(props) {
+function Feed(props, feedItems) {
   const {imgPost, postDescription, dateCreated, author, img} = props
 
   const {
