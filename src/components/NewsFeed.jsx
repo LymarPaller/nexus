@@ -23,7 +23,7 @@ function NewsFeed() {
     const fetchFeed = async () => {
         const res = await axios('http://localhost:8000/api/v1/post')
         setFeeds(res.data.data)
-        console.log(res.data.data)
+        // const photo = (res.data.data.user.profile_photo)
     }
 
     useEffect(()=> {
@@ -51,7 +51,7 @@ function NewsFeed() {
                 </div>
                 {
                     feeds.map(
-                        feed=><Feed key={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated}/>
+                        feed=><Feed key={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profile_photo}/>
                     )
                 }
             </div>

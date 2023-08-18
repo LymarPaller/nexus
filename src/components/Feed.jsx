@@ -11,7 +11,7 @@ import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 
 function Feed(props) {
-  const {imgPost, postDescription, dateCreated} = props
+  const {imgPost, postDescription, dateCreated, author, img} = props
 
   const {
     isOpen: showOptionsModal,
@@ -81,11 +81,11 @@ function Feed(props) {
       <div className="profile-feed-details">
         <div className="profile-info">
           <div className="profile-image">
-            <img src={Profile} alt="Profile" />
+            <img src={img} alt="Profile" />
           </div>
           <div className="name-time">
             <div className="name-icon">
-              <h3>Wanda Zurbano</h3>
+              <h3>{author}</h3>
             </div>
             <p>{dateCreated}</p>
           </div>

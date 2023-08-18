@@ -22,7 +22,7 @@ function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost
                 <h5>Wanda Zurbano</h5>
             </div>
             <div className='upload-photo'>
-                <input type="file" id="myFile" name="filename" className='upload-button' accept="image/*"/>
+                <input type="file" id="myFile" name="filename" className='upload-button' />
             </div>
             <form className='form-container' onSubmit={handlePost}>
                 <textarea
