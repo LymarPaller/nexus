@@ -263,7 +263,7 @@ function Feed(props) {
               className="logout-xmark"
               onClick={closeCommentModal}
             />
-            <Comments />
+            <Comments feedItems={feedItems} />
           </div>
         </div>
       </Modal>
