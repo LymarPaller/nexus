@@ -6,7 +6,7 @@ import Feed from "../components/Feed";
 function FeedsPage() {
 
   useEffect(() => {
-    document.title = 'Feed';  
+    document.title = 'Feeds';  
   }, []);
 
   return (

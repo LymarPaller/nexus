@@ -5,7 +5,7 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import ProfilePage from './pages/ProfilePage';
-import WelcomePage from './components/WelcomePage';  
+import WelcomePage from './components/WelcomePage';
 import './styles/main.scss';
 import './styles/normalize.scss';
 import Footer from './components/Footer';
@@ -15,6 +15,7 @@ import SavedPage from './pages/SavedPage';
 import MemoriesPage from './pages/MemoriesPage';
 import GamesPage from './pages/GamesPage';
 import FeedsPage from './pages/FeedsPage';
+import NotFoundPage from './pages/Notfound';
 
 function App() {
   return (
@@ -63,31 +64,39 @@ function App() {
               <Navbar />
             </>
           } />
-           
+
           <Route path="/welcome/:username" element={
             <>
-              <WelcomePage /> 
+              <WelcomePage />
               <Footer />
             </>
           } />
-          
+
           <Route path="/memories" element={
             <>
               <MemoriesPage />
               <Navbar />
             </>
           } />
-          
+
           <Route path="/games" element={
             <>
               <GamesPage />
               <Navbar />
             </>
           } />
-          
+
           <Route path="/feeds" element={
             <>
               <FeedsPage />
+              <Navbar />
+            </>
+          } />
+
+
+          <Route path="*" element={
+            <>
+              <NotFoundPage />
               <Navbar />
             </>
           } />
