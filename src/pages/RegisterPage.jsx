@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from '../assets/nexus-logo-blue.svg';
 import { faArrowLeft, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,6 +32,10 @@ function RegisterPage() {
       navigate(`/welcome/${values.username}`);
     },
   });
+
+  useEffect(() => {
+    document.title = 'Register';
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -25,6 +25,11 @@ function LoginPage() {
       console.log('Password:', values.password);
     },
   });
+
+
+  useEffect(() => {
+    document.title = 'Login';
+  }, []);
 
   return (
     <>
