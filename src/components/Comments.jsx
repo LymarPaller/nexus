@@ -34,7 +34,7 @@ function Comments({ feedItems }) {
     <div className='list-comments'>
       <div className='profile'>
         {/* Rest of the profile info... */}
-        {feedItems.map((item, index) => (
+        {Array.isArray(feedItems) && feedItems.map((item, index) => (
           <div key={index} className='profile-image'>
             <img src={Profile} alt='Profile' />
             <div className='comment'>
