@@ -25,38 +25,31 @@
     );
   }
 
-  function ProfileDetail() {
-    const [profileData] = useState({
-      coverPhoto: PlaceholderCover,
-      profilePhoto: Profile,
-      name: 'Wanda Zurbano',
-      introduction: 'Wagging Wandarer',
-      workplace: 'Works at Pawsitive Ventures',
-      location: 'Barkingham Palace',
-    });
+  function ProfileDetail(props) {
+    const {name, introduction, company, website, city, profilePhoto, coverPhoto} =props
 
     const { isOpen, openModal, closeModal } = useModal(); // Using the hook for modal state
 
     return (
       <div className="profile-main-container">
         <div className="cover-photo">
-          <img src={profileData.coverPhoto} alt="Cover" />
+          <img src={coverPhoto} alt="Cover" />
         </div>
         <div className="profile-photo">
-          <img src={profileData.profilePhoto} alt="Profile" />
+          <img src={profilePhoto} alt="Profile" />
         </div>
         <div className="detail-container">
-          <h1 className="user-profile-name">{profileData.name}</h1>
+          <h1 className="user-profile-name">{name}</h1>
           <div className="detail-container-intro">
-            <p>{profileData.introduction}</p>
-            <p>{profileData.workplace}</p>
+            <p>{introduction}</p>
+            <p>{company}</p>
           </div>
           <div className="detail-container-other-details">
             <WebsiteLink />
             <span>
               <img src={LocationPin} alt="Location" />
               <p className="profile-location detail-container-other-details-paragraph">
-                {profileData.location}
+                {city}
               </p>
             </span>
             <div>
@@ -92,7 +85,7 @@
                 <p>Add</p>
               </div>
               <div className="profile-picture-modal photo-modal">
-                <img src={profileData.profilePhoto} alt="Profile" />
+                <img src={profilePhoto} alt="Profile" />
               </div>
               <div className="upload-photo">
                 <input type="file" id="myFile" name="filename" className="upload-button" accept="image/*"/>
@@ -104,7 +97,7 @@
                 <p>Edit</p>
               </div>
               <div className="cover-photo-modal photo-modal">
-                <img src={profileData.coverPhoto} alt="Cover photo" />
+                <img src={coverPhoto} alt="Cover photo" />
               </div>
               <div className="upload-photo">
                 <input type="file" id="myFile" name="filename" className="upload-button" accept="image/*"/>

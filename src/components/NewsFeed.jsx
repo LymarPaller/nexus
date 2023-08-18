@@ -10,6 +10,7 @@ function NewsFeed() {
     const { isOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
     const [feeds, setFeeds] = useState([])
+    const [comments, setComments] = useState([])
 
 
     const handlePost = (event) => {
@@ -23,6 +24,7 @@ function NewsFeed() {
     const fetchFeed = async () => {
         const res = await axios('http://localhost:8000/api/v1/post')
         setFeeds(res.data.data)
+        setComments(res.data.data.comment_description)
         // const photo = (res.data.data.user.profile_photo)
     }
 
