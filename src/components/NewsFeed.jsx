@@ -5,11 +5,13 @@ import Feed from './Feed';
 import { useModal } from '../app/useModal';
 import CreatePostModal from '../components/CreatePost';
 import axios from 'axios';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 function NewsFeed() {
     const { isOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
     const [feeds, setFeeds] = useState([])
+    const [loading, setLoading] = useState(true);
 
 
     const handlePost = (event) => {
@@ -21,14 +23,23 @@ function NewsFeed() {
     };
 
     const fetchFeed = async () => {
-        const res = await axios('http://localhost:8000/api/v1/post')
-        setFeeds(res.data.data)
-        // const photo = (res.data.data.user.profile_photo)
+        try {
+            const res = await axios('http://localhost:8000/api/v1/post')
+            setFeeds(res.data.data);
+        } catch (error) {
+            console.error('Error fetching feed:', error);
+        } finally {
+            setLoading(false); 
+        }
     }
 
-    useEffect(()=> {
-        fetchFeed()
-    }, [])
+    useEffect(() => {
+        fetchFeed();
+    }, []);
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     return (
         <>
