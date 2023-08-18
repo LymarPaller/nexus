@@ -82,16 +82,16 @@
             <h2>Edit Profile</h2>
             <FontAwesomeIcon
               icon={faTimes}
-              className="logout-xmark-edit"
+              className="logout-xmark-edit close-svg"
               onClick={closeModal}
             />
             {/* Edit Profile*/}
-            <div>
-              <h3>Profile picture</h3>
-              <p>Add</p>
-            </div>
             <div className="profile-edit-container">
-              <div className="profile-picture-modal">
+              <div className='edit-profile-header'>
+                <h3>Profile picture</h3>
+                <p>Add</p>
+              </div>
+              <div className="profile-picture-modal photo-modal">
                 <img src={profileData.profilePhoto} alt="Profile" />
               </div>
               <div className="upload-photo">
@@ -99,11 +99,11 @@
               </div>
 
               {/* Cover Photo*/}
-              <div>
+              <div className='edit-profile-header'>
                 <h3>Cover Photo</h3>
                 <p>Edit</p>
               </div>
-              <div className="cover-photo-modal">
+              <div className="cover-photo-modal photo-modal">
                 <img src={profileData.coverPhoto} alt="Cover photo" />
               </div>
               <div className="upload-photo">
@@ -112,8 +112,10 @@
 
               {/* Name*/}
               <div>
-                <h3>Name</h3>
-                <p>Edit</p>
+                <div className='edit-profile-header'>
+                  <h3>Name</h3>
+                  <p>Edit</p>
+                </div>
                 <form className="form-container">
                   <textarea
                     className="input-feed"
@@ -124,7 +126,7 @@
               </div>
 
               {/* Introduction*/}
-              <div>
+              <div className='edit-profile-header'>
                 <h3>Introduction</h3>
                 <p>Add</p>
               </div>
@@ -139,7 +141,9 @@
 
               {/* Other Info */}
               <div>
-                <h3>Edit Additional Information</h3>
+                <div className='edit-profile-header'>
+                  <h3>Edit Additional Information</h3>
+                </div>
                 <div className="additional-info-container">
                   <p>
                     <FontAwesomeIcon icon={faPlus} className="plus-icon" />

@@ -61,3 +61,14 @@
     }
 }
 
+.friend-container{
+
+    .online-friends{
+        position: relative;
+        svg {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+    }
+}

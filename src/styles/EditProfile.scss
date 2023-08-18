@@ -7,22 +7,94 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow-y: scroll;
     height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .close-svg {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
 
     h2 {
         text-align: center;
+        margin-top: 2rem;
     }
 
     h3 {
         text-align: start;
         font-size: 1.3rem;
+        margin-top: 1rem;
     }
 
     p {
         text-align: end;
         font-size: 1.1rem;
     }
+    .profile-edit-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 36rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 
+    .edit-profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
 
+    .photo-modal {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .upload-photo {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-container{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .input-feed {
+            width: 45vw;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    .additional-info-container{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-flow: column;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        p{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .save-button{
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 }
 
@@ -38,6 +110,7 @@
 }
 
 .cover-photo-modal>img {
+    display: none;
     width: 70%;
     height: 30vh;
     margin-top: 1rem;
@@ -52,4 +125,7 @@
 
 .save-button {
     @extend .add-btn;
+    width: 5rem;
+    height: 2rem;
+    margin-top: 0rem;
 }
