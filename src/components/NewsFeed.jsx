@@ -9,7 +9,7 @@ import axios from 'axios';
 function NewsFeed() {
     const { isOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
-    const [feeds, setFeed] = useState([])
+    const [feeds, setFeeds] = useState([])
 
 
     const handlePost = (event) => {
@@ -22,6 +22,7 @@ function NewsFeed() {
 
     const fetchFeed = async () => {
         const res = await axios('http://localhost:8000/api/v1/post')
+        setFeeds(res.data.data)
         console.log(res.data.data)
     }
 
@@ -49,9 +50,10 @@ function NewsFeed() {
                     <button onClick={openModal} className="cancel-button">Cancel</button>
                 </div>
                 {
-                    
+                    feeds.map(
+                        feed=><Feed key={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated}/>
+                    )
                 }
-                <Feed />
             </div>
             {/* Using the extracted CreatePostModal component */}
             <CreatePostModal

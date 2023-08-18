@@ -95,7 +95,7 @@
                 <img src={profileData.profilePhoto} alt="Profile" />
               </div>
               <div className="upload-photo">
-                <input type="file" id="myFile" name="filename" className="upload-button" />
+                <input type="file" id="myFile" name="filename" className="upload-button" accept="image/*"/>
               </div>
 
               {/* Cover Photo*/}
@@ -107,7 +107,7 @@
                 <img src={profileData.coverPhoto} alt="Cover photo" />
               </div>
               <div className="upload-photo">
-                <input type="file" id="myFile" name="filename" className="upload-button" />
+                <input type="file" id="myFile" name="filename" className="upload-button" accept="image/*"/>
               </div>
 
               {/* Name*/}

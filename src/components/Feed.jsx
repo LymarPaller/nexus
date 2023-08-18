@@ -10,7 +10,9 @@ import { faEllipsisH, faTimes, faTrashAlt, faEdit, faBookmark } from '@fortaweso
 import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 
-function Feed() {
+function Feed(props) {
+  const {imgPost, postDescription, dateCreated} = props
+
   const {
     isOpen: showOptionsModal,
     openModal: toggleOptionsModal,
@@ -85,15 +87,15 @@ function Feed() {
             <div className="name-icon">
               <h3>Wanda Zurbano</h3>
             </div>
-            <p>1 minute ago</p>
+            <p>{dateCreated}</p>
           </div>
         </div>
         <div className="captions">
-          <p>{editedCaption}</p>
+          <p>{postDescription}</p>
         </div>
         <div className="post-image">
           {/* Replace this with actual post props image soon */}
-          <img src={Profile} alt="Post" />
+          <img src={imgPost} alt="Post" />
         </div>
         <div className="likes-comments">
           <div className="likes">
