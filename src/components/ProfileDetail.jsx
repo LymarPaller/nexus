@@ -32,8 +32,8 @@ function ProfileDetail(props) {
   const [editedCompany, setEditedCompany] = useState(company);
   const [editedWebsite, setEditedWebsite] = useState(website);
   const [editedCity, setEditedCity] = useState(city);
-  const [profileImage, setProfileImage] = useState(profilePhoto);
-  const [coverImage, setCoverImage] = useState(coverPhoto);
+  const [profilePhotos, setprofilePhoto] = useState(profilePhoto); //plural
+  const [coverPhotos, setcoverPhoto] = useState(coverPhoto); //plural
 
   const [editNameMode, setEditNameMode] = useState(true);
   const [editIntroductionMode, setEditIntroductionMode] = useState(false);
@@ -60,16 +60,16 @@ function ProfileDetail(props) {
   };
 
 
-  const handleProfileImageChange = (e) => {
-    const uploadedProfileImage = URL.createObjectURL(e.target.files[0]);
-    setProfileImage(uploadedProfileImage);
+  const handleprofilePhotoChange = (e) => {
+    const uploadedprofilePhoto = URL.createObjectURL(e.target.files[0]);
+    setprofilePhoto(uploadedprofilePhoto);
     setHasChanges(true); 
   };
 
 
-  const handleCoverImageChange = (e) => {
-    const uploadedCoverImage = URL.createObjectURL(e.target.files[0]);
-    setCoverImage(uploadedCoverImage);
+  const handlecoverPhotoChange = (e) => {
+    const uploadedcoverPhoto = URL.createObjectURL(e.target.files[0]);
+    setcoverPhoto(uploadedcoverPhoto);
     setHasChanges(true); 
   };
 
@@ -88,10 +88,10 @@ function ProfileDetail(props) {
   return (
     <div className="profile-main-container">
       <div className="cover-photo">
-        <img src={coverImage} alt="Cover" />
+        <img src={coverPhoto} alt="Cover" />
       </div>
       <div className="profile-photo">
-        <img src={profileImage} alt="Profile" />
+        <img src={profilePhoto} alt="Profile" />
       </div>
       <div className="detail-container">
         <h1 className="user-profile-name">{editedName}</h1>
@@ -146,7 +146,7 @@ function ProfileDetail(props) {
                 />
               </div>
               <div className="profile-picture-modal photo-modal">
-                <img src={profileImage} alt="Profile" />
+                <img src={profilePhoto} alt="Profile" />
               </div>
               <div className="upload-photo">
                 <input
@@ -155,7 +155,7 @@ function ProfileDetail(props) {
                   name="profilePicture"
                   className="upload-button hidden"
                   accept="image/*"
-                  onChange={handleProfileImageChange}
+                  onChange={handleprofilePhotoChange}
                 />
               </div>
 
@@ -170,7 +170,7 @@ function ProfileDetail(props) {
                 />
               </div>
               <div className="cover-photo-modal photo-modal">
-                <img src={coverImage} alt="Cover photo" />
+                <img src={coverPhoto} alt="Cover photo" />
               </div>
               <div className="upload-photo">
                 <input
@@ -179,7 +179,7 @@ function ProfileDetail(props) {
                   name="coverPhoto"
                   className="upload-button hidden"
                   accept="image/*"
-                  onChange={handleCoverImageChange}
+                  onChange={handlecoverPhotoChange}
                 />
               </div>
 

@@ -17,15 +17,18 @@ function NewsFeed() {
     const fetchFeed = async () => {
         try {
             const res = await axios('http://localhost:8000/api/v1/post')
-            setFeeds(res.data.data);
+            const postData = res.data.data
+            setFeeds(postData);
+
+            const allComments = postData.map(post => post.comments);
+            setComments(allComments);
+
         } catch (error) {
             console.error('Error fetching feed:', error);
         } finally {
             setLoading(false); 
         }
     }
-
-
 
     useEffect(() => {
         fetchFeed();
@@ -56,7 +59,7 @@ function NewsFeed() {
                 </div>
                 {
                     feeds.toReversed().map(
-                        feed=><Feed key={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profile_photo}/>
+                        feed=><Feed key={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profile_photo} comments={comments}/>
                     )
                 }
             </div>

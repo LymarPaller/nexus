@@ -20,8 +20,11 @@
     }
 
     h2 {
-        text-align: center;
-        margin-top: 2rem;
+        // position: absolute;
+        // top: 3rem;
+        padding-top: 25rem;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
     }
 
     h3 {
@@ -39,7 +42,6 @@
         flex-direction: column;
         justify-content: center;
         flex-wrap: wrap;
-        padding-top: 36rem;
         padding-left: 2rem;
         padding-right: 2rem;
     }
