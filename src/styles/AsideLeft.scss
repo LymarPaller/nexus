@@ -107,6 +107,7 @@
     align-items: center;
     padding: 8px;
     z-index: 4;
+    text-decoration: none; 
 
     &:hover {
         background-color: var(--grey-200);
@@ -124,7 +125,9 @@
         font-size: 1rem;
     }
 
-    a {
-        color: var(--black);
-    }
+}
+
+
+a {
+    color: var(--black);  
 }
