@@ -26,6 +26,7 @@ html {
   --primary-800: #003f66;
   --primary-900: #002033;
   --accent-light: #ffdddd;
+  --accent-medyo-light: #f99999;
   --accent: #ff1f4a;
   --accent-hover: #e61a43;
   /* Grey */
@@ -41,6 +42,23 @@ html {
   --grey-800: #585858;
   --grey-900: #2c2c2c;
   --grey-1000: #222;
+
+    /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    height: 10rem;
+    background: var(--grey-800);
+  }
 
 }
 

@@ -6,6 +6,7 @@ import "../styles/HomePage.scss";
 import '../styles/main.scss';
 import '../styles/normalize.scss';
 import { Link } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function HomePage() {
   
