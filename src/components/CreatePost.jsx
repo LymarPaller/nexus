@@ -5,30 +5,47 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Profile from '../assets/wanda.jpg';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 const validationSchema = Yup.object({
-  postText: Yup.string().required("Post text is required"),
+  postDescription: Yup.string().required("Post text is required"),
 });
 
-function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost }) {
+function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost, fetchFeed}) {
+
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  
+  const formattedDate = `${year}-${month}-${day}`;
+
   const formik = useFormik({
+
     initialValues: {
       postDescription: '',
       imgPost: '',
-      dateCreated: '',
-      userId: '',
+      dateCreated: formattedDate,
+      userId: '66',
     },
+
+
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-      // try {
-      //   const res = await axios.post('http://localhost:8000/api/v1/post', values);
-      //   console.log('Post successful: ', res.data);
-      // } catch (error) {
-      //   console.error('Post failed: ', error)
-      // }
+    onSubmit: async (values) => {
+      // console.log(values)
+      try {
+        const res = await axios.post('http://localhost:8000/api/v1/post', values);
+        console.log('Post successful: ', res.data);
+      } catch (error) {
+        console.error('Post failed: ', error)
+      }
+      formik.resetForm();
+      closeModal();
+      fetchFeed();
     },
   });
+  
 
   return (
     <Modal
@@ -47,10 +64,11 @@ function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost
         <h5>Wanda Zurbano</h5>
       </div>
       <div className='upload-photo'>
-        <input type="file" id="myFile" name="filename" className='upload-button' 
-          placeholder="What's on your mind?"
-          {...formik.getFieldProps('imgPost')}
-        />
+        <input type="file"
+        id="myFile"
+        name="filename"
+        className='upload-button' 
+        {...formik.getFieldProps('imgPost')}/>
       </div>
       <form className='form-container' onSubmit={formik.handleSubmit}>
         <textarea
@@ -58,9 +76,9 @@ function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost
           placeholder="What's on your mind?"
           {...formik.getFieldProps('postDescription')}
         />
-        {formik.touched.postText && formik.errors.postText ? (
+        {formik.touched.postDescription && formik.errors.postDescription ? (
           <div className='error-container'>
-            {formik.errors.postText}
+            {formik.errors.postDescription}
           </div>
         ) : null}
         <button type="submit" className="post-button">Post</button>

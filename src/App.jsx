@@ -16,7 +16,6 @@ import MemoriesPage from './pages/MemoriesPage';
 import GamesPage from './pages/GamesPage';
 import FeedsPage from './pages/FeedsPage';
 import NotFoundPage from './pages/NotFoundPage';
-import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
   return (

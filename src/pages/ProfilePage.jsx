@@ -39,10 +39,11 @@ function ProfilePage() {
                 coverPhoto={profileDatas.coverPhoto}
                 />
                 {
-                    profilePosts.map(
+                    profilePosts.toReversed().map(
                         profilePost => <Feed key={profilePost.id}
                         imgPost={profilePost.img_post}
                         postDescription={profilePost.post_description}
+                        dateCreated={profilePost.date_created}
                         author={profileDatas.name} 
                         img={profileDatas.profilePhoto}/>
                     )

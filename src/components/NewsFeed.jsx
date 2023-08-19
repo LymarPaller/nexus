@@ -14,15 +14,6 @@ function NewsFeed() {
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([])
 
-
-    const handlePost = (event) => {
-        event.preventDefault();
-        console.log('Posted:', postText);
-         
-        setPostText('');
-        closeModal();
-    };
-
     const fetchFeed = async () => {
         try {
             const res = await axios('http://localhost:8000/api/v1/post')
@@ -33,6 +24,8 @@ function NewsFeed() {
             setLoading(false); 
         }
     }
+
+
 
     useEffect(() => {
         fetchFeed();
@@ -55,14 +48,14 @@ function NewsFeed() {
                             onClick={openModal}
                             className="input-feed"
                             placeholder="What's on your mind?"
-                            value={postText}
-                            onChange={(e) => setPostText(e.target.value)}
+                            // value={postText}
+                            // onChange={(e) => setPostText(e.target.value)}
                         />
                     </div>
                     <button onClick={openModal} className="cancel-button">Cancel</button>
                 </div>
                 {
-                    feeds.map(
+                    feeds.toReversed().map(
                         feed=><Feed key={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profile_photo}/>
                     )
                 }
@@ -71,9 +64,10 @@ function NewsFeed() {
             <CreatePostModal
                 isOpen={isOpen}
                 closeModal={closeModal}
-                postText={postText}
-                setPostText={setPostText}
-                handlePost={handlePost}
+                fetchFeed={fetchFeed}
+                // postText={postText}
+                // setPostText={setPostText}
+                // handlePost={handlePost}
             />
         </>
     );

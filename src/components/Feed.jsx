@@ -130,24 +130,28 @@ function Feed(props, feedItems) {
           </div>
           <div className="modal-body-edit-comment">
             <div className="options-list">
-              <div className="option" onClick={handleEditCaption}>
+
+              <div className="option edit-caption" onClick={handleEditCaption}>
                 <span className="option-icon">
                   <FontAwesomeIcon icon={faEdit} />
                 </span>
                 <span className="option-label">Edit Caption</span>
               </div>
-              <div className="option" onClick={handleDeletePost}>
+
+              <div className="option delete-caption" onClick={handleDeletePost}>
                 <span className="option-icon-delete">
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </span>
                 <span className="option-label-delete">Delete Post</span>
               </div>
+
               <div className="option" onClick={handleSavePost}>
                 <span className="option-icon">
                   <FontAwesomeIcon icon={faBookmark} />
                 </span>
                 <span className="option-label">Save Post</span>
               </div>
+
             </div>
           </div>
           <div className="modal-footer">

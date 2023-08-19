@@ -14,42 +14,43 @@ function Comments({ feedItems }) {
   
   console.log(feedItems)
 
-  const handleDeleteComment = () => {
-    if (commentToDelete !== null) {
-      const updatedComments = feedItems.filter((item, index) => index !== commentToDelete);
-      // you can update soon like this  setComments(updatedComments);
-      setCommentToDelete(null);
-      closeDeleteModal();
-    }
-  };
+  // const handleDeleteComment = () => {
+  //   if (commentToDelete !== null) {
+  //     const updatedComments = feedItems.filter((item, index) => index !== commentToDelete);
+  //     // you can update soon like this  setComments(updatedComments);
+  //     setCommentToDelete(null);
+  //     closeDeleteModal();
+  //   }
+  // };
   
 
-  const handleCommentSubmit = (event) => {
-    event.preventDefault();
-    if (comment.trim()) {
-      // Add logic to submit comment to the server or update state
-      setComment('');
-    }
-  };
+  // const handleCommentSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (comment.trim()) {
+  //     // Add logic to submit comment to the server or update state
+  //     setComment('');
+  //   }
+  // };
 
   return (
     <div className='list-comments'>
       <div className='profile'>
         {/* Rest of the profile info... */}
-        {Array.isArray(feedItems) && feedItems.map((item, index) => (
-          <div key={index} className='profile-image'>
-            <img src={Profile} alt='Profile' />
-            <div className='comment'>
-              {/* Comment details */}
+        <div className='profile-image'>
+          <img src={Profile} alt='Profile' />
+          <div className='comment'>
+              <h5>wanda</h5>
+              <div>
+                  <p>hahahhahah</p>
+              </div>
               <span className='remove-comment' onClick={() => {
-                setCommentToDelete(index);
-                openDeleteModal();
+                  setCommentToDelete(comment.id);
+                  openDeleteModal(); // Open the delete modal
               }}>
-                <FontAwesomeIcon icon={faTrash} className='trash-icon' />
+                  <FontAwesomeIcon icon={faTrash} className='trash-icon' />
               </span>
-            </div>
           </div>
-        ))}
+        </div>
       </div>
 
       {/* Comment input */}
@@ -62,7 +63,7 @@ function Comments({ feedItems }) {
         />
       </div>
       <div className="modal-footer">
-        <button onClick={handleCommentSubmit} className="add-comment-button">
+        <button className="add-comment-button">
           Add Comment
         </button>
       </div>
