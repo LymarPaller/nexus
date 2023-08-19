@@ -9,23 +9,25 @@ import Logo from '../assets/nexus-logo-blue.svg';
 
 function LoginPage() {
   const validationSchema = Yup.object({
-    username: Yup.string().required('Username is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email address is required'),
     password: Yup.string().required('Password is required'),
   });
 
   const formik = useFormik({
     initialValues: {
-      username: '',
+      email: '',
       password: '',
       showPassword: false,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log('Username:', values.username);
+      console.log('Email:', values.email);
       console.log('Password:', values.password);
+      // Your login logic here
     },
   });
-
 
   useEffect(() => {
     document.title = 'Login';
@@ -48,13 +50,13 @@ function LoginPage() {
               <div className='input-container'>
                 <input
                   type='text'
-                  placeholder='Username'
-                  {...formik.getFieldProps('username')}
+                  placeholder='Email'
+                  {...formik.getFieldProps('email')}
                 />
-                {formik.touched.username && formik.errors.username ? (
+                {formik.touched.email && formik.errors.email ? (
                   <div className='error-container'>
                     <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
-                    {formik.errors.username}
+                    {formik.errors.email}
                   </div>
                 ) : null}
               </div>

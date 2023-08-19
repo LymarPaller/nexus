@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import '../styles/RegisterPage.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
 import { faArrowLeft, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';  
-import '../styles/RegisterPage.scss';
 
 function RegisterPage() {
-  const navigate = useNavigate();
-
   const validationSchema = Yup.object({
     username: Yup.string().required('Username is required'),
     name: Yup.string().required('Name is required'),
@@ -17,19 +15,17 @@ function RegisterPage() {
     password: Yup.string().required('Password is required'),
   });
 
-  const initialValues = {
-    name: '',
-    username: '',
-    email: '',
-    password: '',
-  };
-
   const formik = useFormik({
-    initialValues: initialValues,
+    initialValues: {
+      username: '',
+      name: '',
+      email: '',
+      password: '',
+    },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);      
-      navigate(`/welcome/${values.username}`);
+      console.log(values);
+      // Your registration logic here
     },
   });
 
