@@ -14,18 +14,18 @@ import SeelessIcon from '../assets/icons/seeless.png';
 
 function SectionLink({ to, imgSrc, imgAlt, title }) {
     return (
-        <a href={to} className="section-link">
-            <div className="section">
+        <div className="section">
+            <Link to={to}>
                 <div className="profile-image">
                     <img src={imgSrc} alt={imgAlt} />
                 </div>
+            </Link>
+            <Link to={to}>
                 <h3>{title}</h3>
-            </div>
-        </a>
+            </Link>
+        </div>
     );
 }
-
-
 
 function AsideLeft() {
     const [expanded, setExpanded] = useState(false);
