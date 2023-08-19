@@ -23,6 +23,7 @@
             height: auto;
             flex-basis: 100%;
             margin-top: 1rem;
+            color: var(--black);
         }
     
         .friend-container {
@@ -44,7 +45,7 @@
                 width: 18vw;
                 padding: 1rem;
                 margin: 1rem;
-                background-color: var(--white);
+                background-color: var(--grey-200);
                 box-shadow: $shadow-4;
                 border-radius: .5rem;
                 position: relative;
