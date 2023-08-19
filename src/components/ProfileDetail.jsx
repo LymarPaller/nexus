@@ -4,11 +4,10 @@ import '../styles/EditProfile.scss';
 import LocationPin from '../assets/icons/location.svg';
 import WebIcon from '../assets/icons/web.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPen, faTimes, faPlus, faEdit, faSave } from "@fortawesome/free-solid-svg-icons"; // Added faSave
+import { faUserPen, faTimes, faPlus, faEdit, faSave } from "@fortawesome/free-solid-svg-icons"; 
 import Modal from 'react-modal';
 import { useModal } from '../app/useModal';
 
-// Define the website link
 const PROFILE_WEBSITE = 'https://www.instagram.com/wandaringmaltese/';
 
 function WebsiteLink({ website }) {
@@ -42,9 +41,9 @@ function ProfileDetail(props) {
   const [editWebsiteMode, setEditWebsiteMode] = useState(false);
   const [editCityMode, setEditCityMode] = useState(false);
 
-  const [hasChanges, setHasChanges] = useState(false); // Track changes
+  const [hasChanges, setHasChanges] = useState(false);  
 
-  const { isOpen, openModal, closeModal } = useModal(); // Using the hook for modal state
+  const { isOpen, openModal, closeModal } = useModal();  
 
   const openEditModal = () => {
     setEditModalOpen(true);
@@ -55,36 +54,34 @@ function ProfileDetail(props) {
   };
 
   const handleSaveProfile = () => {
-    // Here you can send the edited data to your backend or update your state as needed
-    setHasChanges(false); // Reset hasChanges after saving
+    // add save logic
+    setHasChanges(false); 
     closeEditModal();
   };
 
-  // Handle profile image change
+
   const handleProfileImageChange = (e) => {
     const uploadedProfileImage = URL.createObjectURL(e.target.files[0]);
     setProfileImage(uploadedProfileImage);
-    setHasChanges(true); // Set hasChanges to true when profile image changes
+    setHasChanges(true); 
   };
 
-  // Handle cover image change
+
   const handleCoverImageChange = (e) => {
     const uploadedCoverImage = URL.createObjectURL(e.target.files[0]);
     setCoverImage(uploadedCoverImage);
-    setHasChanges(true); // Set hasChanges to true when cover image changes
+    setHasChanges(true); 
   };
 
-  // Handle saving profile picture
+  
   const handleSaveProfilePicture = () => {
     // Add logic here to save the profile picture
-    // For example, you can send it to the backend if needed
     setHasChanges(false); // Reset hasChanges after saving
   };
 
-  // Handle saving cover photo
+
   const handleSaveCoverPhoto = () => {
-    // Add logic here to save the cover photo
-    // For example, you can send it to the backend if needed
+    // Add logic here to save the cover photo soon   
     setHasChanges(false); // Reset hasChanges after saving
   };
 
