@@ -1,163 +1,339 @@
-  import React, { useState } from 'react';
-  import '../styles/ProfileDetail.scss';
-  import '../styles/EditProfile.scss';
-  import LocationPin from '../assets/icons/location.svg';
-  import WebIcon from '../assets/icons/web.svg';
-  import PlaceholderCover from '../assets/landing-page-photo.jpg';
-  import Profile from '../assets/wanda.jpg';
-  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-  import { faUserPen, faTimes, faPlus, faEdit } from "@fortawesome/free-solid-svg-icons";
-  import Modal from 'react-modal';
-  import { useModal } from '../app/useModal';  
+import React, { useState } from 'react';
+import '../styles/ProfileDetail.scss';
+import '../styles/EditProfile.scss';
+import LocationPin from '../assets/icons/location.svg';
+import WebIcon from '../assets/icons/web.svg';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserPen, faTimes, faPlus, faEdit, faSave } from "@fortawesome/free-solid-svg-icons"; 
+import Modal from 'react-modal';
+import { useModal } from '../app/useModal';
 
-  const PROFILE_WEBSITE = 'https://www.instagram.com/wandaringmaltese/';
+const PROFILE_WEBSITE = 'https://www.instagram.com/wandaringmaltese/';
 
-  function WebsiteLink() {
-    const handleWebsiteClick = () => {
-      window.open(PROFILE_WEBSITE, '_blank');
-    };
+function WebsiteLink({ website }) {
+  const handleWebsiteClick = () => {
+    window.open(website, '_blank');
+  };
 
-    return (
-      <span onClick={handleWebsiteClick}>
-        <img src={WebIcon} alt="Website" />
-        <p className="profile-website detail-container-other-details-paragraph">Website</p>
-      </span>
-    );
-  }
+  return (
+    <span onClick={handleWebsiteClick}>
+      <img src={WebIcon} alt="Website" />
+      <p className="profile-website detail-container-other-details-paragraph">Website</p>
+    </span>
+  );
+}
 
-  function ProfileDetail(props) {
-    const {name, introduction, company, website, city, profilePhoto, coverPhoto} =props
+function ProfileDetail(props) {
+  const { name, introduction, company, website, city, profilePhoto, coverPhoto } = props;
 
-    const { isOpen, openModal, closeModal } = useModal(); // Using the hook for modal state
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [editedName, setEditedName] = useState(name);
+  const [editedIntroduction, setEditedIntroduction] = useState(introduction);
+  const [editedCompany, setEditedCompany] = useState(company);
+  const [editedWebsite, setEditedWebsite] = useState(website);
+  const [editedCity, setEditedCity] = useState(city);
+  const [profileImage, setProfileImage] = useState(profilePhoto);
+  const [coverImage, setCoverImage] = useState(coverPhoto);
 
-    return (
-      <div className="profile-main-container">
-        <div className="cover-photo">
-          <img src={coverPhoto} alt="Cover" />
+  const [editNameMode, setEditNameMode] = useState(true);
+  const [editIntroductionMode, setEditIntroductionMode] = useState(false);
+  const [editCompanyMode, setEditCompanyMode] = useState(false);
+  const [editWebsiteMode, setEditWebsiteMode] = useState(false);
+  const [editCityMode, setEditCityMode] = useState(false);
+
+  const [hasChanges, setHasChanges] = useState(false);  
+
+  const { isOpen, openModal, closeModal } = useModal();  
+
+  const openEditModal = () => {
+    setEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModalOpen(false);
+  };
+
+  const handleSaveProfile = () => {
+    // add save logic
+    setHasChanges(false); 
+    closeEditModal();
+  };
+
+
+  const handleProfileImageChange = (e) => {
+    const uploadedProfileImage = URL.createObjectURL(e.target.files[0]);
+    setProfileImage(uploadedProfileImage);
+    setHasChanges(true); 
+  };
+
+
+  const handleCoverImageChange = (e) => {
+    const uploadedCoverImage = URL.createObjectURL(e.target.files[0]);
+    setCoverImage(uploadedCoverImage);
+    setHasChanges(true); 
+  };
+
+  
+  const handleSaveProfilePicture = () => {
+    // Add logic here to save the profile picture
+    setHasChanges(false); // Reset hasChanges after saving
+  };
+
+
+  const handleSaveCoverPhoto = () => {
+    // Add logic here to save the cover photo soon   
+    setHasChanges(false); // Reset hasChanges after saving
+  };
+
+  return (
+    <div className="profile-main-container">
+      <div className="cover-photo">
+        <img src={coverImage} alt="Cover" />
+      </div>
+      <div className="profile-photo">
+        <img src={profileImage} alt="Profile" />
+      </div>
+      <div className="detail-container">
+        <h1 className="user-profile-name">{editedName}</h1>
+        <div className="detail-container-intro">
+          <p>{editedIntroduction}</p>
+          <p>{editedCompany}</p>
         </div>
-        <div className="profile-photo">
-          <img src={profilePhoto} alt="Profile" />
-        </div>
-        <div className="detail-container">
-          <h1 className="user-profile-name">{name}</h1>
-          <div className="detail-container-intro">
-            <p>{introduction}</p>
-            <p>{company}</p>
+        <div className="detail-container-other-details">
+          <WebsiteLink website={editedWebsite} />
+          <span>
+            <img src={LocationPin} alt="Location" />
+            <p className="profile-location detail-container-other-details-paragraph">
+              {editedCity}
+            </p>
+          </span>
+          <div>
+            <FontAwesomeIcon
+              icon={faUserPen}
+              className="edit-icon"
+              title="Edit Profile"
+              onClick={openEditModal}
+            />
           </div>
-          <div className="detail-container-other-details">
-            <WebsiteLink />
-            <span>
-              <img src={LocationPin} alt="Location" />
-              <p className="profile-location detail-container-other-details-paragraph">
-                {city}
-              </p>
-            </span>
-            <div>
-              <FontAwesomeIcon
-                icon={faUserPen}
-                className="edit-icon"
-                title="Edit Profile"
-                onClick={openModal}
-              />
-            </div>
-          </div>
         </div>
+      </div>
 
+      {isEditModalOpen && (
         <Modal
-          isOpen={isOpen}
-          onRequestClose={closeModal}
+          isOpen={isEditModalOpen}
+          onRequestClose={closeEditModal}
           className="edit-profile-modal"
           overlayClassName="modal-overlay"
           ariaHideApp={false}
         >
-          {/* Modal content */}
           <div className="modal-content-edit-profile">
             <h2>Edit Profile</h2>
             <FontAwesomeIcon
               icon={faTimes}
               className="logout-xmark-edit close-svg"
-              onClick={closeModal}
+              onClick={closeEditModal}
             />
             {/* Edit Profile*/}
             <div className="profile-edit-container">
+              {/* Profile Picture */}
               <div className='edit-profile-header'>
                 <h3>Profile picture</h3>
-                <p>Add</p>
+                <FontAwesomeIcon
+                  icon={faSave}
+                  className={`edit-icon ${hasChanges ? 'clickable' : ''}`}
+                  title="Save Profile Picture"
+                  onClick={hasChanges ? handleSaveProfilePicture : null}
+                />
               </div>
               <div className="profile-picture-modal photo-modal">
-                <img src={profilePhoto} alt="Profile" />
+                <img src={profileImage} alt="Profile" />
               </div>
               <div className="upload-photo">
-                <input type="file" id="myFile" name="filename" className="upload-button" accept="image/*"/>
+                <input
+                  type="file"
+                  id="profilePictureInput"
+                  name="profilePicture"
+                  className="upload-button hidden"
+                  accept="image/*"
+                  onChange={handleProfileImageChange}
+                />
               </div>
 
-              {/* Cover Photo*/}
+              {/* Cover Photo */}
               <div className='edit-profile-header'>
                 <h3>Cover Photo</h3>
-                <p>Edit</p>
+                <FontAwesomeIcon
+                  icon={faSave}
+                  className={`edit-icon ${hasChanges ? 'clickable' : ''}`}
+                  title="Save Cover Photo"
+                  onClick={hasChanges ? handleSaveCoverPhoto : null}
+                />
               </div>
               <div className="cover-photo-modal photo-modal">
-                <img src={coverPhoto} alt="Cover photo" />
+                <img src={coverImage} alt="Cover photo" />
               </div>
               <div className="upload-photo">
-                <input type="file" id="myFile" name="filename" className="upload-button" accept="image/*"/>
+                <input
+                  type="file"
+                  id="coverPhotoInput"
+                  name="coverPhoto"
+                  className="upload-button hidden"
+                  accept="image/*"
+                  onChange={handleCoverImageChange}
+                />
               </div>
 
-              {/* Name*/}
+              {/* Name */}
               <div>
                 <div className='edit-profile-header'>
                   <h3>Name</h3>
-                  <p>Edit</p>
+                  <p onClick={() => setEditNameMode(false)}>Edit</p>
                 </div>
-                <form className="form-container">
-                  <textarea
-                    className="input-feed"
-                    placeholder="Edit your name..."
-                  />
-                  <button type="submit" className="save-button">Save</button>
-                </form>
+                {editNameMode ? (
+                  <form className="form-container" onSubmit={handleSaveProfile}>
+                    <input
+                      type="text"
+                      className="input-feed"
+                      placeholder="Edit your name..."
+                      value={editedName}
+                      onChange={(e) => setEditedName(e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className="save-button"
+                      onClick={() => {
+                        setEditNameMode(true);
+                        // Add logic here to save the edited name
+                      }}
+                    >
+                      Save
+                    </button>
+                  </form>
+                ) : null}
               </div>
 
-              {/* Introduction*/}
-              <div className='edit-profile-header'>
-                <h3>Introduction</h3>
-                <p>Add</p>
+              {/* Introduction */}
+              <div>
+              <h3 className='edit-add-ons'>Edit Additional Information</h3>
+                <div className='edit-profile-header'>
+                  <h3>Introduction</h3>
+                  <p onClick={() => setEditIntroductionMode(true)}>Edit</p>
+                </div>
+                {editIntroductionMode ? (
+                  <form className="form-container" onSubmit={handleSaveProfile}>
+                    <textarea
+                      className="input-feed"
+                      placeholder="Describe yourself..."
+                      value={editedIntroduction}
+                      onChange={(e) => setEditedIntroduction(e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className="save-button"
+                      onClick={() => {
+                        setEditIntroductionMode(false);
+                        // Add logic here to save the edited introduction
+                      }}
+                    >
+                      Save
+                    </button>
+                  </form>
+                ) : null}
               </div>
-              <form className="form-container">
-                <textarea
-                  className="input-feed"
-                  placeholder="Describe yourself..."
-                />
-                <button type="submit" className="save-button">Save</button>
-              </form>
 
+              {/* Company */}
+              <div>
+                
+                <div className='edit-profile-header'>
+                  <h3>Company</h3>
+                  <p onClick={() => setEditCompanyMode(true)}>Edit</p>
+                </div>
+                {editCompanyMode ? (
+                  <form className="form-container" onSubmit={handleSaveProfile}>
+                    <textarea
+                      className="input-feed"
+                      placeholder="Edit your company..."
+                      value={editedCompany}
+                      onChange={(e) => setEditedCompany(e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className="save-button"
+                      onClick={() => {
+                        setEditCompanyMode(false);
+                        // Add logic here to save the edited company
+                      }}
+                    >
+                      Save
+                    </button>
+                  </form>
+                ) : null}
+              </div>
 
-              {/* Other Info */}
+              {/* Website */}
               <div>
                 <div className='edit-profile-header'>
-                  <h3>Edit Additional Information</h3>
+
+                  <h3>Website</h3>
+                  <p onClick={() => setEditWebsiteMode(true)}>Edit</p>
                 </div>
-                <div className="additional-info-container">
-                  <p>
-                    <FontAwesomeIcon icon={faPlus} className="plus-icon" />
-                    Add a workplace
-                  </p>
-                  <p>
-                    <FontAwesomeIcon icon={faPlus} className="plus-icon" />
-                    Current city
-                  </p>
-                  <p>
-                    <FontAwesomeIcon icon={faEdit} className="edit-icon" />
-                    Edit Website
-                  </p>
-                </div>
+                {editWebsiteMode ? (
+                  <form className="form-container" onSubmit={handleSaveProfile}>
+                    <input
+                      type="text"
+                      className="input-feed"
+                      placeholder="Edit your website..."
+                      value={editedWebsite}
+                      onChange={(e) => setEditedWebsite(e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className="save-button"
+                      onClick={() => {
+                        setEditWebsiteMode(false);
+                        // Add logic here to save the edited website
+                      }}
+                    >
+                      Save
+                    </button>
+                  </form>
+                ) : null}
               </div>
-              <button type="submit" className="save-button">Save</button>
+
+              {/* City */}
+              <div>
+                <div className='edit-profile-header'>
+                  <h3>City</h3>
+                  <p onClick={() => setEditCityMode(true)}>Edit</p>
+                </div>
+                {editCityMode ? (
+                  <form className="form-container" onSubmit={handleSaveProfile}>
+                    <input
+                      type="text"
+                      className="input-feed"
+                      placeholder="Edit your city..."
+                      value={editedCity}
+                      onChange={(e) => setEditedCity(e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className="save-button"
+                      onClick={() => {
+                        setEditCityMode(false);
+                        // Add logic here to save the edited city
+                      }}
+                    >
+                      Save
+                    </button>
+                  </form>
+                ) : null}
+              </div>
             </div>
           </div>
         </Modal>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
+}
 
-  export default ProfileDetail;
+export default ProfileDetail;
