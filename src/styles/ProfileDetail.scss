@@ -1,6 +1,6 @@
 @import "main";
 
-.profile-main-container{
+.profile-main-container {
     position: relative;
     margin-top: 6rem;
 
@@ -10,7 +10,7 @@
         margin-top: 8rem;
         @include flexJcAc
     }
-    
+
 }
 
 .cover-photo {
@@ -35,7 +35,7 @@
     }
 }
 
-.profile-photo > img {
+.profile-photo>img {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
@@ -53,7 +53,7 @@
 
 .detail-container {
     width: 50vw;
-    background-color:  var(--white);
+    background-color: var(--white);
     height: 35vh;
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@
     align-items: center;
     justify-content: center;
 
-    span{
+    span {
         display: flex;
         justify-items: center;
         align-items: center;
@@ -105,3 +105,20 @@
     }
 }
 
+// .modal-content-edit-profile>h2 {
+//     text-align: center;
+//     margin-top: 16rem;
+//     margin-bottom: -25rem;
+// }
+
+// @include mobile {
+//     .modal-content-edit-profile>h2 {
+//         text-align: center;
+//         margin-top: 2rem;
+//         margin-bottom: -25rem;
+//     }
+// }
+
+.edit-add-ons {
+    @include flexJcAc;
+}
