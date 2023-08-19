@@ -7,6 +7,7 @@ import { faExclamationTriangle, faEye, faEyeSlash } from '@fortawesome/free-soli
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 function RegisterPage() {
   const validationSchema = Yup.object({
@@ -25,10 +26,15 @@ function RegisterPage() {
       showPassword: false,
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-      // Your registration logic here
-    },
+    onSubmit: async (values) => {
+      // console.log(values)
+      try {
+        const res = await axios.post('http://localhost:8000/api/v1/users', values);
+        console.log('Registration successful: ', res.data);
+      } catch (error) {
+        console.error('Registration failed: ', error)
+      }
+    }
   });
 
   useEffect(() => {
