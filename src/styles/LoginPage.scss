@@ -76,11 +76,12 @@
 .login-container {
   background-color: var(--white);
   min-width: 16rem;
-  height: 52vh;
+  height: auto;
   border-radius: 20px;
   margin-left: 4rem;
   margin-right: 1rem;
   box-shadow: $shadow-4;
+  padding-bottom: 1rem;
 
   h1 {
     font-family: $headingFont;
@@ -94,14 +95,18 @@
 
   @include mobile {
     min-width: 16rem;
+    height: auto;
     margin-left: 0;
     margin-right: 0;
+    padding-bottom: 1rem;
   }
 
   @include tablet {
     min-width: 18rem;
+    height: auto;
     margin-left: 0;
     margin-right: 0;
+    padding-bottom: 1rem;
   }
 }
 
@@ -126,13 +131,6 @@
 
 .input-container {
   position: relative;
-
-  .error-container{
-    position: absolute;
-    width: 12rem;
-    right: -12.5rem;
-    top: .9rem;
-  }
 
   .password-toggle-button {
     background: none;
