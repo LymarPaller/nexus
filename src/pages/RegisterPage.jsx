@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import '../styles/RegisterPage.scss';
+import { faExclamationTriangle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
-import { faArrowLeft, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function RegisterPage() {
   const validationSchema = Yup.object({
@@ -21,6 +22,7 @@ function RegisterPage() {
       name: '',
       email: '',
       password: '',
+      showPassword: false,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -87,13 +89,27 @@ function RegisterPage() {
                 </div>
               ) : null}
             </div>
+
             <div className='register-input-container'>
               <input
                 id='password'
-                type='password'
+                type={formik.values.showPassword ? 'text' : 'password'}
                 placeholder='Password'
                 {...formik.getFieldProps('password')}
               />
+              <span
+                className='eye-icon'
+                onClick={() =>
+                  formik.setFieldValue(
+                    'showPassword',
+                    !formik.values.showPassword
+                  )
+                }
+              >
+                <FontAwesomeIcon
+                  icon={formik.values.showPassword ? faEye : faEyeSlash}
+                />
+              </span>
               {formik.touched.password && formik.errors.password ? (
                 <div className='error-container'>
                   <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
