@@ -13,13 +13,20 @@ const validationSchema = Yup.object({
 function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost }) {
   const formik = useFormik({
     initialValues: {
-      postText: '',
+      postDescription: '',
+      imgPost: '',
+      dateCreated: '',
+      userId: '',
     },
     validationSchema: validationSchema,
-    onSubmit: () => {
-      handlePost(postText);
-      setPostText('');  
-      closeModal();
+    onSubmit: (values) => {
+      console.log(values);
+      // try {
+      //   const res = await axios.post('http://localhost:8000/api/v1/post', values);
+      //   console.log('Post successful: ', res.data);
+      // } catch (error) {
+      //   console.error('Post failed: ', error)
+      // }
     },
   });
 
@@ -40,13 +47,16 @@ function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost
         <h5>Wanda Zurbano</h5>
       </div>
       <div className='upload-photo'>
-        <input type="file" id="myFile" name="filename" className='upload-button' />
+        <input type="file" id="myFile" name="filename" className='upload-button' 
+          placeholder="What's on your mind?"
+          {...formik.getFieldProps('imgPost')}
+        />
       </div>
       <form className='form-container' onSubmit={formik.handleSubmit}>
         <textarea
           className="input-feed"
           placeholder="What's on your mind?"
-          {...formik.getFieldProps('postText')}
+          {...formik.getFieldProps('postDescription')}
         />
         {formik.touched.postText && formik.errors.postText ? (
           <div className='error-container'>
