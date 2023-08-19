@@ -4,7 +4,6 @@ body {
   background-color: var(--grey-200);
 }
 
-
 .navbar {
   display: flex;
   width: 100%;
@@ -35,7 +34,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
   } 
 
   &-logo-container-nexus {
@@ -62,7 +60,6 @@ body {
       @include tablet {
         display: flex;
       }
-      
     }
 
     @include tablet {
@@ -120,7 +117,6 @@ body {
         width: 100%;
         border-radius: 20px;
         border: .3px solid  var(--black);
-
       }
 
       .icon-container{
@@ -131,7 +127,6 @@ body {
     }
   }
 
-    
   &-logo {
     height: 70px;
     
@@ -211,7 +206,6 @@ body {
       top: 15.5%;
     }
   }
-
 }
 
 //NAVBAR ICON CONTAINER
@@ -240,7 +234,6 @@ body {
     color:  var(--white);
     transition-duration: .5s;
     cursor: pointer;
-
   }
 }
 

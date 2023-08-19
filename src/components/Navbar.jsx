@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTimes, faHeart, faComment, faTag,faThumbsUp, faCalendarAlt, faShare,
-  faUserFriends, faHouse, faUser, faBell, faRightFromBracket,faMoon,
+  faTimes, faHeart, faComment, faTag, faThumbsUp, faCalendarAlt, faShare,
+  faUserFriends, faHouse, faUser, faBell, faRightFromBracket, faMoon,
   faMagnifyingGlass, faBars, faXmark, faSliders, faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/nexus-logo-blue.svg";
@@ -20,10 +20,9 @@ function Navbar() {
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
   const navbarAsideNav = document.querySelector(".navbar-right");
-   
+
   const [moonIcon, setMoonIcon] = useState(faMoon);
   const [showNavbarAside, setShowNavbarAside] = useState(false);
-   
 
   // Handler for toggling dark mode
   const handleDarkModeToggle = () => {
@@ -50,9 +49,9 @@ function Navbar() {
     setShowNavbarAside(!showNavbarAside)
     if (showNavbarAside) {
       navbarAsideNav.classList.add("navbar-aside-toggled");
-    } else if (showNavbarAside) {
+    } else {
       navbarAsideNav.classList.remove("navbar-aside-toggled");
-    } 
+    }
   }
 
   const notificationData = [
@@ -117,7 +116,6 @@ function Navbar() {
       icon: "user-friends",
     },
 
-
     {
       profilePic: "../assets/icons/profile.svg",
       name: "Mark Anthony Ong",
@@ -166,7 +164,6 @@ function Navbar() {
       message: "Let's plan a playdate for our dogs soon!",
       icon: "calendar-alt",
     }
-
   ];
 
   return (
@@ -176,17 +173,17 @@ function Navbar() {
         <div className="navbar-logo-container-nexus">
           <img src={Logo} alt="Logo" className="navbar-logo" />
         </div>
-        
+
         <div className="navbar-left">
           <div className="main-navbar-mobile">
             <div className="icon-wrapper">
               <Link to="/" className="icon-container">
-                  <FontAwesomeIcon icon={faHouse} className="navbar-icon" title="Home"/>
+                <FontAwesomeIcon icon={faHouse} className="navbar-icon" title="Home" />
               </Link>
             </div>
             <div className="icon-wrapper">
               <Link to="/profile" className="icon-container">
-                  <FontAwesomeIcon icon={faUser} className="navbar-icon" title="Account"/>
+                <FontAwesomeIcon icon={faUser} className="navbar-icon" title="Account" />
               </Link>
             </div>
             <div className="icon-wrapper">
@@ -205,12 +202,12 @@ function Navbar() {
           <div className="search-wrapper">
             <input type="text" className="navbar-search-bar" />
             <Link className="icon-container navbar-search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search"/>
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search" />
             </Link>
           </div>
           <div className="toggler-container">
             <div className="icon-container toggler-navbar" onClick={handleNavbarToggle}>
-              <FontAwesomeIcon icon={faBars} className="navbar-icon"/>
+              <FontAwesomeIcon icon={faBars} className="navbar-icon" />
             </div>
           </div>
         </div>
@@ -218,25 +215,25 @@ function Navbar() {
         <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
             <Link className="icon-container" onClick={handleDarkModeToggle} >
-            <FontAwesomeIcon icon={moonIcon} className="navbar-icon" title="Darkmode"/>
+              <FontAwesomeIcon icon={moonIcon} className="navbar-icon" title="Darkmode" />
             </Link>
           </div>
           <div className="icon-wrapper  navbar-slider">
             <Link className="icon-container" to='/aside'>
-              <FontAwesomeIcon icon={faSliders} className="navbar-icon"/>
+              <FontAwesomeIcon icon={faSliders} className="navbar-icon" />
             </Link>
           </div>
           <div className="icon-wrapper">
             <Link className="icon-container">
-              <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button" title="Logout"/>
+              <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogOut} className="navbar-icon logout-logout-button" title="Logout" />
             </Link>
           </div>
           <div className="icon-wrapper x-toggler-aside" onClick={handleNavbarToggle}>
             <Link className="icon-container">
-              <FontAwesomeIcon icon={faXmark}/>
+              <FontAwesomeIcon icon={faXmark} />
             </Link>
           </div>
-            
+
           {/* Logout Confirmation Modal */}
           <Modal
             isOpen={isOpen}
