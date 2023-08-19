@@ -204,6 +204,7 @@ function ProfileDetail(props) {
                       onClick={() => {
                         setEditNameMode(true);
                         // Add logic here to save the edited name
+                        closeEditModal();
                       }}
                     >
                       Save
@@ -233,6 +234,7 @@ function ProfileDetail(props) {
                       onClick={() => {
                         setEditIntroductionMode(false);
                         // Add logic here to save the edited introduction
+                        closeEditModal();
                       }}
                     >
                       Save
@@ -262,6 +264,7 @@ function ProfileDetail(props) {
                       onClick={() => {
                         setEditCompanyMode(false);
                         // Add logic here to save the edited company
+                        closeEditModal();
                       }}
                     >
                       Save
@@ -292,6 +295,7 @@ function ProfileDetail(props) {
                       onClick={() => {
                         setEditWebsiteMode(false);
                         // Add logic here to save the edited website
+                        closeEditModal();
                       }}
                     >
                       Save
@@ -321,6 +325,7 @@ function ProfileDetail(props) {
                       onClick={() => {
                         setEditCityMode(false);
                         // Add logic here to save the edited city
+                        closeEditModal();
                       }}
                     >
                       Save
