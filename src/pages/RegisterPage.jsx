@@ -47,57 +47,64 @@ function RegisterPage() {
         <div className='signup-login-container'>
           <h1>Sign Up</h1>
           <form className='form-login form-signup' onSubmit={formik.handleSubmit}>
-            <input
-              id='username'
-              type='text'
-              placeholder='Username'
-              {...formik.getFieldProps('username')}
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <div className='error-container'>
-                <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
-                {formik.errors.username}
-              </div>
-            ) : null}
+            <div className='register-input-container'>
+              <input
+                id='username'
+                type='text'
+                placeholder='Username'
+                {...formik.getFieldProps('username')}
+              />
+              {formik.touched.username && formik.errors.username ? (
+                <div className='error-container'>
+                  <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
+                  {formik.errors.username}
+                </div>
+              ) : null}
+            </div>
 
-            <input
-              id='name'
-              type='text'
-              placeholder='Name'
-              {...formik.getFieldProps('name')}
-            />
-            {formik.touched.name && formik.errors.name ? (
-              <div className='error-container'>
-                <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
-                {formik.errors.name}
-              </div>
-            ) : null}
+            <div className='register-input-container'>
+              <input
+                id='name'
+                type='text'
+                placeholder='Name'
+                {...formik.getFieldProps('name')}
+              />
+              {formik.touched.name && formik.errors.name ? (
+                <div className='error-container'>
+                  <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
+                  {formik.errors.name}
+                </div>
+              ) : null}
+            </div>
 
-            <input
-              id='email'
-              type='email'
-              placeholder='Email'
-              {...formik.getFieldProps('email')}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className='error-container'>
-                <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
-                {formik.errors.email}
-              </div>
-            ) : null}
-
-            <input
-              id='password'
-              type='password'
-              placeholder='Password'
-              {...formik.getFieldProps('password')}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className='error-container'>
-                <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
-                {formik.errors.password}
-              </div>
-            ) : null}
+            <div className='register-input-container'>
+              <input
+                id='email'
+                type='email'
+                placeholder='Email'
+                {...formik.getFieldProps('email')}
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div className='error-container'>
+                  <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
+                  {formik.errors.email}
+                </div>
+              ) : null}
+            </div>
+            <div className='register-input-container'>
+              <input
+                id='password'
+                type='password'
+                placeholder='Password'
+                {...formik.getFieldProps('password')}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div className='error-container'>
+                  <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
+                  {formik.errors.password}
+                </div>
+              ) : null}
+            </div>
 
             <div className='button-container button-register'>
               <button className='button-register' type='submit'>

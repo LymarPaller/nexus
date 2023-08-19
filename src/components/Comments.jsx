@@ -11,6 +11,8 @@ function Comments({ feedItems }) {
   const { isOpen: showDeleteModal, openModal: openDeleteModal, closeModal: closeDeleteModal } = useModal();
   const [commentToDelete, setCommentToDelete] = useState(null);
   const [comment, setComment] = useState('');
+  
+  console.log(feedItems)
 
   const handleDeleteComment = () => {
     if (commentToDelete !== null) {

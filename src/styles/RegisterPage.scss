@@ -11,7 +11,7 @@
 
   @include tablet {
     min-width: 16rem;
-    height: 60vh;
+    height: auto;
   }
 
 }
@@ -26,7 +26,19 @@
 }
 
 .form-signup {
-  margin-top: 0.5rem;
+
+  .register-input-container{
+    position: relative;
+
+    .error-container{
+      position: absolute;
+      width: 12rem;
+      right: -12.5rem;
+      top: .9rem;
+    }
+  }
+
+
 }
 
 .button-register {

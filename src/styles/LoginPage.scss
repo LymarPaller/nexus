@@ -126,6 +126,14 @@
 
 .input-container {
   position: relative;
+
+  .error-container{
+    position: absolute;
+    width: 12rem;
+    right: -12.5rem;
+    top: .9rem;
+  }
+
   .password-toggle-button {
     background: none;
     border: none;
