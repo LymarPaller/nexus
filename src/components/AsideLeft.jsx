@@ -14,16 +14,17 @@ import SeelessIcon from '../assets/icons/seeless.png';
 
 function SectionLink({ to, imgSrc, imgAlt, title }) {
     return (
-        <div className="section-link" onClick={() => window.location.href = to}>
+        <a href={to} className="section-link">
             <div className="section">
                 <div className="profile-image">
                     <img src={imgSrc} alt={imgAlt} />
                 </div>
                 <h3>{title}</h3>
             </div>
-        </div>
+        </a>
     );
 }
+
 
 
 function AsideLeft() {
