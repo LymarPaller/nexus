@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH, faTimes, faTrashAlt, faEdit, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
+import axios from 'axios';
 
 function Feed(props, feedItems) {
   const {imgPost, postDescription, dateCreated, author, img, postId} = props
@@ -102,7 +103,7 @@ function Feed(props, feedItems) {
             <span className="like-icon">
               <img src={Like} alt="Like Icon" />
             </span>
-            <LikeButton />
+            <LikeButton postId={postId}/>
           </div>
           <div className="comments">
             <span className="comment-icon">

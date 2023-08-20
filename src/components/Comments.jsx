@@ -76,7 +76,7 @@ function Comments({ feedItems, postId, closeModal }) {
             {comments.map((comment)=>(
                 <div className='profile' key={comment.id}>
                     <div className='profile-image'>
-                        <img src={comment.user.profile_photo} alt='Profile' />
+                        <img src={comment.user.profilePhoto} alt='Profile' />
                         <div className='comment'>
                             <h5>{comment.user.name}</h5>
                             <div>

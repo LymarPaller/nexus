@@ -55,7 +55,7 @@ function NewsFeed() {
                 </div>
                 {
                     feeds.toReversed().map(
-                        feed=><Feed key={feed.id} postId={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profile_photo}/>
+                        feed=><Feed key={feed.id} postId={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profilePhoto}/>
                     )
                 }
             </div>
