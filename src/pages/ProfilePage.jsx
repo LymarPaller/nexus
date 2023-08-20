@@ -45,7 +45,8 @@ function ProfilePage() {
                         postDescription={profilePost.post_description}
                         dateCreated={profilePost.date_created}
                         author={profileDatas.name} 
-                        img={profileDatas.profilePhoto}/>
+                        img={profileDatas.profilePhoto}
+                        postId={profilePost.id}/>
                     )
                 }
             </div>
