@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -6,26 +6,43 @@ import '../styles/LoginPage.scss';
 import { faEye, faEyeSlash, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
+import axios from 'axios';
+
 
 function LoginPage() {
+
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email address is required'),
+    username: Yup.string()
+      .required('Username is required'),
     password: Yup.string().required('Password is required'),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      username: '',
       password: '',
       showPassword: false,
     },
+
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log('Email:', values.email);
-      console.log('Password:', values.password);
-      // Your login logic here
+    onSubmit: async (values) => {
+      // console.log(values.username)
+      // console.log(values.password)
+      setUserAuth(values.username)
+      try {
+        const res = await axios.post('http://localhost:8000/api/v1/users', {
+          username: values.username,
+          password: values.password,
+        })
+        
+        if (res.status === 200) {
+          console.log('Login Successful');
+          console.log(userAuth)
+          window.location.href = '/';
+        }
+      } catch (error) {
+        console.error('Login failed: ', error.response.data.message);
+      }
     },
   });
 
@@ -50,13 +67,13 @@ function LoginPage() {
               <div className='input-container'>
                 <input
                   type='text'
-                  placeholder='Email'
-                  {...formik.getFieldProps('email')}
+                  placeholder='username'
+                  {...formik.getFieldProps('username')}
                 />
-                {formik.touched.email && formik.errors.email ? (
+                {formik.touched.username && formik.errors.username ? (
                   <div className='error-container'>
                     <FontAwesomeIcon icon={faExclamationTriangle} className='error-icon' />
-                    {formik.errors.email}
+                    {formik.errors.username}
                   </div>
                 ) : null}
               </div>

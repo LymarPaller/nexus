@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Profile from '../assets/wanda.jpg';
 import '../styles/NewsFeed.scss';
 import Feed from './Feed';
