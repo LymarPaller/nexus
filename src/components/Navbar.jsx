@@ -39,10 +39,11 @@ function Navbar() {
     }
   };
 
+//DONT DELETE
   const handleLogOut = () => {
     openModal();
   };
-
+// wag mo na galawin ahahhahaha okay na to thanks pati yung handleLogOut
   const handleLogoutConfirmed = () => {
     dispatch(setCurrentUser(null))
     // closeModal();

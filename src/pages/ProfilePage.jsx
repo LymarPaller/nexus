@@ -17,8 +17,7 @@ function ProfilePage() {
   const fetchProfileFeed = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/api/v1/post?userId=${currentUserId}`)
-      console.log(res.data.data)
-      setProfileFeed(res.data)
+      setProfileFeed(res.data.data)
     } catch (error) {
         console.error('Error fetching feed:', error);
     }
@@ -33,7 +32,19 @@ function ProfilePage() {
     <div className='profile-page-main-container'>
       <div className='profile-feed-container'>
         <ProfileDetail />
-        <Feed/>
+        {
+          Object.values(profileFeed).map(feed=>
+          <Feed 
+            key={feed.id}
+            imgPost={feed.imgPost}
+            postDescription={feed.postDescription}
+            dateCreated={feed.dateCreated}
+            id={feed.id}
+            img={currentUser.profilePhoto}
+            author={currentUser.name}
+          />)
+        }
+        {/* <Feed/> */}
       </div>
       <AsideLeft />
       <AsideRight />

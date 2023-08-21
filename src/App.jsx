@@ -18,6 +18,7 @@ import FeedsPage from './pages/FeedsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import Protected from './components/Protected';
 
 function App() {
   
@@ -27,10 +28,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={
-            <>
+            <Protected>
               <HomePage />
               <Navbar />
-            </>
+            </Protected>
           } />
           <Route path="/profile" element={
             <>
