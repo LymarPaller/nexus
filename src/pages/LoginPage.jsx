@@ -77,7 +77,7 @@ function LoginPage() {
               <div className='input-container'>
                 <input
                   type='text'
-                  placeholder='username'
+                  placeholder='Username'
                   {...formik.getFieldProps('username')}
                 />
                 {formik.touched.username && formik.errors.username ? (
