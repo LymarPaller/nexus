@@ -8,6 +8,7 @@ import '../styles/modals/modal.scss';
 import '../styles/Comments.scss';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
 
 function Comments({ feedItems, postId, closeModal, currentId }) {
 

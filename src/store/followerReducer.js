@@ -5,9 +5,11 @@ export const followerSlice = createSlice({
     initialState: [],
     reducers: {
         setFollowers: (state, action) => {
-            return action.payload
+            console.log(action.payload)
+            return action.payload;
         }
     }
-})
+});
 
-export const { setFollowers } = followerSlice.actions
+export const { setFollowers } = followerSlice.actions;
+export default followerSlice.reducer;
