@@ -12,7 +12,7 @@ import { useModal } from '../app/useModal';
 import axios from 'axios';
 
 function Feed(props, feedItems) {
-  const {imgPost, postDescription, dateCreated, author, img, postId} = props
+  const {imgPost, postDescription, dateCreated, author, img, postId, currentId} = props
 
   const {
     isOpen: showOptionsModal,
@@ -268,7 +268,7 @@ function Feed(props, feedItems) {
               className="logout-xmark"
               onClick={closeCommentModal}
             />
-            <Comments postId={postId}/>
+            <Comments postId={postId} currentId={currentId}/>
           </div>
         </div>
       </Modal>

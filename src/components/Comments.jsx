@@ -9,7 +9,7 @@ import '../styles/Comments.scss';
 import axios from 'axios';
 import { useFormik } from 'formik';
 
-function Comments({ feedItems, postId, closeModal }) {
+function Comments({ feedItems, postId, closeModal, currentId }) {
 
     const { isOpen: showDeleteModal, openModal: openDeleteModal, closeModal: closeDeleteModal } = useModal();
     const [commentToDelete, setCommentToDelete] = useState(null);
@@ -56,7 +56,7 @@ function Comments({ feedItems, postId, closeModal }) {
         postId: postId,
         commentDescription: '',
         dateCommented: formattedDate,
-        userId: '66',
+        userId: currentId,
         },
         onSubmit: async (values) => {
         try {

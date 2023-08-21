@@ -7,7 +7,8 @@ import CreatePostModal from '../components/CreatePost';
 import axios from 'axios';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-function NewsFeed() {
+function NewsFeed(props) {
+    const {currentId, currentUsername, currentName, currentProfilePhoto} = props
     const { isOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
     const [feeds, setFeeds] = useState([])
@@ -40,7 +41,7 @@ function NewsFeed() {
                 <div className='create-post'>
                     <h4 className='create-post-header'>Create Post</h4>
                     <div className="profile-pic">
-                        <img src={Profile} alt="Profile" />
+                        <img src={currentProfilePhoto} alt="Profile" />
                     </div>
                     <div className='post-text-area-container'>
                         <textarea
@@ -55,7 +56,15 @@ function NewsFeed() {
                 </div>
                 {
                     feeds.toReversed().map(
-                        feed=><Feed key={feed.id} postId={feed.id} imgPost={feed.imgPost} postDescription={feed.postDescription} dateCreated={feed.dateCreated} author={feed.user.name} img={feed.user.profilePhoto}/>
+                        feed=><Feed
+                        key={feed.id} 
+                        postId={feed.id} 
+                        imgPost={feed.imgPost} 
+                        postDescription={feed.postDescription} 
+                        dateCreated={feed.dateCreated} 
+                        author={feed.user.name} 
+                        img={feed.user.profilePhoto}
+                        currentId={currentId}/>
                     )
                 }
             </div>
