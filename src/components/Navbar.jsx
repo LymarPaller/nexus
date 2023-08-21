@@ -15,6 +15,8 @@ import Modal from "react-modal";
 import { useModal } from '../app/useModal';
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../store/currentUserReducer";
+import { useFormik } from "formik";
+import axios from "axios";
 
 function Navbar() {
   const dispatch = useDispatch()
@@ -171,6 +173,23 @@ function Navbar() {
     }
   ];
 
+  const formik = useFormik({
+    initialValues: {
+      search: "",
+    },
+    onSubmit: (values) => {
+      console.log(values)
+      // try {
+      //   const res = await axios.get(
+      //     "http://localhost:8000/api/v1/users",
+      //     values
+      //   )
+      // } catch (error) {
+      //   console.error("Registration failed: ", error);
+      // }
+    },
+  });
+
   return (
     <div>
       <nav className="navbar">
@@ -205,10 +224,18 @@ function Navbar() {
 
         <div className="navbar-center">
           <div className="search-wrapper">
-            <input type="text" className="navbar-search-bar" />
-            <Link className="icon-container navbar-search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search" />
-            </Link>
+          <form onSubmit={formik.handleSubmit}>
+          <input
+            type="text"
+            name="search"
+            className="navbar-search-bar"
+            value={formik.values.search}
+            onChange={formik.handleChange}
+          />
+          <button className="icon-container navbar-search" type="submit">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search" />
+          </button>
+        </form>
           </div>
           <div className="toggler-container">
             <div className="icon-container toggler-navbar" onClick={handleNavbarToggle}>
