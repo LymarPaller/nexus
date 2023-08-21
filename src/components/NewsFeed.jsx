@@ -6,20 +6,22 @@ import { useModal } from '../app/useModal';
 import CreatePostModal from '../components/CreatePost';
 import axios from 'axios';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFeeds } from '../store/currentUserReducer copy';
 
 function NewsFeed() {
+    const dispatch = useDispatch();
     const { isOpen, openModal, closeModal } = useModal();
-    const [postText, setPostText] = useState('');
-    const [feeds, setFeeds] = useState([])
+    // const [feeds, setFeeds] = useState([])
     const [loading, setLoading] = useState(true);
     const currentUser = useSelector((state) => state.currentUser);
+    const feeds = useSelector((state) => state.feeds);
+    
 
     const fetchFeed = async () => {
         try {
-            const res = await axios('http://localhost:8000/api/v1/post')
-            const postData = res.data.data
-            setFeeds(postData);
+            const res = await axios.get('http://localhost:8000/api/v1/post')
+            dispatch(setFeeds(res.data.data));
 
         } catch (error) {
             console.error('Error fetching feed:', error);
