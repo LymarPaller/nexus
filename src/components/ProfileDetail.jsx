@@ -7,9 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPen,
   faTimes,
-  faPlus,
-  faEdit,
-  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 import userPlaceHolder from "../assets/icons/profile.svg";
 import Modal from "react-modal";
