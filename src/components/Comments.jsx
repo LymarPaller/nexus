@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import Profile from '../assets/wanda.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useModal } from '../app/useModal';
-import '../styles/modals/modal.scss';
-import '../styles/Comments.scss';
-import axios from 'axios';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+
+import '../styles/modals/modal.scss';
+import '../styles/Comments.scss';
 
 function Comments({ feedItems, postId, closeModal, currentId }) {
 
     const { isOpen: showDeleteModal, openModal: openDeleteModal, closeModal: closeDeleteModal } = useModal();
     const [commentToDelete, setCommentToDelete] = useState(null);
-    // const [comment, setComment] = useState('');
+
     const [comments, setComments] = useState([])
     const currentUser = useSelector((state) => state.currentUser);
     const currrentId = currentUser.id
 
-    
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
-    
     const formattedDate = `${year}-${month}-${day}`;
 
     const fetchFeed = async () => {
@@ -40,12 +38,12 @@ function Comments({ feedItems, postId, closeModal, currentId }) {
     useEffect(() => {
         fetchFeed();
     }, []);
-    
+
 
     const handleDeleteComment = async (commentId) => {
         try {
             const res = await axios.delete(`http://localhost:8000/api/v1/comments/${commentId}`);
-            
+
             fetchFeed();
             closeDeleteModal();
         } catch (error) {
@@ -53,30 +51,30 @@ function Comments({ feedItems, postId, closeModal, currentId }) {
         }
     };
 
-    
+
     const formik = useFormik({
         initialValues: {
-        postId: postId,
-        commentDescription: '',
-        dateCommented: formattedDate,
-        userId: currrentId,
+            postId: postId,
+            commentDescription: '',
+            dateCommented: formattedDate,
+            userId: currentId,
         },
         onSubmit: async (values) => {
-        try {
-            const res = await axios.post('http://localhost:8000/api/v1/comments', values);
-            console.log('Post successful: ', res.data);
-            formik.resetForm();
-            fetchFeed();
-        } catch (error) {
-            console.error('Posting comment failed: ', error)
-        }
+            try {
+                const res = await axios.post('http://localhost:8000/api/v1/comments', values);
+                console.log('Post successful: ', res.data);
+                formik.resetForm();
+                fetchFeed();
+            } catch (error) {
+                console.error('Posting comment failed: ', error)
+            }
         }
     });
 
     return (
         <div className='list-comments'>
 
-            {comments.map((comment)=>(
+            {comments.map((comment) => (
                 <div className='profile' key={comment.id}>
                     <div className='profile-image'>
                         <img src={comment.user.profilePhoto} alt='Profile' />
@@ -94,9 +92,9 @@ function Comments({ feedItems, postId, closeModal, currentId }) {
                         </div>
                     </div>
                 </div>
-                ))
+            ))
             }
-                
+
             <form onSubmit={formik.handleSubmit}>
                 <div className="modal-body">
                     <textarea
