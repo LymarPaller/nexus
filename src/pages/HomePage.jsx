@@ -5,19 +5,21 @@ import AsideRight from "../components/AsideRight";
 import "../styles/HomePage.scss";
 import '../styles/main.scss';
 import '../styles/normalize.scss';
-import { Link } from "react-router-dom";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "../store/currentUserReducer";
 
 function HomePage() {
-  
+
   useEffect(() => {
-    document.title = 'Home';  
+    document.title = 'Home';
   }, []);
+
+  
 
   return (
     <div className="home-page-main-container">
-      <NewsFeed />
-      <AsideLeft />
+      <NewsFeed/>
+      <AsideLeft/>
       <AsideRight />
     </div>
   );

@@ -6,6 +6,8 @@ import Feed from "../components/Feed";
 import "../styles/ProfilePage.scss";
 import "../styles/ProfileFeed.scss";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "../store/currentUserReducer";
 
 function ProfilePage() {
   const [profileDatas, setProfileDatas] = useState({});

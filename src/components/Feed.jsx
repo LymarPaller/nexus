@@ -11,7 +11,7 @@ import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 import axios from 'axios';
 
-function Feed(props, feedItems) {
+function Feed(props) {
   const {imgPost, postDescription, dateCreated, author, img, postId} = props
 
   const {

@@ -8,13 +8,16 @@ import '../styles/modals/modal.scss';
 import '../styles/Comments.scss';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
 
-function Comments({ feedItems, postId, closeModal }) {
+function Comments({ feedItems, postId, closeModal, currentId }) {
 
     const { isOpen: showDeleteModal, openModal: openDeleteModal, closeModal: closeDeleteModal } = useModal();
     const [commentToDelete, setCommentToDelete] = useState(null);
     // const [comment, setComment] = useState('');
     const [comments, setComments] = useState([])
+    const currentUser = useSelector((state) => state.currentUser);
+    const currrentId = currentUser.id
 
     
     const currentDate = new Date();
@@ -56,7 +59,7 @@ function Comments({ feedItems, postId, closeModal }) {
         postId: postId,
         commentDescription: '',
         dateCommented: formattedDate,
-        userId: '66',
+        userId: currrentId,
         },
         onSubmit: async (values) => {
         try {

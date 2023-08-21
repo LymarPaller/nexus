@@ -16,10 +16,14 @@ import MemoriesPage from './pages/MemoriesPage';
 import GamesPage from './pages/GamesPage';
 import FeedsPage from './pages/FeedsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
+  
   return (
     <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={
@@ -102,6 +106,7 @@ function App() {
           } />
         </Routes>
       </BrowserRouter>
+    </Provider>
     </>
   )
 }
