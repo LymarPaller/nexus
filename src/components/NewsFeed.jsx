@@ -6,13 +6,14 @@ import { useModal } from '../app/useModal';
 import CreatePostModal from '../components/CreatePost';
 import axios from 'axios';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { useSelector } from 'react-redux';
 
-function NewsFeed(props) {
-    const {currentId, currentUsername, currentName, currentProfilePhoto} = props
+function NewsFeed() {
     const { isOpen, openModal, closeModal } = useModal();
     const [postText, setPostText] = useState('');
     const [feeds, setFeeds] = useState([])
     const [loading, setLoading] = useState(true);
+    const currentUser = useSelector((state) => state.currentUser);
 
     const fetchFeed = async () => {
         try {
@@ -41,7 +42,7 @@ function NewsFeed(props) {
                 <div className='create-post'>
                     <h4 className='create-post-header'>Create Post</h4>
                     <div className="profile-pic">
-                        <img src={currentProfilePhoto} alt="Profile" />
+                        <img src={currentUser.profilePhoto} alt="Profile" />
                     </div>
                     <div className='post-text-area-container'>
                         <textarea
@@ -64,7 +65,7 @@ function NewsFeed(props) {
                         dateCreated={feed.dateCreated} 
                         author={feed.user.name} 
                         img={feed.user.profilePhoto}
-                        currentId={currentId}/>
+                        currentId={currentUser.id}/>
                     )
                 }
             </div>

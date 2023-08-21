@@ -11,6 +11,7 @@ import CurrencyIcon from '../assets/icons/currency.png';
 import WeatherIcon from '../assets/icons/weather.png';
 import SeemoreIcon from '../assets/icons/seemore.png';
 import SeelessIcon from '../assets/icons/seeless.png';
+import { useSelector } from 'react-redux';
 
 function SectionLink({ to, imgSrc, imgAlt, title }) {
     return (
@@ -29,6 +30,7 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
 
 function AsideLeft({currentName, currentProfilePhoto}) {
     const [expanded, setExpanded] = useState(false);
+    const currentUser = useSelector((state) => state.currentUser);
 
     const toggleExpansion = () => {
         setExpanded(!expanded);
@@ -58,11 +60,11 @@ function AsideLeft({currentName, currentProfilePhoto}) {
                 <div className="profile">
                     <Link to="/profile">
                         <div className="profile-image">
-                            <img src={currentProfilePhoto} alt="Profile" />
+                            <img src={currentUser.profilePhoto} alt="Profile" />
                         </div>
                     </Link>
                     <Link to="/profile">
-                        <h3>{currentName}</h3>
+                        <h3>{currentUser.name}</h3>
                     </Link>
                 </div>
 
