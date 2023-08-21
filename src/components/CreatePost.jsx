@@ -12,14 +12,16 @@ const validationSchema = Yup.object({
   postDescription: Yup.string().required("Post text is required"),
 });
 
-function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost, fetchFeed}) {
+function CreatePostModal({ isOpen, closeModal, fetchFeed}) {
 
+  const currentUser = useSelector((state) => state.currentUser);
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = String(currentDate.getMonth() + 1).padStart(2, '0');
   const day = String(currentDate.getDate()).padStart(2, '0');
   
   const formattedDate = `${year}-${month}-${day}`;
+  const userId = currentUser.id;
 
   const formik = useFormik({
 
@@ -27,7 +29,7 @@ function CreatePostModal({ isOpen, closeModal, postText, setPostText, handlePost
       postDescription: '',
       imgPost: '',
       dateCreated: formattedDate,
-      userId: '66',
+      userId: userId,
     },
 
 

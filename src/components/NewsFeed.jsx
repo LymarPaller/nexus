@@ -7,7 +7,7 @@ import CreatePostModal from '../components/CreatePost';
 import axios from 'axios';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFeeds } from '../store/currentUserReducer copy';
+import { setFeeds } from '../store/feedsReducer';
 
 function NewsFeed() {
     const dispatch = useDispatch();
@@ -66,8 +66,7 @@ function NewsFeed() {
                         postDescription={feed.postDescription} 
                         dateCreated={feed.dateCreated} 
                         author={feed.user.name} 
-                        img={feed.user.profilePhoto}
-                        currentId={currentUser.id}/>
+                        img={feed.user.profilePhoto}/>
                     )
                 }
             </div>
@@ -76,9 +75,6 @@ function NewsFeed() {
                 isOpen={isOpen}
                 closeModal={closeModal}
                 fetchFeed={fetchFeed}
-                // postText={postText}
-                // setPostText={setPostText}
-                // handlePost={handlePost}
             />
         </>
     );

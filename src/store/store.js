@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { currentUserSlice } from "./currentUserReducer";
 import { followerSlice } from "./followerReducer";
-import { feedsSlice } from "./currentUserReducer copy";
+import { feedsSlice } from "./feedsReducer";
 
 const rootReducer = combineReducers({
     currentUser : currentUserSlice.reducer,

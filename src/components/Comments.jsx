@@ -15,6 +15,8 @@ function Comments({ feedItems, postId, closeModal, currentId }) {
     const [commentToDelete, setCommentToDelete] = useState(null);
     // const [comment, setComment] = useState('');
     const [comments, setComments] = useState([])
+    const currentUser = useSelector((state) => state.currentUser);
+    const currrentId = currentUser.id
 
     
     const currentDate = new Date();
@@ -56,7 +58,7 @@ function Comments({ feedItems, postId, closeModal, currentId }) {
         postId: postId,
         commentDescription: '',
         dateCommented: formattedDate,
-        userId: currentId,
+        userId: currrentId,
         },
         onSubmit: async (values) => {
         try {

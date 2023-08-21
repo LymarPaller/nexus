@@ -15,9 +15,6 @@ function FriendsPage() {
     document.title = 'Friends';
   }, []);
   
-  useEffect(() => {
-  }, []);
-  
   return (
     <div className="friends-main-container">
       <AsideLeft />

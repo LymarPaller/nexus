@@ -30,7 +30,7 @@ function ProfilePage() {
     }, []);
 
     const fetchProfile = async () => {
-        const res = await axios (`http://localhost:8000/api/v1/users?username=${currentUser.username}`)
+        const res = await axios.get(`http://localhost:8000/api/v1/users?username=${currentUser.username}`)
         // const profileResult = res.data.data
         // const postResult = res.data.data.posts
         // setProfileDatas(profileResult)

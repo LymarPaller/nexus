@@ -11,8 +11,8 @@ import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 import axios from 'axios';
 
-function Feed(props, feedItems) {
-  const {imgPost, postDescription, dateCreated, author, img, postId, currentId} = props
+function Feed(props) {
+  const {imgPost, postDescription, dateCreated, author, img, postId} = props
 
   const {
     isOpen: showOptionsModal,
@@ -268,7 +268,7 @@ function Feed(props, feedItems) {
               className="logout-xmark"
               onClick={closeCommentModal}
             />
-            <Comments postId={postId} currentId={currentId}/>
+            <Comments postId={postId}/>
           </div>
         </div>
       </Modal>
