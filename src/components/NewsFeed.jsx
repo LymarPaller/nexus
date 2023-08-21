@@ -13,17 +13,9 @@ import { setCurrentUser } from '../store/currentUserReducer';
 function NewsFeed() {
     const dispatch = useDispatch();
     const { isOpen, openModal, closeModal } = useModal();
-    // const [feeds, setFeeds] = useState([])
     const [loading, setLoading] = useState(true);
     const currentUser = useSelector((state) => state.currentUser);
     const feeds = useSelector((state) => state.feeds);
-  
-    const user = {
-      id: 66,
-      username: 'wandaring',
-      name: 'Wanda Zurbano',
-      profilePhoto: 'https://images.pexels.com/photos/18025212/pexels-photo-18025212/free-photo-of-wanda-the-wonderdog.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    }
     
 
     const fetchFeed = async () => {
@@ -39,7 +31,7 @@ function NewsFeed() {
     }
 
     useEffect(() => {
-        dispatch(setCurrentUser(user))
+        // dispatch(setCurrentUser(user))
         fetchFeed();
     }, []);
 

@@ -13,16 +13,19 @@ import "../styles/ModalLogout.scss";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { useModal } from '../app/useModal';
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "../store/currentUserReducer";
 
 function Navbar() {
+  const dispatch = useDispatch()
   const [darkMode, setDarkMode] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const { isOpen, openModal, closeModal } = useModal();
   const navigate = useNavigate();
   const navbarAsideNav = document.querySelector(".navbar-right");
-
   const [moonIcon, setMoonIcon] = useState(faMoon);
   const [showNavbarAside, setShowNavbarAside] = useState(false);
+  const currentUser = useSelector((state) => state.currentUser);
 
   // Handler for toggling dark mode
   const handleDarkModeToggle = () => {
@@ -41,7 +44,8 @@ function Navbar() {
   };
 
   const handleLogoutConfirmed = () => {
-    closeModal(); // Close the modal and navigate to login
+    dispatch(setCurrentUser(null))
+    // closeModal();
     navigate('/login');
   };
 
@@ -254,9 +258,11 @@ function Navbar() {
                 <button className="add-btn" onClick={closeModal}>
                   Cancel
                 </button>
-                <button className="remove-btn" onClick={handleLogoutConfirmed}>
-                  Logout
-                </button>
+                {
+                  currentUser && <button className="remove-btn" onClick={handleLogoutConfirmed}>
+                    Logout
+                  </button>
+                }
               </div>
             </div>
           </Modal>

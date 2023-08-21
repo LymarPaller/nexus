@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import '../styles/LoginPage.scss';
@@ -7,10 +7,15 @@ import { faEye, faEyeSlash, faExclamationTriangle } from '@fortawesome/free-soli
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from '../assets/nexus-logo-blue.svg';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser } from '../store/currentUserReducer';
 
 
-function LoginPage() {
-  
+function LoginPage() {  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.currentUser);
+
   const validationSchema = Yup.object({
     username: Yup.string()
       .required('Username is required'),
@@ -22,27 +27,24 @@ function LoginPage() {
     initialValues: {
       username: '',
       password: '',
-      showPassword: false,
     },
 
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      // console.log(values.username)
-      // console.log(values.password)
-      setUserAuth(values.username)
       try {
-        const res = await axios.post('http://localhost:8000/api/v1/users', {
+        const res = await axios.post('http://localhost:8000/api/v1/login', {
           username: values.username,
           password: values.password,
         })
         
-        if (res.status === 200) {
+        if (res.status === 200 && res.data.success) {
+          dispatch(setCurrentUser(res.data.user))
           console.log('Login Successful');
-          console.log(userAuth)
-          window.location.href = '/';
+        } else {
+          console.error('Login failed: ', res.data.message);
         }
       } catch (error) {
-        console.error('Login failed: ', error.response.data.message);
+        console.error('An error occurred: ', error);
       }
     },
   });
@@ -50,6 +52,12 @@ function LoginPage() {
   useEffect(() => {
     document.title = 'Login';
   }, []);
+
+  useEffect(() => {
+    if(currentUser) {
+      navigate('/')
+    }
+  }, [currentUser]);
 
   return (
     <>
