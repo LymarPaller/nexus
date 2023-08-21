@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/AsideLeft.scss';
 import Profile from '../assets/wanda.jpg';
@@ -11,10 +11,11 @@ import CurrencyIcon from '../assets/icons/currency.png';
 import WeatherIcon from '../assets/icons/weather.png';
 import SeemoreIcon from '../assets/icons/seemore.png';
 import SeelessIcon from '../assets/icons/seeless.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFollowers } from '../store/followerReducer';
+import axios from 'axios';
 
 function SectionLink({ to, imgSrc, imgAlt, title }) {
-    const currentUser = useSelector((state) => state.currentUser);
     return (
         <div className="section">
             <Link to={to}>
@@ -30,9 +31,26 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
 }
 
 function AsideLeft() {
+    const dispatch = useDispatch()
+    const currentUser = useSelector((state) => state.currentUser)
+    const followers = useSelector((state) => state.followers)
     const [expanded, setExpanded] = useState(false);
-    const currentUser = useSelector((state) => state.currentUser);
 
+
+
+    const fetchFollower = async () => {
+        try {
+            const res = await axios(`http://localhost:8000/api/v1/follower?followUserId=${currentUser}`)
+            dispatch(setFollowers(res.data.data))
+        } catch (error) {
+            console.error('Error fetching comments:', error);
+        }
+    }
+    
+    useEffect(() => {
+        fetchFollower();
+    }, []);
+    
     const toggleExpansion = () => {
         setExpanded(!expanded);
     };
