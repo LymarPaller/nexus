@@ -6,14 +6,6 @@ import Modal from 'react-modal';
 import { useModal } from '../app/useModal';
 
 function FriendsContainer() {
-    const [friends, setFriends] = useState([
-        { name: 'Klane Zurbano' },
-        { name: 'Ryan Azur' },
-        { name: 'Kodego PH' },
-        { name: 'Lymar Paller' },
-        { name: 'Riya Villamor' }
-    ]);
-
     const optionsModal = useModal();
     const unfollowModal = useModal();
     const unfriendModal = useModal();
@@ -31,13 +23,12 @@ function FriendsContainer() {
 
     return (
         <div className="friend-container">
-            {friends.map((friend, index) => (
-                <div className="online-friends" key={index}>
+                <div className="online-friends">
                     <div className="aside-right-image">
                         <img src={Profile} alt="Profile" />
                     </div>
                     <div className="friend-details">
-                        <span className="friend-name">{friend.name}
+                        <span className="friend-name">friend 1
                             <FontAwesomeIcon
                                 icon={faEllipsisH}
                                 className="ellipsis-icon"
@@ -106,7 +97,6 @@ function FriendsContainer() {
                         </div>
                     </Modal>
                 </div>
-            ))}
         </div>
     );
 }

@@ -14,6 +14,7 @@ import SeelessIcon from '../assets/icons/seeless.png';
 import { useSelector } from 'react-redux';
 
 function SectionLink({ to, imgSrc, imgAlt, title }) {
+    const currentUser = useSelector((state) => state.currentUser);
     return (
         <div className="section">
             <Link to={to}>
@@ -28,7 +29,7 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
     );
 }
 
-function AsideLeft({currentName, currentProfilePhoto}) {
+function AsideLeft() {
     const [expanded, setExpanded] = useState(false);
     const currentUser = useSelector((state) => state.currentUser);
 

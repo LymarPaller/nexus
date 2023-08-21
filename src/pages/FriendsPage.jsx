@@ -5,6 +5,7 @@ import FriendsContainer from "../components/FriendsContainer"
 import "../styles/FriendsPage.scss";
 
 function FriendsPage() {
+  
  
   useEffect(() => {
     document.title = 'Friends';  
