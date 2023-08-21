@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import '../styles/AsideLeft.scss';
 
+import '../styles/AsideLeft.scss';
 import FriendsIcon from '../assets/icons/friends.png';
 import GamesIcon from '../assets/icons/games.png';
 import MemoriesIcon from '../assets/icons/memories.png';
@@ -23,6 +23,8 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
         <div className="profile-image">
           <img src={imgSrc} alt={imgAlt} />
         </div>
+      </Link>
+      <Link to={to}>
         <h3>{title}</h3>
       </Link>
     </div>
@@ -32,12 +34,7 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
 function AsideLeft() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
-  const followers = useSelector((state) => state.followers);
   const [expanded, setExpanded] = useState(false);
-
-  useEffect(() => {
-    fetchFollower();
-  }, []);
 
   const fetchFollower = async () => {
     try {
@@ -46,13 +43,25 @@ function AsideLeft() {
     } catch (error) {
       console.error('Error fetching comments:', error);
     }
-  };
+  }
+
+  useEffect(() => {
+    fetchFollower();
+  }, []);
 
   const toggleExpansion = () => {
     setExpanded(!expanded);
   };
 
   const seeMoreText = expanded ? 'See Less' : 'See More';
+
+  function openWeatherLink() {
+    window.open('https://kairos-weatherapp.vercel.app/', '_blank');
+  }
+
+  function openCurrencyLink() {
+    window.open('https://exploredia.vercel.app/convert.html', '_blank');
+  }
 
   const sections = [
     { to: '/friends', imgSrc: FriendsIcon, imgAlt: 'Friends Profile', title: 'Friends' },
@@ -62,14 +71,6 @@ function AsideLeft() {
     { to: '/feeds', imgSrc: FeedsIcon, imgAlt: 'Feeds Profile', title: 'Feeds' },
   ];
 
-  const openWeatherLink = () => {
-    window.open('https://kairos-weatherapp.vercel.app/', '_blank');
-  };
-
-  const openCurrencyLink = () => {
-    window.open('https://exploredia.vercel.app/convert.html', '_blank');
-  };
-
   return (
     <div className="aside-left-container">
       <div className="profile-info">
@@ -78,6 +79,8 @@ function AsideLeft() {
             <div className="profile-image">
               <img src={currentUser.profilePhoto} alt="Profile" />
             </div>
+          </Link>
+          <Link to="/profile">
             <h3>{currentUser.name}</h3>
           </Link>
         </div>
