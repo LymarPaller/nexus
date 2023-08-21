@@ -4,7 +4,7 @@ import Logo from '../assets/nexus-logo-blue.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCog } from "@fortawesome/free-solid-svg-icons";
 import ProfilePicture from '../assets/wanda.jpg';
-import '../styles/WelcomePage.scss'; // Import the Sass file
+import '../styles/WelcomePage.scss';
 import { useParams } from 'react-router-dom';
 
 function WelcomePage() {

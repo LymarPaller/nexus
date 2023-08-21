@@ -21,93 +21,105 @@ import store from './store/store';
 import Protected from './components/Protected';
 
 function App() {
-  
+
   return (
     <>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={
-            <Protected>
-              <HomePage />
-              <Navbar />
-            </Protected>
-          } />
-          <Route path="/profile" element={
-            <>
-              <ProfilePage />
-              <Navbar />
-            </>
-          } />
-          <Route path="/login" element={
-            <>
-              <LoginPage />
-              <Footer />
-            </>
-          } />
-          <Route path="/register" element={
-            <>
-              <RegisterPage />
-              <Footer />
-            </>
-          } />
-          <Route path="/aside" element={
-            <>
-              <AsideMenu />
-              <Navbar />
-            </>
-          } />
-          <Route path="/friends" element={
-            <>
-              <FriendsPage />
-              <Navbar />
-            </>
-          } />
-          <Route path="/save" element={
-            <>
-              <SavedPage />
-              <Navbar />
-            </>
-          } />
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={
+              <Protected>
+                <HomePage />
+                <Navbar />
+              </Protected>
+            } />
+            <Route path="/profile" element={
+              <>
+                <ProfilePage />
+                <Navbar />
+              </>
+            } />
+            <Route path="/login" element={
+              <>
+                <LoginPage />
+                <Footer />
+              </>
+            } />
+            <Route path="/register" element={
+              <>
+                <RegisterPage />
+                <Footer />
+              </>
+            } />
+            <Route path="/aside" element={
+              <>
+                <AsideMenu />
+                <Navbar />
+              </>
+            } />
+            <Route path="/friends" element={
+              <>
+                <FriendsPage />
+                <Navbar />
+              </>
+            } />
+            <Route path="/save" element={
+              <>
+                <SavedPage />
+                <Navbar />
+              </>
+            } />
 
-          <Route path="/welcome/:username" element={
-            <>
-              <WelcomePage />
-              <Footer />
-            </>
-          } />
+            <Route path="/welcome/:username" element={
+              <>
+                <WelcomePage />
+                <Footer />
+              </>
+            } />
 
-          <Route path="/memories" element={
-            <>
-              <MemoriesPage />
-              <Navbar />
-            </>
-          } />
+            <Route path="/memories" element={
+              <>
+                <MemoriesPage />
+                <Navbar />
+              </>
+            } />
 
-          <Route path="/games" element={
-            <>
-              <GamesPage />
-              <Navbar />
-            </>
-          } />
+            <Route path="/games" element={
+              <>
+                <GamesPage />
+                <Navbar />
+              </>
+            } />
 
-          <Route path="/feeds" element={
-            <>
-              <FeedsPage />
-              <Navbar />
-            </>
-          } />
+            <Route path="/feeds" element={
+              <>
+                <FeedsPage />
+                <Navbar />
+              </>
+            } />
 
 
-          <Route path="*" element={
-            <>
-              <NotFoundPage />
-              <Navbar />
-            </>
-          } />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+            <Route
+              path="/profile/:userId"
+              element={
+                <>
+                  <ProfilePage />
+                  <Navbar />
+                </>
+              }
+            />
+            <Route
+              path="*" 
+              element={
+                <>
+                  <NotFoundPage />
+                  <Navbar />
+                </>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </>
   )
 }
