@@ -27,6 +27,7 @@ function LoginPage() {
     initialValues: {
       username: '',
       password: '',
+      showPassword: false,
     },
 
     validationSchema: validationSchema,

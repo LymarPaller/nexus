@@ -34,7 +34,6 @@ function RegisterPage() {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      // console.log(values)
       try {
         const res = await axios.post(
           "http://localhost:8000/api/v1/users",

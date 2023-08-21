@@ -15,6 +15,7 @@ import userPlaceHolder from "../assets/icons/profile.svg";
 import Modal from "react-modal";
 import { useModal } from "../app/useModal";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const PROFILE_WEBSITE = "https://www.instagram.com/wandaringmaltese/";
 
@@ -36,17 +37,15 @@ function WebsiteLink({ website }) {
   );
 }
 
-function ProfileDetail(props) {
-  const {
-    name,
-    introduction,
-    company,
-    website,
-    city,
-    profilePhoto,
-    coverPhoto,
-    setReload,
-  } = props;
+function ProfileDetail() {
+  const currentUser = useSelector((state) => state.currentUser);
+  const name = currentUser.name
+  const profilePhoto = currentUser.profilePhoto
+  const coverPhoto = currentUser.coverPhoto
+  const city = currentUser.city
+  const website = currentUser.websites
+  const introduction = currentUser.introduction
+  const company = currentUser.company
 
   const [profilePhotos, setprofilePhoto] = useState(null);
   const [profilePhotoFile, setProfilePhotoFile] = useState(null);
@@ -72,6 +71,7 @@ function ProfileDetail(props) {
   const [editedCompany, setEditedCompany] = useState(company);
   const [editedWebsite, setEditedWebsite] = useState(website);
   const [editedCity, setEditedCity] = useState(city);
+
   //plural
 
   const [editNameMode, setEditNameMode] = useState(true);
@@ -204,21 +204,13 @@ function ProfileDetail(props) {
     <div className='profile-main-container'>
       <div className='cover-photo'>
         <img
-          src={
-            coverPhoto
-              ? `http://localhost:8000/images/${coverPhoto}?${new Date().getTime()}`
-              : userPlaceHolder
-          }
+          src={coverPhoto}
           alt='Cover'
         />
       </div>
       <div className='profile-photo'>
         <img
-          src={
-            profilePhoto
-              ? `http://localhost:8000/images/${profilePhoto}?${new Date().getTime()}`
-              : userPlaceHolder
-          }
+          src={profilePhoto}
           alt='Profile'
         />
       </div>

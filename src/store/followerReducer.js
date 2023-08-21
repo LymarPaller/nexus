@@ -5,7 +5,6 @@ export const followerSlice = createSlice({
     initialState: [],
     reducers: {
         setFollowers: (state, action) => {
-            console.log(action.payload)
             return action.payload;
         }
     }

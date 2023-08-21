@@ -10,55 +10,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../store/currentUserReducer";
 
 function ProfilePage() {
-  const [profileDatas, setProfileDatas] = useState({});
-  const [profilePosts, setProfilePosts] = useState([]);
-  const [reload, setReload] = useState(false);
-  const profileUserId = "wandaring";
+  const currentUser = useSelector((state) => state.currentUser);
+  const [profileFeed, setProfileFeed] = useState([])
+  const currentUserId = currentUser.id;
 
-  const fetchProfile = async () => {
+  const fetchProfileFeed = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:8000/api/v1/users/${localStorage.getItem("username")}`
-      );
-      const profileResult = res.data.data;
-      const postResult = res.data.data.posts;
-      setProfileDatas(profileResult);
-      setProfilePosts(postResult);
+      const res = await axios.get(`http://localhost:8000/api/v1/post?userId=${currentUserId}`)
+      console.log(res.data.data)
+      setProfileFeed(res.data)
     } catch (error) {
-      console.error(error);
+        console.error('Error fetching feed:', error);
     }
-  };
+}
 
   useEffect(() => {
     document.title = "Profile";
-    fetchProfile();
-    console.log("test reload");
-  }, [reload]);
+    fetchProfileFeed()
+  }, []);
 
   return (
     <div className='profile-page-main-container'>
       <div className='profile-feed-container'>
-        <ProfileDetail
-          name={profileDatas.name}
-          introduction={profileDatas.introduction}
-          company={profileDatas.company}
-          website={profileDatas.websites}
-          city={profileDatas.city}
-          profilePhoto={profileDatas.profilePhoto}
-          coverPhoto={profileDatas.coverPhoto}
-          setReload={setReload}
-        />
-        {profilePosts.toReversed().map((profilePost) => (
-          <Feed
-            key={profilePost.id}
-            imgPost={profilePost.img_post}
-            postDescription={profilePost.post_description}
-            dateCreated={profilePost.date_created}
-            author={profileDatas.name}
-            img={profileDatas.profilePhoto}
-            postId={profilePost.id}
-          />
-        ))}
+        <ProfileDetail />
+        <Feed/>
       </div>
       <AsideLeft />
       <AsideRight />
