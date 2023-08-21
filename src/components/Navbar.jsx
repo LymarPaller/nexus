@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../store/currentUserReducer";
 import { useFormik } from "formik";
 import axios from "axios";
+import { setSearch } from "../store/searchReducer";
 
 function Navbar() {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function Navbar() {
   const [moonIcon, setMoonIcon] = useState(faMoon);
   const [showNavbarAside, setShowNavbarAside] = useState(false);
   const currentUser = useSelector((state) => state.currentUser);
+  const search = useSelector((state) => state.search);
 
   // Handler for toggling dark mode
   const handleDarkModeToggle = () => {
@@ -179,10 +181,10 @@ function Navbar() {
     },
     onSubmit: async (values) => {
       const searchname = values.search
-
       try {
         const res = await axios.get(`http://localhost:8000/api/v1/users?name=${searchname}`)
-        console.log(res.data)
+          dispatch(setSearch(res.data))
+          navigate('/search')
       } catch (error) {
         console.error("Registration failed: ", error);
       }
