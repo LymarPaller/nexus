@@ -27,7 +27,7 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
     );
 }
 
-function AsideLeft() {
+function AsideLeft({currentName, currentProfilePhoto}) {
     const [expanded, setExpanded] = useState(false);
 
     const toggleExpansion = () => {
@@ -58,11 +58,11 @@ function AsideLeft() {
                 <div className="profile">
                     <Link to="/profile">
                         <div className="profile-image">
-                            <img src={Profile} alt="Profile" />
+                            <img src={currentProfilePhoto} alt="Profile" />
                         </div>
                     </Link>
                     <Link to="/profile">
-                        <h3>Wanda Zurbano</h3>
+                        <h3>{currentName}</h3>
                     </Link>
                 </div>
 
