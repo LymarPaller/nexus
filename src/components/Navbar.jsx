@@ -177,16 +177,15 @@ function Navbar() {
     initialValues: {
       search: "",
     },
-    onSubmit: (values) => {
-      console.log(values)
-      // try {
-      //   const res = await axios.get(
-      //     "http://localhost:8000/api/v1/users",
-      //     values
-      //   )
-      // } catch (error) {
-      //   console.error("Registration failed: ", error);
-      // }
+    onSubmit: async (values) => {
+      const searchname = values.search
+
+      try {
+        const res = await axios.get(`http://localhost:8000/api/v1/users?name=${searchname}`)
+        console.log(res.data)
+      } catch (error) {
+        console.error("Registration failed: ", error);
+      }
     },
   });
 
@@ -246,7 +245,7 @@ function Navbar() {
 
         <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
-            <Link className="icon-container" onClick={handleDarkModeToggle} >
+            <Link className="icon-container" onClick={handleDarkModeToggle}>
               <FontAwesomeIcon icon={moonIcon} className="navbar-icon" title="Darkmode" />
             </Link>
           </div>

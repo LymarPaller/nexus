@@ -98,6 +98,12 @@ function App() {
             </>
           } />
 
+          <Route path="/search" element={
+            <>
+              <FriendsPage />
+              <Navbar />
+            </>
+          } />
 
           <Route path="*" element={
             <>
