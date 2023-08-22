@@ -164,9 +164,8 @@ function ProfileDetail({ setReload }) {
     try {
       setLoading((prev) => ({ ...prev, profilePhoto: true }));
 
-      // Simulate an API request to upload the profile picture
       setTimeout(() => {
-        // Assuming `newProfilePhotoUrl` is the URL of the uploaded photo
+         
         const newProfilePhotoUrl = "https://example.com/new-profile-photo.jpg";
         setProfilePhoto(newProfilePhotoUrl); // Update the profile photo URL
         setUploadedProfilePhoto(newProfilePhotoUrl); // Update the uploaded profile photo URL
@@ -185,9 +184,7 @@ function ProfileDetail({ setReload }) {
     try {
       setLoading((prev) => ({ ...prev, coverPhoto: true }));
 
-      // Simulate an API request to upload the cover photo
       setTimeout(() => {
-        // Assuming `newCoverPhotoUrl` is the URL of the uploaded photo
         const newCoverPhotoUrl = "https://example.com/new-cover-photo.jpg";
         setCoverPhoto(newCoverPhotoUrl); // Update the cover photo URL
         setUploadedCoverPhoto(newCoverPhotoUrl); // Update the uploaded cover photo URL
