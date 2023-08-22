@@ -8,9 +8,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 
-function FriendsContainer({ followerName, profilePhoto, followerUserId, idfollower}) {
+function FriendsContainer({ followerUserId, idfollower}) {
     const optionsModal = useModal();
     const unfollowModal = useModal();
+    const profilePhoto = 'https://images.pexels.com/photos/18084151/pexels-photo-18084151/free-photo-of-profile-default.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load'
+    const followerName = 'Juan Dela Cruz'
 
     const handleUnfollow = () => {
         optionsModal.closeModal();
@@ -26,11 +28,11 @@ function FriendsContainer({ followerName, profilePhoto, followerUserId, idfollow
                 <Link to={`/profile/${followerUserId}`} className="friend-name">
                     {followerName}
                 </Link>
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                     icon={faEllipsisH}
                     className="ellipsis-icon"
                     onClick={optionsModal.openModal}
-                />
+                /> */}
             </div>
 
 

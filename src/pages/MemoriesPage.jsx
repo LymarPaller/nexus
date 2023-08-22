@@ -16,7 +16,7 @@ function ProfilePage() {
   return (
     <div className="profile-page-main-container">
       <div className="profile-feed-container">
-        <ProfileDetail />
+        <Feed />
         <Feed />
       </div>
       <AsideLeft />

@@ -14,6 +14,8 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function RegisterPage() {
+  const defaultPhotoProfile = "https://images.pexels.com/photos/18084151/pexels-photo-18084151/free-photo-of-profile-default.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load";
+  const defaultPhotoCover = "https://images.pexels.com/photos/18084237/pexels-photo-18084237/free-photo-of-cover-photo-default-edited.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load";
   const navigate = useNavigate();
   const validationSchema = Yup.object({
     username: Yup.string().required("Username is required"),
@@ -30,6 +32,8 @@ function RegisterPage() {
       name: "",
       email: "",
       password: "",
+      profilePhoto: defaultPhotoProfile,
+      coverPhoto: defaultPhotoCover,
       showPassword: false,
     },
     validationSchema: validationSchema,
