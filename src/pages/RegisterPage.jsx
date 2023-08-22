@@ -12,6 +12,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/nexus-logo-blue.svg";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 function RegisterPage() {
   const defaultPhotoProfile = "https://images.pexels.com/photos/18084151/pexels-photo-18084151/free-photo-of-profile-default.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load";
@@ -43,12 +45,13 @@ function RegisterPage() {
           "http://localhost:8000/api/v1/users",
           values
         );
-        const { id, username } = res.data.data;
-        localStorage.setItem("id", id);
-        localStorage.setItem("username", username);
-        navigate(`/welcome/${username}`);
+        // const { id, username } = res.data.data;
+        // localStorage.setItem("id", id);
+        // localStorage.setItem("username", username);
+        toast.success('Register Successful');
+        navigate("/login")
       } catch (error) {
-        console.error("Registration failed: ", error);
+        toast.error(`Registration failed: ${error}`);
       }
     },
   });
@@ -186,6 +189,18 @@ function RegisterPage() {
           </form>
         </div>
       </div>
+      <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={true}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
     </>
   );
 }

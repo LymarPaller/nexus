@@ -9,6 +9,8 @@ import Logo from '../assets/nexus-logo-blue.svg';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../store/currentUserReducer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function LoginPage() {  
@@ -40,12 +42,12 @@ function LoginPage() {
         
         if (res.status === 200 && res.data.success) {
           dispatch(setCurrentUser(res.data.user))
-          console.log('Login Successful');
+          toast.success('Login Successful');
         } else {
-          console.error('Login failed: ', res.data.message);
+          toast.error(`Login failed: ${res.data.message}`);
         }
       } catch (error) {
-        console.error('An error occurred: ', error);
+        toast.error('An error occurred');
       }
     },
   });
@@ -127,6 +129,18 @@ function LoginPage() {
           </div>
         </div>
       </div>
+      <ToastContainer
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={true}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
     </>
   );
 }
