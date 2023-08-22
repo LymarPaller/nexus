@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/SearchFriends.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import ReactModal from 'react-modal';
-import '../styles/EditProfile.scss'; 
+import '../styles/EditProfile.scss';
+import LocationPin from "../assets/icons/location.svg";
+import WebIcon from "../assets/icons/web.svg";
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 function FriendCard(props) {
   const { friendId, name, introduction, city, profilePhoto } = props;
 
   const [isFollowing, setIsFollowing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showUnfollowModal, setShowUnfollowModal] = useState(false); 
+  const [showUnfollowModal, setShowUnfollowModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+
+
+  const coverPhoto = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1xw:0.74975xh;center,top&resize=1200:*";
+  const company = "Nexus Kodego";
+  const website = "https://kodego.com";
+  const LocationPin = "../assets/icons/location.svg";
+  const openEditModal = () => {
+
+  };
 
   const handleFollowClick = () => {
     setIsLoading(true);
@@ -27,8 +40,12 @@ function FriendCard(props) {
   };
 
   const handleConfirmUnfollow = () => {
-    setIsFollowing(false); 
-    setShowUnfollowModal(false); 
+    setIsFollowing(false);
+    setShowUnfollowModal(false);
+  };
+
+  const openProfileModal = () => {
+    setShowProfileModal(true);
   };
 
   return (
@@ -78,10 +95,57 @@ function FriendCard(props) {
                   <FontAwesomeIcon icon={faUserPlus} /> Follow
                 </button>
               )}
+
+              <button onClick={openProfileModal}> <FontAwesomeIcon icon={faInfoCircle} />Details</button>
             </div>
           </div>
         </div>
       </Link>
+
+      {/* Profile Details Modal */}
+      <ReactModal
+        isOpen={showProfileModal}
+        onRequestClose={() => setShowProfileModal(false)}
+        className="profile-modal" // Add a custom class for styling
+        overlayClassName="modal-overlay"
+        ariaHideApp={false}
+      >
+        <div className="profile-main-container">
+          <div className="cover-photo">
+            <img src={coverPhoto} alt="Cover" />
+          </div>
+          <div className="profile-photo">
+            <img src={profilePhoto} alt="Profile" />
+          </div>
+          <div className="detail-container">
+            <h1 className="user-profile-name">{name}</h1>
+            <div className="detail-container-intro">
+              <p>{introduction}</p>
+              <p>{company}</p>
+            </div>
+            <div className="detail-container-other-details">
+              <a href={WebIcon} target="_blank" rel="noopener noreferrer">Website</a>
+              <span>
+                <img src={LocationPin} alt="Location" />
+                <p className="profile-location detail-container-other-details-paragraph">
+                  {city}
+                </p>
+              </span>
+              {/* <div>
+                <FontAwesomeIcon
+                  icon={faUserMinus}
+                  className="edit-icon"
+                  title="Edit Profile"
+                  onClick={openEditModal}
+                />
+              </div> */}
+            </div>
+          </div>
+        </div>
+        <button classname="add-btn" onClick={() => setShowProfileModal(false)} >
+          Close
+        </button>
+      </ReactModal>
     </>
   );
 }
