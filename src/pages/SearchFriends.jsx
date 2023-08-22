@@ -14,7 +14,6 @@ import FriendCard from "../components/FriendCard";
 function SearchFriends () {
   const search = useSelector((state) => state.search);
   const searchNew = search.data;
-  console.log(searchNew)
 
   return (
     <>

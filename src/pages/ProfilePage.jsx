@@ -22,7 +22,6 @@ function ProfilePage() {
       const [data] = res.data.data
       dispatch(setCurrentUser(data))
       setProfileFeed(data.posts)
-      console.log(profileFeed)
     } catch (error) {
         console.error('Error fetching feed:', error);
     }
