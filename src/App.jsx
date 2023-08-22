@@ -106,24 +106,24 @@ function App() {
             </>
           } />
 
-            <Route
-              path="/profile/:userId"
-              element={
-                <>
-                  <ProfilePage />
-                  <Navbar />
-                </>
-              }
-            />
-            <Route
-              path="*" 
-              element={
-                <>
-                  <NotFoundPage />
-                  <Navbar />
-                </>
-              }
-            />
+          <Route
+            path="/profile/:userId"
+            element={
+              <>
+                <ProfilePage />
+                <Navbar />
+              </>
+            }
+          />
+          <Route
+            path="*" 
+            element={
+              <>
+                <NotFoundPage />
+                <Navbar />
+              </>
+            }
+          />
           </Routes>
         </BrowserRouter>
       </Provider>

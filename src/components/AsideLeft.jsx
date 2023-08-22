@@ -34,11 +34,12 @@ function SectionLink({ to, imgSrc, imgAlt, title }) {
 function AsideLeft() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
+  const currentUserId = currentUser.id;
 
   const fetchFollower = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/v1/follower?followUserId=66`);
+      const res = await axios.get(`http://localhost:8000/api/v1/follower?followUserId=${currentUserId}`);
       dispatch(setFollowers(res.data.data));
     } catch (error) {
       console.error('Error fetching comments:', error);
