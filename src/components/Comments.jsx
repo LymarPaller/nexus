@@ -6,6 +6,8 @@ import { useModal } from '../app/useModal';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 import '../styles/modals/modal.scss';
 import '../styles/Comments.scss';
@@ -43,11 +45,10 @@ function Comments({ feedItems, postId, closeModal }) {
     const handleDeleteComment = async (commentId) => {
         try {
             const res = await axios.delete(`http://localhost:8000/api/v1/comments/${commentId}`);
-
             fetchFeed();
             closeDeleteModal();
         } catch (error) {
-            console.error('Error deleting comment:', error);
+            toast.error(`Error deleting comment: ${error}`);
         }
     };
 
@@ -137,6 +138,18 @@ function Comments({ feedItems, postId, closeModal }) {
                     </div>
                 </Modal>
             </div>
+        <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
         </div>
     );
 }

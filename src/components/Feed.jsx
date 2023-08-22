@@ -10,6 +10,8 @@ import { faEllipsisH, faTimes, faTrashAlt, faEdit, faBookmark } from '@fortaweso
 import LikeButton from './LikeButton';
 import { useModal } from '../app/useModal';
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 function Feed(props) {
   const {imgPost, postDescription, dateCreated, author, img, postId} = props
@@ -42,9 +44,17 @@ function Feed(props) {
   const [editedCaption, setEditedCaption] = useState('Pupparazzi caught me posing 📸');
   const [editedCaptionModal, setEditedCaptionModal] = useState(editedCaption);
 
-  const handleDeletePost = () => {
-    toggleDeleteModal();
-    // Logic for delete post will be added here soon
+  const handleDeletePost = async () => {
+    try {
+        const res = await axios.delete(`http://localhost:8000/api/v1/post/${postId}`);
+        toast.success(`Succesfully Deleted Post`);
+        closeOptionsModal();
+        closeDeleteModal();
+    } catch (error) {
+      closeOptionsModal();
+      closeDeleteModal();
+        toast.error(`Error deleting post: ${error}`);
+    }
   };
 
   const handleEditCaption = () => {
@@ -95,8 +105,7 @@ function Feed(props) {
           <p>{postDescription}</p>
         </div>
         <div className="post-image">
-          {/* Replace this with actual post props image soon */}
-          <img src={imgPost} alt="Post" />
+         {imgPost !== null ? <img src={imgPost} alt="Post" /> : null}
         </div>
         <div className="likes-comments">
           <div className="likes">
@@ -139,7 +148,7 @@ function Feed(props) {
                 <span className="option-label">Edit Caption</span>
               </div>
 
-              <div className="option delete-caption" onClick={handleDeletePost}>
+              <div className="option delete-caption" onClick={toggleDeleteModal}>
                 <span className="option-icon-delete">
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </span>
@@ -272,6 +281,18 @@ function Feed(props) {
           </div>
         </div>
       </Modal>
+      <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={true}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
     </div>
   );
 }

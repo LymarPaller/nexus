@@ -7,6 +7,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 const validationSchema = Yup.object({
   postDescription: Yup.string().required("Post text is required"),
@@ -35,12 +37,11 @@ function CreatePostModal({ isOpen, closeModal, fetchFeed}) {
 
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      // console.log(values)
       try {
         const res = await axios.post('http://localhost:8000/api/v1/post', values);
-        console.log('Post successful: ', res.data);
+        toast.success(`Post Successfully`);
       } catch (error) {
-        console.error('Post failed: ', error)
+        toast.error(`Post failed:  ${error}`);
       }
       formik.resetForm();
       closeModal();
@@ -86,6 +87,18 @@ function CreatePostModal({ isOpen, closeModal, fetchFeed}) {
         <button type="submit" className="post-button">Post</button>
       </form>
       <button onClick={closeModal} className="cancel-button">Cancel</button>
+      <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={true}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
     </Modal>
   );
 }

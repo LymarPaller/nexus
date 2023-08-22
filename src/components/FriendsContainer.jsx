@@ -6,15 +6,23 @@ import Modal from 'react-modal';
 import { useModal } from '../app/useModal';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 
-function FriendsContainer({ followerUserId, idfollower}) {
+function FriendsContainer({ followerName, profilePhoto, followerUserId, idfollower}) {
     const optionsModal = useModal();
     const unfollowModal = useModal();
-    const profilePhoto = 'https://images.pexels.com/photos/18084151/pexels-photo-18084151/free-photo-of-profile-default.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load'
-    const followerName = 'Juan Dela Cruz'
+    
 
-    const handleUnfollow = () => {
+    const handleUnfollow = async () => {
+        
+        try {
+            const res = await axios.delete(`http://localhost:8000/api/v1/follower/${idfollower}`);
+            toast.success('Still bitter? successfully unfollowed user');
+        } catch (error) {
+            toast.error(`Error try again later: ${error}`);
+        }
         optionsModal.closeModal();
         unfollowModal.closeModal();
     };
@@ -28,11 +36,11 @@ function FriendsContainer({ followerUserId, idfollower}) {
                 <Link to={`/profile/${followerUserId}`} className="friend-name">
                     {followerName}
                 </Link>
-                {/* <FontAwesomeIcon
+                <FontAwesomeIcon
                     icon={faEllipsisH}
                     className="ellipsis-icon"
                     onClick={optionsModal.openModal}
-                /> */}
+                />
             </div>
 
 
@@ -74,6 +82,19 @@ function FriendsContainer({ followerUserId, idfollower}) {
                     </div>
                 </div>
             </Modal>
+            
+        <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
         </div>
     );
 }
