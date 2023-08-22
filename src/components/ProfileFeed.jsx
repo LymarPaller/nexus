@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Feed.scss';
-import Profile from '../assets/wanda.jpg';
+import ProfileImage from '../assets/wanda.jpg';  
 
 function ProfileFeed() {
   const [likes, setLikes] = useState(100);
@@ -19,7 +19,7 @@ function ProfileFeed() {
       <div className="profile-feed-details">
         <div className="profile-info">
           <div className="profile-image">
-            <img src={Profile} alt="Profile" />
+            <img src={ProfileImage} alt="Profile" />
           </div>
           <div className="name-time">
             <h3>Wanda Zurbano</h3>
@@ -30,7 +30,7 @@ function ProfileFeed() {
           <p>Sample captions here</p>
         </div>
         <div className="post-image">
-          <img src={Profile} alt="Profile" />
+          <img src={ProfileImage} alt="Profile" /> 
         </div>
         <div className="likes-comments">
           <div className="likes">
