@@ -26,24 +26,11 @@ function FriendsPage() {
                 followerUserId={follower.followerUserId}
                 followerName={follower.followerUser.name}
                 profilePhoto={follower.followerUser.profilePhoto}
+                idfollower={follower.id}
               />
             ))}
           </div>
         </div>
-
-        {/* Render the ProfileDetail component with the friend's data
-        {followers.map((follower) => (
-          <ProfileDetail
-            key={follower.followerUserId}
-            name={follower.followerUser.name}
-            profilePhoto={follower.followerUser.profilePhoto}
-            coverPhoto={follower.followerUser.coverPhoto}
-            city={follower.followerUser.city}
-            website={follower.followerUser.websites}
-            introduction={follower.followerUser.introduction}
-            company={follower.followerUser.company}
-          />
-        ))} */}
       </div>
     </div>
   );

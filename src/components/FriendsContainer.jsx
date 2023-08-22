@@ -8,18 +8,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 
-function FriendsContainer({ followerName, profilePhoto, followerUserId }) {
+function FriendsContainer({ followerName, profilePhoto, followerUserId, idfollower}) {
     const optionsModal = useModal();
     const unfollowModal = useModal();
-    const unfriendModal = useModal();
 
     const handleUnfollow = () => {
+        optionsModal.closeModal();
         unfollowModal.closeModal();
-
-    };
-
-    const handleUnfriend = () => {
-        unfriendModal.closeModal();
     };
 
     return (
@@ -52,9 +47,8 @@ function FriendsContainer({ followerName, profilePhoto, followerUserId }) {
                         <FontAwesomeIcon icon={faUserTimes} />
                         Unfollow
                     </button>
-                    <button className="remove-btn" onClick={unfriendModal.openModal}>
-                        <FontAwesomeIcon icon={faUserMinus} />
-                        Unfriend
+                    <button className="remove-btn" onClick={optionsModal.closeModal}>
+                        Close
                     </button>
                 </div>
             </Modal>
@@ -74,26 +68,6 @@ function FriendsContainer({ followerName, profilePhoto, followerUserId }) {
                         <button className="remove-btn" onClick={handleUnfollow}>
                             <FontAwesomeIcon icon={faUserTimes} className="icon" />
                             Unfollow
-                        </button>
-                    </div>
-                </div>
-            </Modal>
-
-            <Modal
-                isOpen={unfriendModal.isOpen}
-                onRequestClose={unfriendModal.closeModal}
-                className="modal-delete-comment"
-                overlayClassName="modal-overlay"
-                ariaHideApp={false}
-            >
-                {/* Unfriend Modal content */}
-                <div className="modal-content">
-                    <p>Are you sure you want to unfriend this user?</p>
-                    <div className="modal-buttons">
-                        <button className="add-btn" onClick={unfriendModal.closeModal}>Cancel</button>
-                        <button className="remove-btn" onClick={handleUnfriend}>
-                            <FontAwesomeIcon icon={faUserMinus} className="icon" />
-                            Unfriend
                         </button>
                     </div>
                 </div>
