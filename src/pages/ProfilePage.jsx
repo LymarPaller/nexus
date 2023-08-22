@@ -11,13 +11,17 @@ import { setCurrentUser } from "../store/currentUserReducer";
 
 function ProfilePage() {
   const currentUser = useSelector((state) => state.currentUser);
+  const dispatch = useDispatch();
   const [profileFeed, setProfileFeed] = useState([])
+  const [reload, setReload] = useState(false)
   const currentUserId = currentUser.id;
 
   const fetchProfileFeed = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/v1/post?userId=${currentUserId}`)
-      setProfileFeed(res.data.data)
+      const res = await axios.get(`http://localhost:8000/api/v1/users?username=${currentUser.username}`)
+      const [data] = res.data.data
+      dispatch(setCurrentUser(data))
+      setProfileFeed(data.posts)
     } catch (error) {
         console.error('Error fetching feed:', error);
     }
@@ -26,12 +30,12 @@ function ProfilePage() {
   useEffect(() => {
     document.title = "Profile";
     fetchProfileFeed()
-  }, []);
+  }, [reload]);
 
   return (
     <div className='profile-page-main-container'>
       <div className='profile-feed-container'>
-        <ProfileDetail />
+        <ProfileDetail setReload={setReload} />
         {
           Object.values(profileFeed).map(feed=>
           <Feed 

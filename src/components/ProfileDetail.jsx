@@ -34,7 +34,7 @@ function WebsiteLink({ website }) {
   );
 }
 
-function ProfileDetail() {
+function ProfileDetail({ setReload }) {
   const currentUser = useSelector((state) => state.currentUser);
   const name = currentUser.name;
   const profilePhoto = currentUser.profilePhoto;
@@ -137,12 +137,14 @@ function ProfileDetail() {
       };
 
       const update = await axios.patch(
-        `http://localhost:8000/api/v1/users/${localStorage.getItem("id")}`,
+        `http://localhost:8000/api/v1/users/${currentUser.id}`,
         updatedUserData
       );
 
-      if (update.data.success) {
+      if (update.status === 200) {
         setHasChanges(false);
+        // reload changes
+        setReload(prev => !prev)
         closeEditModal();
       } else {
         // Handle errors, if any
