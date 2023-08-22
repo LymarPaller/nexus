@@ -48,6 +48,10 @@ function ProfileDetail({ setReload }) {
   const [profilePhotoFile, setProfilePhotoFile] = useState(null);
   const [coverPhotos, setCoverPhoto] = useState(null);
   const [coverPhotoFile, setCoverPhotoFile] = useState(null);
+  const [uploadedProfilePhoto, setUploadedProfilePhoto] = useState(null);
+  const [uploadedCoverPhoto, setUploadedCoverPhoto] = useState(null);
+  const [renderProfilePhoto, setRenderProfilePhoto] = useState(null);
+  const [renderCoverPhoto, setRenderCoverPhoto] = useState(null);
 
   const debouncedProfilePhotoChange = debounce((e) => {
     const file = e.target.files[0];
@@ -144,7 +148,7 @@ function ProfileDetail({ setReload }) {
       if (update.status === 200) {
         setHasChanges(false);
         // reload changes
-        setReload(prev => !prev)
+        setReload((prev) => !prev);
         closeEditModal();
       } else {
         // Handle errors, if any
@@ -158,8 +162,18 @@ function ProfileDetail({ setReload }) {
   const handleSaveProfilePicture = async (e) => {
     e.preventDefault();
     try {
-      // Your code to handle saving profile picture here
-      // ...
+      setLoading((prev) => ({ ...prev, profilePhoto: true }));
+
+      // Simulate an API request to upload the profile picture
+      setTimeout(() => {
+        // Assuming `newProfilePhotoUrl` is the URL of the uploaded photo
+        const newProfilePhotoUrl = "https://example.com/new-profile-photo.jpg";
+        setProfilePhoto(newProfilePhotoUrl); // Update the profile photo URL
+        setUploadedProfilePhoto(newProfilePhotoUrl); // Update the uploaded profile photo URL
+        setRenderProfilePhoto(newProfilePhotoUrl); // Update the rendered profile photo URL
+        setSuccess((prev) => ({ ...prev, profilePhoto: "Profile picture uploaded!" }));
+        setLoading((prev) => ({ ...prev, profilePhoto: false }));
+      }, 2000);
     } catch (error) {
       console.log(error);
       // Handle errors, if any
@@ -169,8 +183,18 @@ function ProfileDetail({ setReload }) {
   const handleSaveCoverPhoto = async (e) => {
     e.preventDefault();
     try {
-      // Your code to handle saving cover photo here
-      // ...
+      setLoading((prev) => ({ ...prev, coverPhoto: true }));
+
+      // Simulate an API request to upload the cover photo
+      setTimeout(() => {
+        // Assuming `newCoverPhotoUrl` is the URL of the uploaded photo
+        const newCoverPhotoUrl = "https://example.com/new-cover-photo.jpg";
+        setCoverPhoto(newCoverPhotoUrl); // Update the cover photo URL
+        setUploadedCoverPhoto(newCoverPhotoUrl); // Update the uploaded cover photo URL
+        setRenderCoverPhoto(newCoverPhotoUrl); // Update the rendered cover photo URL
+        setSuccess((prev) => ({ ...prev, coverPhoto: "Cover photo uploaded!" }));
+        setLoading((prev) => ({ ...prev, coverPhoto: false }));
+      }, 2000);
     } catch (error) {
       console.log(error);
       // Handle errors, if any
@@ -180,10 +204,10 @@ function ProfileDetail({ setReload }) {
   return (
     <div className="profile-main-container">
       <div className="cover-photo">
-        <img src={coverPhoto} alt="Cover" />
+        <img src={renderCoverPhoto || coverPhoto || userPlaceHolder} alt="Cover" />
       </div>
       <div className="profile-photo">
-        <img src={profilePhoto} alt="Profile" />
+        <img src={renderProfilePhoto || profilePhoto || userPlaceHolder} alt="Profile" />
       </div>
       <div className="detail-container">
         <h1 className="user-profile-name">{name}</h1>
@@ -242,10 +266,10 @@ function ProfileDetail({ setReload }) {
                 <div className="profile-picture-modal photo-modal">
                   <img
                     src={
-                      profilePhotos
-                        ? profilePhotos
-                        : `http://localhost:8000/images/${profilePhoto}` ||
-                        userPlaceHolder
+                      renderProfilePhoto ||
+                      uploadedProfilePhoto ||
+                      profilePhoto ||
+                      userPlaceHolder
                     }
                     alt="Profile"
                   />
@@ -257,7 +281,7 @@ function ProfileDetail({ setReload }) {
                     name="profilePicture"
                     className="upload-button hidden"
                     accept="image/*"
-                    onChange={debouncedProfilePhotoChange}
+                    onChange={debouncedProfilePhotoChange} // Use debounced change handler
                   />
                 </div>
                 <p>{success.profilePhoto}</p>
@@ -285,10 +309,10 @@ function ProfileDetail({ setReload }) {
                 <div className="cover-photo-modal photo-modal">
                   <img
                     src={
-                      coverPhotos
-                        ? coverPhotos
-                        : `http://localhost:8000/images/${coverPhoto}` ||
-                        userPlaceHolder
+                      renderCoverPhoto ||
+                      uploadedCoverPhoto ||
+                      coverPhoto ||
+                      userPlaceHolder
                     }
                     alt="Cover photo"
                   />
@@ -300,7 +324,7 @@ function ProfileDetail({ setReload }) {
                     name="coverPhoto"
                     className="upload-button hidden"
                     accept="image/*"
-                    onChange={debouncedCoverPhotoChange}
+                    onChange={debouncedCoverPhotoChange} // Use debounced change handler
                   />
                 </div>
                 <p>{success.coverPhoto}</p>
