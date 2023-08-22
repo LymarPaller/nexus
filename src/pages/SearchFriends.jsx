@@ -30,6 +30,10 @@ function SearchFriends () {
             introduction={srch.introduction}
             city={srch.city}
             profilePhoto={srch.profilePhoto}
+            coverPhoto={srch.coverPhoto}
+            company={srch.company}
+            websites={srch.websites}
+            feedArray={srch.posts}
           />)
         }
       </div>

@@ -7,24 +7,24 @@ import '../styles/EditProfile.scss';
 import LocationPin from "../assets/icons/location.svg";
 import WebIcon from "../assets/icons/web.svg";
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import Feed from "./Feed";
 
 
 function FriendCard(props) {
-  const { friendId, name, introduction, city, profilePhoto } = props;
+  const { friendId, 
+    name, 
+    introduction, 
+    city, 
+    profilePhoto, 
+    company, 
+    coverPhoto, 
+    websites,
+    feedArray} = props;
 
   const [isFollowing, setIsFollowing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showUnfollowModal, setShowUnfollowModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
-
-
-  const coverPhoto = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1xw:0.74975xh;center,top&resize=1200:*";
-  const company = "Nexus Kodego";
-  const website = "https://kodego.com";
-  const LocationPin = "../assets/icons/location.svg";
-  const openEditModal = () => {
-
-  };
 
   const handleFollowClick = () => {
     setIsLoading(true);
@@ -106,11 +106,11 @@ function FriendCard(props) {
       <ReactModal
         isOpen={showProfileModal}
         onRequestClose={() => setShowProfileModal(false)}
-        className="profile-modal" // Add a custom class for styling
+        className="profile-modal main-modal-profile" // Add a custom class for styling
         overlayClassName="modal-overlay"
         ariaHideApp={false}
       >
-        <div className="profile-main-container">
+        <div className="profile-main-container search-modal-profile">
           <div className="cover-photo">
             <img src={coverPhoto} alt="Cover" />
           </div>
@@ -124,27 +124,36 @@ function FriendCard(props) {
               <p>{company}</p>
             </div>
             <div className="detail-container-other-details">
-              <a href={WebIcon} target="_blank" rel="noopener noreferrer">Website</a>
+              <span>
+                <img src={WebIcon} alt="Location" />
+                <a href='' target="_blank" rel="noopener noreferrer">{websites}</a>
+              </span>
               <span>
                 <img src={LocationPin} alt="Location" />
                 <p className="profile-location detail-container-other-details-paragraph">
                   {city}
                 </p>
               </span>
-              {/* <div>
-                <FontAwesomeIcon
-                  icon={faUserMinus}
-                  className="edit-icon"
-                  title="Edit Profile"
-                  onClick={openEditModal}
-                />
-              </div> */}
             </div>
           </div>
-        </div>
-        <button classname="add-btn" onClick={() => setShowProfileModal(false)} >
+        <button className="close-modal-profiledetails" onClick={() => setShowProfileModal(false)} >
           Close
         </button>
+        </div>
+        <div className="feed-container-main">
+        {
+          feedArray.map(feedArr=><Feed 
+            key={feedArr.id}
+            postDescription={feedArr.post_description}
+            dateCreated={feedArr.date_created}
+            imgPost={feedArr.img_post}
+            postId={feedArr.id}
+            author={name}
+            img={profilePhoto}
+          />)
+        }
+        </div>
+        {/* <Feed /> */}
       </ReactModal>
     </>
   );

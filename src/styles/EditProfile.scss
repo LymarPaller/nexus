@@ -132,3 +132,58 @@
     height: 2rem;
     margin-top: 0rem;
 }
+
+//search profile modal
+.main-modal-profile{
+    height: 90%;
+    padding-top: 0;
+    width: 50vw;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: scroll;
+
+    .search-modal-profile{
+        overflow: hidden;
+        min-height: 75vh;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--white);
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+
+        .cover-photo{
+            margin-top: 0;
+        }
+    }
+    .feed-container-main{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .feed-container {
+            height: auto;
+            width: 90%;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--grey-400);
+        }
+    }
+
+
+    .close-modal-profiledetails {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        background-color: var(--accent);
+        border: 0;
+        border-radius: 1rem;
+        width: 3rem;
+        height: 2rem;
+        color: var(--white);
+    }
+}
