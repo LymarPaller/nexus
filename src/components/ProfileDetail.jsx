@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPen,
   faTimes,
+  faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 import userPlaceHolder from "../assets/icons/profile.svg";
 import Modal from "react-modal";
@@ -215,7 +216,9 @@ function ProfileDetail() {
         <h1 className='user-profile-name'>{name}</h1>
         <div className='detail-container-intro'>
           <p>{introduction}</p>
-          <p>{company}</p>
+          <p>
+            <FontAwesomeIcon icon={faBriefcase} /> Works at <strong>{company}</strong>
+          </p>
         </div>
         <div className='detail-container-other-details'>
           <WebsiteLink website={website} />
@@ -273,7 +276,7 @@ function ProfileDetail() {
                       profilePhotos
                         ? profilePhotos
                         : `http://localhost:8000/images/${profilePhoto}` ||
-                          userPlaceHolder
+                        userPlaceHolder
                     }
                     alt='Profile'
                   />
@@ -317,7 +320,7 @@ function ProfileDetail() {
                       coverPhotos
                         ? coverPhotos
                         : `http://localhost:8000/images/${coverPhoto}` ||
-                          userPlaceHolder
+                        userPlaceHolder
                     }
                     alt='Cover photo'
                   />

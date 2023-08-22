@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faUserMinus, faUserPlus, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import ReactModal from 'react-modal';
 import '../styles/EditProfile.scss';
 import LocationPin from "../assets/icons/location.svg";
@@ -121,7 +121,9 @@ function FriendCard(props) {
             <h1 className="user-profile-name">{name}</h1>
             <div className="detail-container-intro">
               <p>{introduction}</p>
-              <p>{company}</p>
+              <p>
+                <FontAwesomeIcon icon={faBriefcase} /> Works at <strong>{company}</strong>
+              </p>
             </div>
             <div className="detail-container-other-details">
               <span>
