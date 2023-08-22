@@ -8,12 +8,14 @@ import {
   faUserPen,
   faTimes,
   faBriefcase,
+  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 import userPlaceHolder from "../assets/icons/profile.svg";
 import Modal from "react-modal";
 import { useModal } from "../app/useModal";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import debounce from "lodash/debounce";
 
 const PROFILE_WEBSITE = "https://www.instagram.com/wandaringmaltese/";
 
@@ -24,33 +26,56 @@ function WebsiteLink({ website }) {
 
   return (
     <span onClick={handleWebsiteClick}>
-      <img
-        src={WebIcon}
-        alt='Website'
-      />
-      <p className='profile-website detail-container-other-details-paragraph'>
+      <img src={WebIcon} alt="Website" />
+      <p className="profile-website detail-container-other-details-paragraph">
         {website}
       </p>
     </span>
   );
 }
 
-function ProfileDetail() {
+function ProfileDetail({ setReload }) {
   const currentUser = useSelector((state) => state.currentUser);
-  const name = currentUser.name
-  const profilePhoto = currentUser.profilePhoto
-  const coverPhoto = currentUser.coverPhoto
-  const city = currentUser.city
-  const website = currentUser.websites
-  const introduction = currentUser.introduction
-  const company = currentUser.company
+  const name = currentUser.name;
+  const profilePhoto = currentUser.profilePhoto;
+  const coverPhoto = currentUser.coverPhoto;
+  const city = currentUser.city;
+  const website = currentUser.websites;
+  const introduction = currentUser.introduction;
+  const company = currentUser.company;
 
-  const [profilePhotos, setprofilePhoto] = useState(null);
+  const [profilePhotos, setProfilePhoto] = useState(null);
   const [profilePhotoFile, setProfilePhotoFile] = useState(null);
-  const [coverPhotos, setcoverPhoto] = useState(null);
+  const [coverPhotos, setCoverPhoto] = useState(null);
   const [coverPhotoFile, setCoverPhotoFile] = useState(null);
-  // main object
-  const [profileObject, setProfileObject] = useState({});
+
+  const debouncedProfilePhotoChange = debounce((e) => {
+    const file = e.target.files[0];
+    setProfilePhotoFile(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setProfilePhoto(reader.result);
+    };
+    reader.readAsDataURL(file);
+  }, 1000);
+
+  const debouncedCoverPhotoChange = debounce((e) => {
+    const file = e.target.files[0];
+    setCoverPhotoFile(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setCoverPhoto(reader.result);
+    };
+    reader.readAsDataURL(file);
+  }, 1000);
+
+  const [profileObject, setProfileObject] = useState({
+    name,
+    introduction,
+    company,
+    websites: website,
+    city,
+  });
 
   const [loading, setLoading] = useState({
     profilePhoto: false,
@@ -69,8 +94,6 @@ function ProfileDetail() {
   const [editedCompany, setEditedCompany] = useState(company);
   const [editedWebsite, setEditedWebsite] = useState(website);
   const [editedCity, setEditedCity] = useState(city);
-
-  //plural
 
   const [editNameMode, setEditNameMode] = useState(true);
   const [editIntroductionMode, setEditIntroductionMode] = useState(false);
@@ -92,27 +115,6 @@ function ProfileDetail() {
     setEditCompanyMode(false);
     setEditWebsiteMode(false);
     setEditCityMode(false);
-    setReload((prev) => !prev);
-  };
-
-  const handleSaveProfile = () => {
-    // add save logic
-    setHasChanges(false);
-    closeEditModal();
-  };
-
-  const handleprofilePhotoChange = (e) => {
-    const uploadedprofilePhoto = URL.createObjectURL(e.target.files[0]);
-    setProfilePhotoFile(e.target.files[0]);
-    setprofilePhoto(uploadedprofilePhoto);
-    setHasChanges(true);
-  };
-
-  const handlecoverPhotoChange = (e) => {
-    const uploadedcoverPhoto = URL.createObjectURL(e.target.files[0]);
-    setCoverPhotoFile(e.target.files[0]);
-    setcoverPhoto(uploadedcoverPhoto);
-    setHasChanges(true);
   };
 
   const handleProfileChange = (e) => {
@@ -120,122 +122,91 @@ function ProfileDetail() {
     setProfileObject((prev) => {
       return { ...prev, [name]: value };
     });
+    setHasChanges(true);
   };
 
-  const handleSaveProfilePhoto = async (e) => {
+  const handleSaveProfileObject = async (e) => {
     e.preventDefault();
     try {
-      if (!profilePhotoFile) return;
-      const formData = new FormData();
-      formData.append("profilePhoto", profilePhotoFile);
-      setLoading((prev) => ({ ...prev, profilePhoto: true }));
-      const update = await axios.post(
-        `http://localhost:8000/api/v1/users/${localStorage.getItem(
-          "id"
-        )}?_method=PATCH`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
+      const updatedUserData = {
+        name: editedName,
+        introduction: editedIntroduction,
+        company: editedCompany,
+        websites: editedWebsite,
+        city: editedCity,
+      };
+
+      const update = await axios.patch(
+        `http://localhost:8000/api/v1/users/${currentUser.id}`,
+        updatedUserData
       );
 
-      setLoading((prev) => ({ ...prev, profilePhoto: false }));
-      setSuccess((prev) => ({ ...prev, profilePhoto: "Saved Successfully" }));
-      setProfilePhotoFile(null);
-
-      setTimeout(() => {
-        setSuccess((prev) => ({ ...prev, profilePhoto: "" }));
-      }, 3000);
-      // add the locals here
-      console.log(update);
+      if (update.status === 200) {
+        setHasChanges(false);
+        // reload changes
+        setReload(prev => !prev)
+        closeEditModal();
+      } else {
+        // Handle errors, if any
+      }
     } catch (error) {
       console.log(error);
+      // Handle API request errors
+    }
+  };
+
+  const handleSaveProfilePicture = async (e) => {
+    e.preventDefault();
+    try {
+      // Your code to handle saving profile picture here
+      // ...
+    } catch (error) {
+      console.log(error);
+      // Handle errors, if any
     }
   };
 
   const handleSaveCoverPhoto = async (e) => {
     e.preventDefault();
     try {
-      if (!coverPhotoFile) return;
-      const formData = new FormData();
-      formData.append("coverPhoto", coverPhotoFile);
-      setLoading((prev) => ({ ...prev, profilePhoto: true }));
-      const update = await axios.post(
-        `http://localhost:8000/api/v1/users/${localStorage.getItem(
-          "id"
-        )}?_method=PATCH`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-
-      setLoading((prev) => ({ ...prev, coverPhoto: false }));
-      setSuccess((prev) => ({ ...prev, coverPhoto: "Saved Successfully" }));
-      setCoverPhotoFile(null);
-
-      setTimeout(() => {
-        setSuccess((prev) => ({ ...prev, coverPhoto: "" }));
-      }, 3000);
-      console.log(update);
+      // Your code to handle saving cover photo here
+      // ...
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const handleSaveProfileObject = async (e) => {
-    e.preventDefault();
-    try {
-      const update = await axios.patch(
-        `http://localhost:8000/api/v1/users/${localStorage.getItem("id")}`,
-        profileObject
-      );
-      // do something kung success ang request
-      console.log(update);
-      closeEditModal();
-    } catch (error) {
-      console.log(error);
+      // Handle errors, if any
     }
   };
 
   return (
-    <div className='profile-main-container'>
-      <div className='cover-photo'>
-        <img
-          src={coverPhoto}
-          alt='Cover'
-        />
+    <div className="profile-main-container">
+      <div className="cover-photo">
+        <img src={coverPhoto} alt="Cover" />
       </div>
-      <div className='profile-photo'>
-        <img
-          src={profilePhoto}
-          alt='Profile'
-        />
+      <div className="profile-photo">
+        <img src={profilePhoto} alt="Profile" />
       </div>
-      <div className='detail-container'>
-        <h1 className='user-profile-name'>{name}</h1>
-        <div className='detail-container-intro'>
+      <div className="detail-container">
+        <h1 className="user-profile-name">{name}</h1>
+        <div className="detail-container-intro">
           <p>{introduction}</p>
           <p>
-            <FontAwesomeIcon icon={faBriefcase} /> Works at <strong>{company}</strong>
+            <FontAwesomeIcon icon={faBriefcase} /> Works at{" "}
+            <strong>{company}</strong>
           </p>
         </div>
-        <div className='detail-container-other-details'>
+        <div className="detail-container-other-details">
           <WebsiteLink website={website} />
           <span>
-            <img
-              src={LocationPin}
-              alt='Location'
-            />
-            <p className='profile-location detail-container-other-details-paragraph'>
+            <img src={LocationPin} alt="Location" />
+            <p className="profile-location detail-container-other-details-paragraph">
               {city}
             </p>
           </span>
           <div>
             <FontAwesomeIcon
               icon={faUserPen}
-              className='edit-icon'
-              title='Edit Profile'
+              className="edit-icon"
+              title="Edit Profile"
               onClick={openEditModal}
             />
           </div>
@@ -246,31 +217,29 @@ function ProfileDetail() {
         <Modal
           isOpen={isEditModalOpen}
           onRequestClose={closeEditModal}
-          className='edit-profile-modal'
-          overlayClassName='modal-overlay'
+          className="edit-profile-modal"
+          overlayClassName="modal-overlay"
           ariaHideApp={false}
         >
-          <div className='modal-content-edit-profile'>
+          <div className="modal-content-edit-profile">
             <h2>Edit Profile</h2>
             <FontAwesomeIcon
               icon={faTimes}
-              className='logout-xmark-edit close-svg'
+              className="logout-xmark-edit close-svg"
               onClick={closeEditModal}
             />
-            {/* Edit Profile*/}
-            <div className='profile-edit-container'>
-              {/* Profile Picture */}
-              <form onSubmit={handleSaveProfilePhoto}>
-                <div className='edit-profile-header'>
+            <div className="profile-edit-container">
+              <form onSubmit={handleSaveProfilePicture}>
+                <div className="edit-profile-header">
                   <h3>Profile picture</h3>
-                  {/* <FontAwesomeIcon
+                  <FontAwesomeIcon
                     icon={faSave}
                     className={`edit-icon ${hasChanges ? "clickable" : ""}`}
-                    title='Save Profile Picture'
+                    title="Save Profile Picture"
                     onClick={hasChanges ? handleSaveProfilePicture : null}
-                  /> */}
+                  />
                 </div>
-                <div className='profile-picture-modal photo-modal'>
+                <div className="profile-picture-modal photo-modal">
                   <img
                     src={
                       profilePhotos
@@ -278,24 +247,24 @@ function ProfileDetail() {
                         : `http://localhost:8000/images/${profilePhoto}` ||
                         userPlaceHolder
                     }
-                    alt='Profile'
+                    alt="Profile"
                   />
                 </div>
-                <div className='upload-photo'>
+                <div className="upload-photo">
                   <input
-                    type='file'
-                    id='profilePictureInput'
-                    name='profilePicture'
-                    className='upload-button hidden'
-                    accept='image/*'
-                    onChange={handleprofilePhotoChange}
+                    type="file"
+                    id="profilePictureInput"
+                    name="profilePicture"
+                    className="upload-button hidden"
+                    accept="image/*"
+                    onChange={debouncedProfilePhotoChange}
                   />
                 </div>
                 <p>{success.profilePhoto}</p>
                 {profilePhotoFile !== null && (
                   <button
-                    type='submit'
-                    className='save-button'
+                    type="submit"
+                    className="save-button"
                     disabled={loading.profilePhoto}
                   >
                     {loading.profilePhoto ? "..." : "Save"}
@@ -303,18 +272,17 @@ function ProfileDetail() {
                 )}
               </form>
 
-              {/* Cover Photo */}
               <form onSubmit={handleSaveCoverPhoto}>
-                <div className='edit-profile-header'>
+                <div className="edit-profile-header">
                   <h3>Cover Photo</h3>
-                  {/* <FontAwesomeIcon
-                  icon={faSave}
-                  className={`edit-icon ${hasChanges ? "clickable" : ""}`}
-                  title='Save Cover Photo'
-                  onClick={hasChanges ? handleSaveCoverPhoto : null}
-                /> */}
+                  <FontAwesomeIcon
+                    icon={faSave}
+                    className={`edit-icon ${hasChanges ? "clickable" : ""}`}
+                    title="Save Cover Photo"
+                    onClick={hasChanges ? handleSaveCoverPhoto : null}
+                  />
                 </div>
-                <div className='cover-photo-modal photo-modal'>
+                <div className="cover-photo-modal photo-modal">
                   <img
                     src={
                       coverPhotos
@@ -322,141 +290,135 @@ function ProfileDetail() {
                         : `http://localhost:8000/images/${coverPhoto}` ||
                         userPlaceHolder
                     }
-                    alt='Cover photo'
+                    alt="Cover photo"
                   />
                 </div>
-                <div className='upload-photo'>
+                <div className="upload-photo">
                   <input
-                    type='file'
-                    id='coverPhotoInput'
-                    name='coverPhoto'
-                    className='upload-button hidden'
-                    accept='image/*'
-                    onChange={handlecoverPhotoChange}
+                    type="file"
+                    id="coverPhotoInput"
+                    name="coverPhoto"
+                    className="upload-button hidden"
+                    accept="image/*"
+                    onChange={debouncedCoverPhotoChange}
                   />
                 </div>
                 <p>{success.coverPhoto}</p>
                 {coverPhotoFile !== null && (
                   <button
-                    type='submit'
-                    className='save-button'
-                    disabled={loading.profilePhoto}
+                    type="submit"
+                    className="save-button"
+                    disabled={loading.coverPhoto}
                   >
-                    {loading.profilePhoto ? "..." : "Save"}
+                    {loading.coverPhoto ? "..." : "Save"}
                   </button>
                 )}
               </form>
 
-              {/* editable text fields */}
               <form onSubmit={handleSaveProfileObject}>
-                {/* name */}
                 <div>
-                  <div className='edit-profile-header'>
+                  <div className="edit-profile-header">
                     <h3>Name</h3>
                     <p onClick={() => setEditNameMode(true)}>Edit</p>
                   </div>
                   {editNameMode ? (
-                    <div className='form-container'>
+                    <div className="form-container">
                       <input
-                        type='text'
-                        className='input-feed'
-                        placeholder='Edit your name...'
-                        defaultValue={name}
-                        name='name'
+                        type="text"
+                        className="input-feed"
+                        placeholder="Edit your name..."
+                        value={editedName}
+                        name="editedName"
                         required
-                        onChange={handleProfileChange}
+                        onChange={(e) => setEditedName(e.target.value)}
                       />
                     </div>
                   ) : null}
                 </div>
-                {/* Introduction */}
+
                 <div>
-                  <h3 className='edit-add-ons'>Edit Additional Information</h3>
-                  <div className='edit-profile-header'>
+                  <h3 className="edit-add-ons">Edit Additional Information</h3>
+                  <div className="edit-profile-header">
                     <h3>Introduction</h3>
                     <p onClick={() => setEditIntroductionMode(true)}>Edit</p>
                   </div>
-                  <span>{introduction}</span>
+                  <span>{editedIntroduction}</span>
                   {editIntroductionMode ? (
-                    <div className='form-container'>
+                    <div className="form-container">
                       <textarea
-                        className='input-feed'
-                        placeholder='Describe yourself...'
-                        defaultValue={introduction}
-                        name='introduction'
-                        onChange={handleProfileChange}
+                        className="input-feed"
+                        placeholder="Describe yourself..."
+                        value={editedIntroduction}
+                        name="editedIntroduction"
+                        onChange={(e) =>
+                          setEditedIntroduction(e.target.value)
+                        }
                       />
                     </div>
                   ) : null}
                 </div>
 
-                {/* Company */}
                 <div>
-                  <div className='edit-profile-header'>
+                  <div className="edit-profile-header">
                     <h3>Company</h3>
                     <p onClick={() => setEditCompanyMode(true)}>Edit</p>
                   </div>
-                  <span>{company}</span>
+                  <span>{editedCompany}</span>
                   {editCompanyMode ? (
-                    <div className='form-container'>
+                    <div className="form-container">
                       <textarea
-                        className='input-feed'
-                        placeholder='Edit your company...'
-                        defaultValue={company}
-                        name='company'
+                        className="input-feed"
+                        placeholder="Edit your company..."
+                        value={editedCompany}
+                        name="editedCompany"
                         required
-                        onChange={handleProfileChange}
+                        onChange={(e) => setEditedCompany(e.target.value)}
                       />
                     </div>
                   ) : null}
                 </div>
 
-                {/* Website */}
                 <div>
-                  <div className='edit-profile-header'>
+                  <div className="edit-profile-header">
                     <h3>Website</h3>
                     <p onClick={() => setEditWebsiteMode(true)}>Edit</p>
                   </div>
-                  <span>{website}</span>
+                  <span>{editedWebsite}</span>
                   {editWebsiteMode ? (
-                    <div className='form-container'>
+                    <div className="form-container">
                       <input
-                        type='text'
-                        className='input-feed'
-                        placeholder='Edit your website...'
-                        name='websites'
-                        defaultValue={website}
-                        onChange={handleProfileChange}
+                        type="text"
+                        className="input-feed"
+                        placeholder="Edit your website..."
+                        value={editedWebsite}
+                        name="editedWebsite"
+                        onChange={(e) => setEditedWebsite(e.target.value)}
                       />
                     </div>
                   ) : null}
                 </div>
 
-                {/* City */}
                 <div>
-                  <div className='edit-profile-header'>
+                  <div className="edit-profile-header">
                     <h3>City</h3>
                     <p onClick={() => setEditCityMode(true)}>Edit</p>
                   </div>
-                  <span>{city}</span>
+                  <span>{editedCity}</span>
                   {editCityMode ? (
-                    <div className='form-container'>
+                    <div className="form-container">
                       <input
-                        type='text'
-                        className='input-feed'
-                        placeholder='Edit your city...'
-                        name='city'
-                        defaultValue={city}
-                        onChange={handleProfileChange}
+                        type="text"
+                        className="input-feed"
+                        placeholder="Edit your city..."
+                        value={editedCity}
+                        name="editedCity"
+                        onChange={(e) => setEditedCity(e.target.value)}
                       />
                     </div>
                   ) : null}
                 </div>
 
-                <button
-                  type='submit'
-                  className='save-button'
-                >
+                <button type="submit" className="save-button">
                   Save
                 </button>
               </form>
