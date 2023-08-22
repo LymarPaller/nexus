@@ -1,29 +1,34 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react"; // Import useState
 import "../styles/SearchFriends.scss";
-import FriendsContainer from './FriendsContainer';
-import SuggestedFriendContainer from './SuggestedFriendContainer';
-import Profile from "../assets/wanda.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import ReactModal from 'react-modal';
+import '../styles/EditProfile.scss'; 
 
 function FriendCard(props) {
   const { friendId, name, introduction, city, profilePhoto } = props;
 
- 
   const [isFollowing, setIsFollowing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showUnfollowModal, setShowUnfollowModal] = useState(false); 
 
- 
   const handleFollowClick = () => {
-    
     setIsLoading(true);
-
 
     setTimeout(() => {
       setIsFollowing(true);
       setIsLoading(false);
-    }, 1000); 
+    }, 1000);
+  };
+
+  const handleUnfollowClick = () => {
+    setShowUnfollowModal(true);
+  };
+
+  const handleConfirmUnfollow = () => {
+    setIsFollowing(false); 
+    setShowUnfollowModal(false); 
   };
 
   return (
@@ -42,13 +47,32 @@ function FriendCard(props) {
               <p>{city}</p>
             </div>
             <div>
-
               {isLoading ? (
                 <button disabled>
                   <FontAwesomeIcon icon={faSpinner} spin /> Loading
                 </button>
               ) : isFollowing ? (
-                <button disabled>Following</button>
+                <>
+                  <button onClick={handleUnfollowClick}>Following</button>
+                  {/* Unfollow Confirmation Modal */}
+                  <ReactModal
+                    isOpen={showUnfollowModal}
+                    onRequestClose={() => setShowUnfollowModal(false)}
+                    className="modal-unfollow"
+                    overlayClassName="modal-overlay"
+                    ariaHideApp={false}
+                  >
+                    <div className="modal-content">
+                      <p>Are you sure you want to unfollow this user?</p>
+                      <div className="modal-buttons">
+                        <button className="add-btn" onClick={() => setShowUnfollowModal(false)}>Cancel</button>
+                        <button className="remove-btn" onClick={handleConfirmUnfollow}>
+                          <FontAwesomeIcon icon={faUserMinus} /> Unfollow
+                        </button>
+                      </div>
+                    </div>
+                  </ReactModal>
+                </>
               ) : (
                 <button onClick={handleFollowClick}>
                   <FontAwesomeIcon icon={faUserPlus} /> Follow
