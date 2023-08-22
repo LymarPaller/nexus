@@ -15,6 +15,17 @@ function AsideRight() {
             name: 'Riya Villamor',
             photo: ProfileDefault,
         },
+        {
+            id: 3,
+            name: 'Mark Soccerbird',
+            photo: ProfileDefault,
+        },
+        {
+            id: 4,
+            name: 'Elon Mustache',
+            photo: ProfileDefault,
+        },
+       
     ]
 
     return (
