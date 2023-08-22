@@ -10,14 +10,14 @@ import axios from 'axios';
 import '../styles/modals/modal.scss';
 import '../styles/Comments.scss';
 
-function Comments({ feedItems, postId, closeModal, currentId }) {
+function Comments({ feedItems, postId, closeModal }) {
 
     const { isOpen: showDeleteModal, openModal: openDeleteModal, closeModal: closeDeleteModal } = useModal();
     const [commentToDelete, setCommentToDelete] = useState(null);
 
     const [comments, setComments] = useState([])
     const currentUser = useSelector((state) => state.currentUser);
-    const currrentId = currentUser.id
+    const currentId = currentUser.id
 
     const currentDate = new Date();
     const year = currentDate.getFullYear();

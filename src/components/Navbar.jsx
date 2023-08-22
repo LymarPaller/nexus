@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../store/currentUserReducer";
 import { useFormik } from "formik";
 import axios from "axios";
+import { setSearch } from "../store/searchReducer";
 
 function Navbar() {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function Navbar() {
   const [moonIcon, setMoonIcon] = useState(faMoon);
   const [showNavbarAside, setShowNavbarAside] = useState(false);
   const currentUser = useSelector((state) => state.currentUser);
+  const search = useSelector((state) => state.search);
 
   // Handler for toggling dark mode
   const handleDarkModeToggle = () => {
@@ -177,16 +179,15 @@ function Navbar() {
     initialValues: {
       search: "",
     },
-    onSubmit: (values) => {
-      console.log(values)
-      // try {
-      //   const res = await axios.get(
-      //     "http://localhost:8000/api/v1/users",
-      //     values
-      //   )
-      // } catch (error) {
-      //   console.error("Registration failed: ", error);
-      // }
+    onSubmit: async (values) => {
+      const searchname = values.search
+      try {
+        const res = await axios.get(`http://localhost:8000/api/v1/users?name=${searchname}`)
+          dispatch(setSearch(res.data))
+          navigate('/search')
+      } catch (error) {
+        console.error("Registration failed: ", error);
+      }
     },
   });
 
@@ -246,7 +247,7 @@ function Navbar() {
 
         <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
-            <Link className="icon-container" onClick={handleDarkModeToggle} >
+            <Link className="icon-container" onClick={handleDarkModeToggle}>
               <FontAwesomeIcon icon={moonIcon} className="navbar-icon" title="Darkmode" />
             </Link>
           </div>

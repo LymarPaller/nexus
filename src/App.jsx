@@ -19,6 +19,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import Protected from './components/Protected';
+import SearchFriends from './pages/SearchFriends';
 
 function App() {
 
@@ -98,6 +99,12 @@ function App() {
               </>
             } />
 
+          <Route path="/search" element={
+            <>
+              <SearchFriends/>
+              <Navbar />
+            </>
+          } />
 
             <Route
               path="/profile/:userId"
