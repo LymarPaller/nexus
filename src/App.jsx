@@ -35,10 +35,10 @@ function App() {
               </Protected>
             } />
             <Route path="/profile" element={
-              <>
+              <Protected>
                 <ProfilePage />
                 <Navbar />
-              </>
+              </Protected>
             } />
             <Route path="/login" element={
               <>
@@ -53,75 +53,75 @@ function App() {
               </>
             } />
             <Route path="/aside" element={
-              <>
+              <Protected>
                 <AsideMenu />
                 <Navbar />
-              </>
+              </Protected>
             } />
             <Route path="/friends" element={
-              <>
+              <Protected>
                 <FriendsPage />
                 <Navbar />
-              </>
+              </Protected>
             } />
             <Route path="/save" element={
-              <>
+              <Protected>
                 <SavedPage />
                 <Navbar />
-              </>
+              </Protected>
             } />
 
             <Route path="/welcome/:username" element={
-              <>
+              <Protected>
                 <WelcomePage />
                 <Footer />
-              </>
+              </Protected>
             } />
 
             <Route path="/memories" element={
-              <>
+              <Protected>
                 <MemoriesPage />
                 <Navbar />
-              </>
+              </Protected>
             } />
 
             <Route path="/games" element={
-              <>
+              <Protected>
                 <GamesPage />
                 <Navbar />
-              </>
+              </Protected>
             } />
 
             <Route path="/feeds" element={
-              <>
+              <Protected>
                 <FeedsPage />
                 <Navbar />
-              </>
+              </Protected>
             } />
 
           <Route path="/search" element={
-            <>
+            <Protected>
               <SearchFriends/>
               <Navbar />
-            </>
+            </Protected>
           } />
 
           <Route
             path="/profile/:userId"
             element={
-              <>
+              <Protected>
                 <ProfilePage />
                 <Navbar />
-              </>
+              </Protected>
             }
           />
           <Route
             path="*" 
             element={
-              <>
+              <Protected>
                 <NotFoundPage />
                 <Navbar />
-              </>
+              </Protected>
             }
           />
           </Routes>
