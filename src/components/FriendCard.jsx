@@ -27,8 +27,8 @@ function FriendCard(props) {
   const [showProfileModal, setShowProfileModal] = useState(false);
 
   const handleFollowClick = () => {
+    
     setIsLoading(true);
-
     setTimeout(() => {
       setIsFollowing(true);
       setIsLoading(false);

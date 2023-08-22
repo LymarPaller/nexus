@@ -22,6 +22,7 @@ function ProfilePage() {
       const [data] = res.data.data
       dispatch(setCurrentUser(data))
       setProfileFeed(data.posts)
+      console.log(profileFeed)
     } catch (error) {
         console.error('Error fetching feed:', error);
     }
@@ -37,12 +38,12 @@ function ProfilePage() {
       <div className='profile-feed-container'>
         <ProfileDetail setReload={setReload} />
         {
-          Object.values(profileFeed).map(feed=>
+          profileFeed.map(feed=>
           <Feed 
             key={feed.id}
-            imgPost={feed.imgPost}
-            postDescription={feed.postDescription}
-            dateCreated={feed.dateCreated}
+            imgPost={feed.img_post}
+            postDescription={feed.post_description}
+            dateCreated={feed.date_created}
             id={feed.id}
             img={currentUser.profilePhoto}
             author={currentUser.name}

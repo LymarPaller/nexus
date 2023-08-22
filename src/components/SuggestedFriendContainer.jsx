@@ -2,8 +2,8 @@
 import Profile from '../assets/wanda.jpg';
 import React, { useState } from 'react';
 
-function SuggestedFriendContainer () {
-
+function SuggestedFriendContainer (props) {
+const {profilePhoto} = props
     const [suggestedFriends, setSuggestedFriends] = useState([
         { name: 'Faith Mariano' },
         { name: 'Saylor Twift' }
@@ -15,7 +15,7 @@ function SuggestedFriendContainer () {
         {suggestedFriends.map((friend, index) => (
             <div className="friend-suggestion" key={index}>
                 <div className="aside-right-image">
-                    <img src={Profile} alt="Profile" />
+                    <img src={profilePhoto} alt="Profile" />
                 </div>
                 <div className="suggest-name-container">
                     <span>{friend.name}</span>
