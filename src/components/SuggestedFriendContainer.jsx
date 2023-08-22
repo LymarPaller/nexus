@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
+import Profile from '../assets/wanda.jpg';
 
-function SuggestedFriend({ profilePhoto }) {
+function SuggestedFriendContainer(props) {
+  const { profilePhoto } = props;
   const [suggestedFriends, setSuggestedFriends] = useState([
     { name: 'Faith Mariano' },
     { name: 'Saylor Twift' }
   ]);
 
   return (
-    <div className="suggested-friend-container">
+    <>
       {suggestedFriends.map((friend, index) => (
         <div className="friend-suggestion" key={index}>
-          <div className="friend-suggestion-image">
+          <div className="aside-right-image">
             <img src={profilePhoto} alt="Profile" />
           </div>
-          <div className="friend-suggestion-info">
+          <div className="suggest-name-container">
             <span>{friend.name}</span>
-            <div className="friend-suggestion-buttons">
-              <button className="add-button">Add</button>
-              <button className="remove-button">Remove</button>
+            <div className="button-add-remove">
+              <button className="add-btn">Add</button>
+              <button className="remove-btn">Remove</button>
             </div>
           </div>
         </div>
       ))}
-    </div>
-  );
+    </>
+  )
 }
 
-export default SuggestedFriend;
+export default SuggestedFriendContainer;
