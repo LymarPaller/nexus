@@ -31,7 +31,6 @@ function Navbar() {
   const currentUser = useSelector((state) => state.currentUser);
   const search = useSelector((state) => state.search);
 
-  // Handler for toggling dark mode
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
     if (darkMode) {
@@ -43,18 +42,16 @@ function Navbar() {
     }
   };
 
-//DONT DELETE
   const handleLogOut = () => {
     openModal();
   };
-// wag mo na galawin ahahhahaha okay na to thanks pati yung handleLogOut
+
   const handleLogoutConfirmed = () => {
     dispatch(setCurrentUser(null))
-    // closeModal();
     navigate('/login');
   };
 
-  let handleNavbarToggle = () => {
+  const handleNavbarToggle = () => {
     setShowNavbarAside(!showNavbarAside)
     if (showNavbarAside) {
       navbarAsideNav.classList.add("navbar-aside-toggled");
@@ -183,8 +180,8 @@ function Navbar() {
       const searchname = values.search
       try {
         const res = await axios.get(`http://localhost:8000/api/v1/users?name=${searchname}`)
-          dispatch(setSearch(res.data))
-          navigate('/search')
+        dispatch(setSearch(res.data))
+        navigate('/search')
       } catch (error) {
         console.error("Registration failed: ", error);
       }
@@ -194,11 +191,9 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar">
-
         <div className="navbar-logo-container-nexus">
           <img src={Logo} alt="Logo" className="navbar-logo" />
         </div>
-
         <div className="navbar-left">
           <div className="main-navbar-mobile">
             <div className="icon-wrapper">
@@ -222,21 +217,20 @@ function Navbar() {
             </div>
           </div>
         </div>
-
         <div className="navbar-center">
           <div className="search-wrapper">
-          <form onSubmit={formik.handleSubmit}>
-          <input
-            type="text"
-            name="search"
-            className="navbar-search-bar"
-            value={formik.values.search}
-            onChange={formik.handleChange}
-          />
-          <button className="icon-container navbar-search" type="submit">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search" />
-          </button>
-        </form>
+            <form onSubmit={formik.handleSubmit}>
+              <input
+                type="text"
+                name="search"
+                className="navbar-search-bar"
+                value={formik.values.search}
+                onChange={formik.handleChange}
+              />
+              <button className="icon-container navbar-search" type="submit">
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="navbar-icon navbar-search-icon" title="Search" />
+              </button>
+            </form>
           </div>
           <div className="toggler-container">
             <div className="icon-container toggler-navbar" onClick={handleNavbarToggle}>
@@ -244,7 +238,6 @@ function Navbar() {
             </div>
           </div>
         </div>
-
         <div className={`navbar-right ${showNavbarAside ? 'navbar-aside-toggled' : ''}`}>
           <div className="icon-wrapper">
             <Link className="icon-container" onClick={handleDarkModeToggle}>
@@ -266,8 +259,6 @@ function Navbar() {
               <FontAwesomeIcon icon={faXmark} />
             </Link>
           </div>
-
-          {/* Logout Confirmation Modal */}
           <Modal
             isOpen={isOpen}
             onRequestClose={closeModal}
@@ -297,7 +288,6 @@ function Navbar() {
           </Modal>
         </div>
       </nav>
-
       {showNotifications && (
         <div className="notifications-modal">
           <div className="notifications-header">
